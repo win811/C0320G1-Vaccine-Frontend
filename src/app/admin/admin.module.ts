@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SupplierTransactionComponent } from './supplier-transaction/supplier-transaction.component';
-import { CreateComponent } from './supplier-transaction/create/create.component';
-import { EditComponent } from './supplier-transaction/edit/edit.component';
+import {AdminRoutingModule} from './admin-routing.module';
 
 @NgModule({
-  declarations: [SupplierTransactionComponent, CreateComponent, EditComponent],
+  declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
+    AdminRoutingModule
   ]
 })
 export class AdminModule { }
