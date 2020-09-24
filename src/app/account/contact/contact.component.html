@@ -1,0 +1,108 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+      integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"/>
+<section class="section gray-bg" id="contactus">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="section-title">
+          <h2>Gửi Phản Hồi</h2>
+          <p>Chúng tôi đánh giá cao bất kỳ phản hồi nào bạn cung cấp về Trung tâm tiêm chủng GPS. Thư phản hồi sẽ được
+            giải đáp trong 12-24 giờ.</p>
+        </div>
+      </div>
+    </div>
+    <div class="row flex-row-reverse">
+      <div class="col-md-7 col-lg-8 m-15px-tb">
+        <div class="contact-form">
+          <form class="contactform contact_form" (ngSubmit)="saveContact()" [formGroup]="contactForm" id="contact_form">
+            <div *ngIf="message!=''" class="alert alert-warning p-2" role="alert">
+              {{message}}
+            </div>
+            <div class="empty_notice invalid-feedback p-15px-b"><span>Vui lòng điền vào các trường bắt buộc</span></div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input id="name" formControlName="fullName" type="text" placeholder="Tên của bạn" class="form-control">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input id="email" formControlName="email" type="text" placeholder="Email" class="form-control">
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <select formControlName="subject" class="form-control">
+                    <option label="Tình trạng vắc xin" [value]="'Tình trạng vắc xin'" class="optionClass">Tình trạng vắc
+                      xin
+                    </option>
+                    <option label="Giá vắc xin" value="Giá vắc xin" class="optionClass">Giá vắc xin</option>
+                    <option label="Phác đồ/ Lịch sử tiêm" [value]="'Phác đồ/ Lịch sử tiêm'" class="optionClass">Phác đồ/
+                      Lịch sử tiêm
+                    </option>
+                    <option label="Thông tin vắc xin (Công dụng, nhà sản xuất, hạn dùng)"
+                            [value]="'Thông tin vắc xin (Công dụng, nhà sản xuất, hạn dùng)'" class="optionClass">Thông tin
+                      vắc xin (Công dụng, nhà sản xuất, hạn dùng)
+                    </option>
+                    <option label="Điều kiện trước tiêm" [value]="'Điều kiện trước tiêm'" class="optionClass">Điều kiện
+                      trước tiêm
+                    </option>
+                    <option label="Phản ứng sau tiêm" [value]="'Phản ứng sau tiêm'" class="optionClass">Phản ứng sau tiêm
+                    </option>
+                    <option label="Đặt lịch tiêm" value="Đặt lịch tiêm" class="optionClass">Đặt lịch tiêm</option>
+                    <option label="Thanh toán đặt trước" [value]="'Thanh toán đặt trước'" class="optionClass">Thanh toán đặt
+                      trước
+                    </option>
+                    <option label="Khiếu nại/ thắc mắc" [value]="'Khiếu nại/ thắc mắc'" class="optionClass">Khiếu nại/ thắc
+                      mắc
+                    </option>
+                    <option label="Khác" [value]="'Khác'" class="optionClass">Khác</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <textarea id="message" formControlName="text" placeholder="Nội dung" class="form-control" rows="3"></textarea>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="send">
+                  <button id="send_message" class="px-btn theme" type="submit"><span>Gửi phản hồi</span> <i class="arrow"></i></button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-5 col-lg-4 m-15px-tb">
+        <div class="contact-name">
+          <h5>Mail</h5>
+          <p>trungtamtiemchungGPS@gmail.com</p>
+        </div>
+        <div class="contact-name">
+          <h5>Địa Chỉ</h5>
+          <p>Số 295 Nguyễn Tất Thành, Thanh Bình, <br>Hải Châu, Đà Nẵng 550000</p>
+        </div>
+        <div class="contact-name">
+          <h5>Số Điện Thoại</h5>
+          <p>0236 6517 021</p>
+        </div>
+        <div class="social-share nav">
+          <a class="dribbble" href="#">
+            <i class="fab fa-google"></i>
+          </a>
+          <a class="behance" href="#">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a class="linkedin" href="#">
+            <i class="fab fa-skype"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+</script>
