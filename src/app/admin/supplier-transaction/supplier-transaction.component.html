@@ -1,1 +1,273 @@
-<p>supplier-transaction works!</p>
+<div class="content">
+    <div class="row">
+        <div class="col-md-9 ">
+            <h2><strong>Quản lý giao dịch</strong>&nbsp;&nbsp;&nbsp;</h2>
+        </div>
+        <div class="col-md-3">
+            <div class="float-right">
+                <a href="create.html" class="btn btn-sm btn-success"><i class="fas fa-plus-circle"></i> Thêm
+                    mới</a>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <form class="px-0"  style="width: 100%;">
+        <div class="row mt-3">
+            <div class="form-group col-md-4">
+                <label class="col-form-label mr-2">Mã giao dịch</label>
+                <input class="form-control" type="text" placeholder="VD: GDC-0000" id="id" formControlName="id">
+            </div>
+            <div class="form-group col-md-4">
+                <label class="col-form-label mr-2">Mã vắc xin</label>
+                <input class="form-control" type="text" placeholder="VD: MVX-0000" id="id" formControlName="id">
+            </div>
+            <div class="form-group col-md-4">
+                <label class="col-form-label mr-2">Mã hóa đơn</label>
+                <input class="form-control" type="text" placeholder="VD: MHD-0000" id="fullName" formControlName="fullName">
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label class="col-form-label mr-2">Loại vắc xin</label>
+                <select class="custom-select" id="rate" formControlName="rate">
+                    <option selected disabled value="">Chọn...</option>
+                    <option value="kim cương">BCG</option>
+                    <option value="bạch kim">ENGERIX B</option>
+                    <option value="vàng">TETTAVAX</option>
+                    <option value="bạc">TRIMOVAC</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label class="col-form-label mr-2">Nhà cung cấp</label>
+                <select class="custom-select" id="rate" formControlName="rate">
+                    <option selected disabled value="">Chọn...</option>
+                    <option value="kim cương">Công ty TNHH Pharmacy</option>
+                    <option value="bạch kim">Công ty TNHH Dược Nam Định</option>
+                </select>
+            </div>
+            <div class="col-md-4 form-group" style="margin-top: -2px;">
+                <label>&nbsp;</label><br>
+                <button type="submit" class="btn btn-primary mt-2" style="width: 400px"><i class="fas fa-search"></i>
+                    Lọc
+                    kết quả
+                </button>
+            </div>
+        </div>
+    </form>
+    <hr>
+    <div class="row mr-5" style="margin-left: 3rem;">
+        <table class="table table-hover border-2">
+
+            <thead class="table" style="background-color: rgb(124, 248, 217); text-align: center;">
+                <td> Mã giao dịch nhà cung cấp </td>
+                <td> Mã vắc xin </td>
+                <td> Loại vắc xin </td>
+                <td> Số lượng </td>
+                <td> Mã hóa đơn </td>
+                <td> Nhà cung cấp </td>
+                <td> Ngày giao dịch </td>
+                <td> Giá (VNĐ/ml) </td>
+                <td> Thành tiền </td>
+                <td></td>
+                <td></td>
+            </thead>
+            <tr>
+                <td>
+                    GDC-0001
+                </td>
+                <td>
+                    MVX-0001
+                </td>
+                <td>
+                    BCG
+                </td>
+                <td>
+                    10
+                </td>
+                <td>
+                    MHD-001
+                </td>
+                <td>
+                    Công ty TNHH Pharmacy
+                </td>
+                <td>
+                    11/11/2017
+                </td>
+                <td>
+                    50000
+                </td>
+                <td>
+                    500000
+                </td>
+                <td>
+                    <button class="btn btn-outline-primary" type="button"><i class="far fa-edit"></i> Sửa
+                    </button>
+                </td>
+                <td>
+                    <button class="btn btn-outline-danger" type="button"><i class="fas fa-trash-alt"></i> Xóa
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    GDC-0001
+                </td>
+                <td>
+                    MVX-0001
+                </td>
+                <td>
+                    ENGERIX B
+                </td>
+                <td>
+                    10
+                </td>
+                <td>
+                    MHD-001
+                </td>
+                <td>
+                    Công ty TNHH Dược Nam Định
+                </td>
+                <td>
+                    11/11/2017
+                </td>
+                <td>
+                    50000
+                </td>
+                <td>
+                    500000
+                </td>
+                <td>
+                    <button class="btn btn-outline-primary" type="button"><i class="far fa-edit"></i> Sửa
+                    </button>
+                </td>
+                <td>
+                    <button class="btn btn-outline-danger" type="button"><i class="fas fa-trash-alt"></i> Xóa
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    GDC-0001
+                </td>
+                <td>
+                    MVX-0001
+                </td>
+                <td>
+                    TETTAVAX
+                </td>
+                <td>
+                    10
+                </td>
+                <td>
+                    MHD-001
+                </td>
+                <td>
+                    Công ty TNHH Pharmacy
+                </td>
+                <td>
+                    11/11/2017
+                </td>
+                <td>
+                    50000
+                </td>
+                <td>
+                    500000
+                </td>
+                <td>
+                    <button class="btn btn-outline-primary" type="button"><i class="far fa-edit"></i> Sửa
+                    </button>
+                </td>
+                <td>
+                    <button class="btn btn-outline-danger" type="button"><i class="fas fa-trash-alt"></i> Xóa
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    GDC-0001
+                </td>
+                <td>
+                    MVX-0001
+                </td>
+                <td>
+                    TRIMOVAC
+                </td>
+                <td>
+                    10
+                </td>
+                <td>
+                    MHD-001
+                </td>
+                <td>
+                    Công ty TNHH Pharmacy
+                </td>
+                <td>
+                    11/11/2017
+                </td>
+                <td>
+                    50000
+                </td>
+                <td>
+                    500000
+                </td>
+                <td>
+                    <button class="btn btn-outline-primary" type="button"><i class="far fa-edit"></i> Sửa
+                    </button>
+                </td>
+                <td>
+                    <button class="btn btn-outline-danger" type="button"><i class="fas fa-trash-alt"></i> Xóa
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    GDC-0001
+                </td>
+                <td>
+                    MVX-0001
+                </td>
+                <td>
+                    BCG
+                </td>
+                <td>
+                    10
+                </td>
+                <td>
+                    MHD-001
+                </td>
+                <td>
+                    Công ty TNHH Pharmacy
+                </td>
+                <td>
+                    11/11/2017
+                </td>
+                <td>
+                    50000
+                </td>
+                <td>
+                    500000
+                </td>
+                <td>
+                    <button class="btn btn-outline-primary" type="button"><i class="far fa-edit"></i> Sửa
+                    </button>
+                </td>
+                <td>
+                    <button class="btn btn-outline-danger" type="button"><i class="fas fa-trash-alt"></i> Xóa
+                    </button>
+                </td>
+            </tr>
+
+        </table>
+        <div class="blankspace"></div>
+        <div class="pagination">
+            <a href="#">&laquo;</a>
+            <a href="#">1</a>
+            <a href="#" class="active">2</a>
+            <a href="#">3</a>
+
+            <a href="#">&raquo;</a>
+          </div>
+
+    </div>
+</div>
