@@ -1,3 +1,5 @@
+import {Vaccine} from './Vaccine';
+
 export interface DailySchedule {
   id: number;
   startTime: string;
@@ -5,6 +7,6 @@ export interface DailySchedule {
   address: string;
   note: string;
   vaccinationDate: Date;
-  // vaccine: Vaccine;
+  vaccine: Vaccine;
 }
 
