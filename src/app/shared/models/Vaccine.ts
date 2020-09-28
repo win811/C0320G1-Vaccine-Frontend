@@ -2,6 +2,7 @@
 export interface Vaccine {
   id: number;
   name: string;
+  code: string;
   category: string;
   receiveDate: Date;
   licenseCode: string;
@@ -13,5 +14,5 @@ export interface Vaccine {
   limitAge: number;
   inventoryStatus: string;
   price: number;
-  code: string;
+  
 }
