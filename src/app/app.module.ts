@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './home/header/header.component';
 import { FooterComponent } from './home/footer/footer.component';
 import { BodyComponent } from './home/body/body.component';
+import { DailyScheduleComponent } from './home/daily-schedule/daily-schedule.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    BodyComponent
+    BodyComponent,
+    DailyScheduleComponent
   ],
   imports: [
     BrowserModule,
