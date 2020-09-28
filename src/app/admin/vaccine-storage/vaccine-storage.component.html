@@ -1,0 +1,118 @@
+<div class="container-fluid">
+
+    <div class="row mt-4">
+        <div class="col d-flex justify-content-center">
+            <h2>Quản lý kho vắc xin</h2>
+        </div>
+    </div>
+        
+    <div class="row mt-5">
+            <div class="col-md-3">
+                <button class="btn btn-success" data-toggle="modal" data-target="#create">
+                    <i class="fas fa-plus-circle"></i> Nhập vắc xin</button>
+            </div>
+
+            <div class=" d-flex justify-content-end col-md-9 ">
+                <input style="width: auto;" #focusOn class="form-control mr-3" type="text" placeholder="Tên vắc xin">
+                <input style="width: auto;" class="form-control mr-3" type="text" placeholder="Loại vắc xin">
+                <input style="width: auto;" class="form-control mr-3" type="text" placeholder="Nước sản xuất">
+                <select style="width: auto;" class="form-control" id="exampleFormControlSelect1">
+                    <option selected disabled>Tình trạng vắc xin</option>
+                    <option>Tất cả</option>
+                    <option>Còn</option>
+                    <option>Hết</option>
+                </select>
+                <button class="btn btn-outline-info ml-3">Tìm kiếm</button>
+            </div>
+    </div>
+            
+    <div class="row mt-4">
+        <div class="col">
+            <table class="table table-striped text-center table-sm ">
+                <thead class="bg-info text-white">
+                <tr class="">
+                    <th class="pb-3">Tên vắc xin</th>
+                    <th class="pb-3">Loại vắc xin</th>
+                    <th class="pb-3">Ngày nhận</th>
+                    <th class="pb-3">Số giấy phép</th>
+                    <th class="pb-3">Nước sản xuất</th>
+                    <th class="pb-3">Hàm lượng</th>
+                    <th class="pb-3">Số lượng</th>
+                    <th class="pb-3">Hạn sử dụng</th>
+                    <th class="pb-3">Điều kiện bảo quản</th>
+                    <th class="pb-3">Độ tuổi</th>
+                    <th class="pb-3">Tình trạng</th>
+                    <th class="pb-3">Xuất</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col d-flex justify-content-end">
+            <nav aria-label="Page navigation example" class=" text-info">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!--Import-->
+    <div class="modal fade" id="create" tabindex="-1" role="dialog" >
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+    
+                <div class="modal-header d-flex justify-content-center">
+                    <div class="d-flex justify-content-center ">
+                        <h3 class="modal-title " id="exampleModalLabel">THÔNG TIN VẮC XIN NHẬP KHO</h3>
+                    </div>
+                </div>
+                
+                <div class="modal-body">
+                    <app-import-vaccine></app-import-vaccine>
+                </div>
+
+                <div class="modal-footer d-flex justify-content-center" >           
+                    <button type="submit" class="btn btn-info mr-3 pr-3 pl-3">Nhập kho</button>
+                    <button type="button" class="btn btn-danger pr-3 pl-3" data-dismiss="modal">Hủy</button>
+                </div>
+    
+            </div>
+        </div>
+    </div>
+   
+    <!--Export-->
+    <div class="modal fade" id="export" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header d-flex justify-content-center">
+                    <div class="d-flex justify-content-center">
+                        <h3 class="modal-title">THÔNG TIN VẮC XIN CẦN XUẤT KHO</h3>
+                    </div>
+                </div>
+                
+                <div class="modal-body">
+                    <app-export-vaccine></app-export-vaccine>
+                </div>
+                
+                <div class="modal-footer d-flex justify-content-center" >           
+                    <button type="submit" class="btn btn-info mr-3 pr-3 pl-3">Xuất kho</button>
+                    <button type="button" class="btn btn-danger pr-3 pl-3" data-dismiss="modal">Hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
