@@ -35,16 +35,7 @@ export class ExportVaccineComponent implements OnInit {
     this.export.emit(this.amountExport.value);
   }
 
-  doExport() {
-    this.vaccineServcice.exportVaccine(this.vaccine.id,this.amountExport.value).subscribe(data => {
-      this.export.emit();
-    })
-  }
-
   isNotANumber(control : AbstractControl) : ValidationErrors {
-    console.log(isNaN(Number.parseInt(control.value)));
-    console.log(control.value);
-    console.log(typeof control.value)
     if (isNaN(Number.parseInt(control.value))) return { isNaN : true };
     return null;
   }

@@ -80,29 +80,7 @@
         <pagination-controls (pageChange)="getPage($event)"></pagination-controls>
     </div>
 
-    <!--Import-->
-    <div class="modal fade">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-    
-                <div class="modal-header d-flex justify-content-center">
-                    <div class="d-flex justify-content-center ">
-                        <h3 class="modal-title " id="exampleModalLabel">THÔNG TIN VẮC XIN NHẬP KHO</h3>
-                    </div>
-                </div>
-                
-                <div class="modal-body">
-                    <app-import-vaccine></app-import-vaccine>
-                </div>
-
-                <div class="modal-footer d-flex justify-content-center" >           
-                    <button type="submit" class="btn btn-info mr-3 pr-3 pl-3">Nhập kho</button>
-                    <button type="button" class="btn btn-danger pr-3 pl-3" data-dismiss="modal">Hủy</button>
-                </div>
-    
-            </div>
-        </div>
-    </div>
+   
    
     <!--Export-->
     <div class="modal fade" id="exportModal">
@@ -157,6 +135,14 @@
                 <div class="modal-footer d-flex justify-content-center" >           
                 </div>
             </div>
+        </div>
+    </div>
+
+     <!--Import-->
+     <div class="modal fade" id="importModal">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <app-import-vaccine></app-import-vaccine>
         </div>
     </div>
 
