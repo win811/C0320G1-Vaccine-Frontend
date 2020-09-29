@@ -8,9 +8,13 @@ import { EmployeeUpdateComponent } from './employee/employee-update/employee-upd
 import { EmployeeListComponent } from './employee/employee-list/employee-list.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TransWPatientComponent } from './finance-management/trans-w-patient/trans-w-patient.component';
+import { TransCenterComponent } from './finance-management/trans-center/trans-center.component';
+import { TransListComponent } from './finance-management/trans-w-patient/trans-list/trans-list.component';
+import { TransEditComponent } from './finance-management/trans-w-patient/trans-edit/trans-edit.component';
 
 @NgModule({
-  declarations: [EmployeeListComponent, EmployeeCreateComponent, EmployeeUpdateComponent],
+  declarations: [EmployeeListComponent, EmployeeCreateComponent, EmployeeUpdateComponent, TransWPatientComponent, TransCenterComponent, TransListComponent, TransEditComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
