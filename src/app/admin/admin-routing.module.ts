@@ -10,7 +10,7 @@ import { PeriodicInjectionComponent } from './injection/periodic-injection/perio
 const routes: Routes = [
   {path : '',component : AdminCenterComponent, children : [
     {path: 'vaccine-storage',component: VaccineStorageComponent},
-    { path: "employee-list", component: EmployeeListComponent },
+    {path: "employee-list", component: EmployeeListComponent },
     {path: "injected-list", component: PeriodicInjectionComponent },
     {path: 'contactBox', component: ContactBoxComponent},
     {path: 'contact/:id', component: ContactReplyComponent}
