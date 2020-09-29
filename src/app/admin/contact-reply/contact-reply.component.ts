@@ -16,7 +16,7 @@ import {Account} from '../../shared/models/Account';
 export class ContactReplyComponent implements OnInit {
   contact: Contact;
   contactReplys: ContactReply[];
-  contactReply: ContactReply = {account: {id: '0'}} as ContactReply;
+  contactReply: ContactReply = {account: {id: 0}} as ContactReply;
   textReply = '';
   fileDinhKem: string;
   idContact = '';
@@ -47,7 +47,7 @@ export class ContactReplyComponent implements OnInit {
     } else {
       this.contactReply.replyText = this.textReply;
       this.contactReply.replyFile = this.fileDinhKem;
-      this.contactReply.account.id = String(1);
+      this.contactReply.account.id = 1;
       console.log(this.contactReply);
       this.contactReplyService.addNewContactReply(this.contactReply, this.idContact).subscribe(data => {
         console.log('Gửi ContactReply thành Công');

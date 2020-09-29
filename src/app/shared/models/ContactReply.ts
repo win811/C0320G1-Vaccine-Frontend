@@ -1,3 +1,5 @@
+import { Account } from './Account';
+
 export interface ContactReply {
   id: number;
   replyText: string;
