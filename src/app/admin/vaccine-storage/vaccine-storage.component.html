@@ -13,21 +13,28 @@
             </div>
 
             <div class=" d-flex justify-content-end col-md-9 ">
-                <input style="width: auto;" #focusOn class="form-control mr-3" type="text" placeholder="Tên vắc xin">
-                <input style="width: auto;" class="form-control mr-3" type="text" placeholder="Loại vắc xin">
-                <input style="width: auto;" class="form-control mr-3" type="text" placeholder="Nước sản xuất">
-                <select style="width: auto;" class="form-control" id="exampleFormControlSelect1">
-                    <option selected disabled>Tình trạng vắc xin</option>
-                    <option>Tất cả</option>
-                    <option>Còn</option>
-                    <option>Hết</option>
+                <input style="width: 120px;" #focusOn class="form-control mr-3" 
+                [(ngModel)]="currentSearchVaccine.name" type="text" placeholder="Tên vắc xin">
+                <input style="width: 120px;" class="form-control mr-3" 
+                [(ngModel)]="currentSearchVaccine.category" type="text" placeholder="Loại vắc xin">
+                <input style="width: 140px;" class="form-control mr-3"
+                [(ngModel)]="currentSearchVaccine.country" type="text" placeholder="Nước sản xuất">
+                <select style="width: auto;" class="form-control" 
+                [(ngModel)]="currentSearchVaccine.inventoryStatus" id="exampleFormControlSelect1">
+                    <option selected disabled value="">Tình trạng vắc xin</option>
+                    <option value="">Tất cả</option>
+                    <option value="còn">Còn</option>
+                    <option value="hết">Hết</option>
                 </select>
-                <button class="btn btn-outline-info ml-3">Tìm kiếm</button>
+                <button class="btn btn-outline-info ml-3" (click)="search()">Tìm kiếm</button>
             </div>
     </div>
             
     <div class="row mt-4">
         <div class="col">
+            <div *ngIf="vaccineList?.length == 0" class="text-danger mb-4">
+                <h5>Không tìm thấy dữ liệu phù hợp</h5>
+            </div>
             <table class="table table-striped text-center table-sm ">
                 <thead class="bg-info text-white">
                 <tr class="">
@@ -46,30 +53,35 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td></td>
+                    <tr *ngFor="let vaccine of vaccineList | paginate : {itemsPerPage: pageSize, currentPage: currentPage, totalItems: totalElements}; index as i">
+                        <td>{{vaccine.name}}</td>
+                        <td>{{vaccine.category}}</td>
+                        <td>{{vaccine.receiveDate | date : "dd-MM-yyyy"}}</td>
+                        <td>{{vaccine.licenseCode}}</td>
+                        <td>{{vaccine.country}}</td>
+                        <td>{{vaccine.content}}</td>
+                        <td>{{vaccine.amount}}</td>
+                        <td>{{vaccine.expiryDate | date : "dd-MM-yyyy"}}</td>
+                        <td>{{vaccine.conditions}}</td>
+                        <td>{{vaccine.limitAge < 0 ? ("Dưới " + vaccine.limitAge/-1) : ("Trên " + vaccine.limitAge) }}</td>
+                        <td>{{vaccine.inventoryStatus}}</td>
+                        <td>
+                            <button class="btn btn-warning" data-toggle="modal" data-target="#exportModal" (click)="chooseExportVaccine(vaccine)">
+                                Xuất kho
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
 
-    <div class="row mt-2">
-        <div class="col d-flex justify-content-end">
-            <nav aria-label="Page navigation example" class=" text-info">
-            <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-            </nav>
-        </div>
+    <div class="mt-3 d-flex justify-content-end">
+        <pagination-controls (pageChange)="getPage($event)"></pagination-controls>
     </div>
 
     <!--Import-->
-    <div class="modal fade" id="create" tabindex="-1" role="dialog" >
+    <div class="modal fade">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
     
@@ -93,23 +105,56 @@
     </div>
    
     <!--Export-->
-    <div class="modal fade" id="export" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exportModal">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
+                <app-export-vaccine *ngIf="exportVaccine" (export)="exportConfirm($event)" [vaccine]="exportVaccine"></app-export-vaccine>
+            </div>
+        </div>
+    </div>
 
+    <!-- Export Confirm -->
+    <div class="modal fade" id="confirmExport">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+    
                 <div class="modal-header d-flex justify-content-center">
                     <div class="d-flex justify-content-center">
-                        <h3 class="modal-title">THÔNG TIN VẮC XIN CẦN XUẤT KHO</h3>
+                        <h3 class="modal-title">XÁC NHẬN XUẤT KHO</h3>
                     </div>
                 </div>
                 
                 <div class="modal-body">
-                    <app-export-vaccine></app-export-vaccine>
+                    <div class="alert alert-warning" role="alert">
+                        Có chắc bạn muốn xuất kho vaccine <strong>{{exportVaccine?.name}}</strong> với số lượng <strong>{{exportAmount}}</strong> không?
+                    </div>
                 </div>
                 
-                <div class="modal-footer d-flex justify-content-center" >           
-                    <button type="submit" class="btn btn-info mr-3 pr-3 pl-3">Xuất kho</button>
+                <div class="modal-footer d-flex justify-content-center">           
+                    <button type="submit" class="btn btn-info mr-3 pr-3 pl-3" (click)="doExport()" data-dismiss="modal">Xác nhận</button>
                     <button type="button" class="btn btn-danger pr-3 pl-3" data-dismiss="modal">Hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Export Success -->
+    <div class="modal fade" id="exportSuccess">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header d-flex justify-content-center">
+                    <div class="d-flex justify-content-center ">
+                        <h3 class="modal-title ">THÔNG BÁO</h3>
+                    </div>
+                </div>
+                
+                <div class="modal-body">
+                    <div class="alert alert-success text-center" role="alert">
+                        Xuất kho thành công
+                    </div>
+                </div>
+
+                <div class="modal-footer d-flex justify-content-center" >           
                 </div>
             </div>
         </div>

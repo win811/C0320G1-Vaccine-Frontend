@@ -10,14 +10,22 @@ import { MaterialModule } from '../material.module';
 import { EmployeeCreateComponent } from './employee/employee-create/employee-create.component';
 import { EmployeeListComponent } from './employee/employee-list/employee-list.component';
 import { EmployeeUpdateComponent } from './employee/employee-update/employee-update.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
-  declarations: [VaccineStorageComponent, ImportVaccineComponent, ExportVaccineComponent, AdminCenterComponent,
-    EmployeeListComponent, EmployeeCreateComponent, EmployeeUpdateComponent],
+  declarations: [
+    VaccineStorageComponent, 
+    ImportVaccineComponent, 
+    ExportVaccineComponent,
+    AdminCenterComponent,
+    EmployeeListComponent, 
+    EmployeeCreateComponent, 
+    EmployeeUpdateComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
     MaterialModule,
+    NgxPaginationModule,
     ReactiveFormsModule,
     FormsModule,
   ],

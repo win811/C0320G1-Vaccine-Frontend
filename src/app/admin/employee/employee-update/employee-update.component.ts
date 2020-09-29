@@ -2,9 +2,10 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { EMPLOYEE_MESSAGES, validateCode, checkAge, CheckPhoneNumber } from './../../../shared/validations/custom-validators';
 import { EmployeeService } from './../../../shared/services/employee.service';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+
 import { EmployeeCreateComponent } from '../employee-create/employee-create.component';
 import { Employee } from './../../../shared/models/employee';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-employee-update',
@@ -15,7 +16,8 @@ export class EmployeeUpdateComponent implements OnInit {
 
   employeeUpdateForm: FormGroup;
   errors = EMPLOYEE_MESSAGES;
-  constructor(private employeeService: EmployeeService,
+  constructor(
+    private employeeService: EmployeeService,
     private formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<EmployeeCreateComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
