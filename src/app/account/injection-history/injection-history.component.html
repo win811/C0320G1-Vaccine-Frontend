@@ -1,0 +1,116 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col">
+      <h1>Lịch sử tiêm chủng</h1>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col">
+      <table class="table table-striped mt-2 text-center">
+        <thead class="bg-primary text-white">
+        <tr>
+          <th scope="col">Họ và tên bệnh nhân</th>
+          <th scope="col">Ngày tháng năm sinh</th>
+          <th scope="col">Giới tính</th>
+          <th scope="col">Địa chỉ</th>
+          <th scope="col" style="vertical-align: middle">Tên vắc xin</th>
+          <th scope="col">Loại vắc xin</th>
+          <th scope="col" style="vertical-align: middle">Ngày tiêm</th>
+          <th scope="col">Tình trạng sau khi tiêm</th>
+          <th scope="col">Phản hồi sau khi tiêm</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let injectionHistory of myInjectionHistory  | async | paginate: { itemsPerPage: pageSize, currentPage: currentPage, totalItems: totalElements}">
+          <td>Võ Văn A</td>
+          <td>20/09/1990</td>
+          <td>Nam</td>
+          <td>Đà Nẵng</td>
+          <td>Phòng bệnh lao</td>
+          <td>BCG</td>
+          <td>20/09/2020</td>
+          <td>Tốt</td>
+          <td><button class="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop">Phản hồi</button></td>
+
+        </tr>
+        <tr>
+          <td>Võ Văn A</td>
+          <td>20/09/1990</td>
+          <td>Nam</td>
+          <td>Đà Nẵng</td>
+          <td>Phòng bệnh lao</td>
+          <td>BCG</td>
+          <td>20/09/2020</td>
+          <td>Tốt</td>
+          <td><button class="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop">Phản hồi</button></td>
+        </tr>
+        <tr>
+          <td>Võ Văn A</td>
+          <td>20/09/1990</td>
+          <td>Nam</td>
+          <td>Đà Nẵng</td>
+          <td>Phòng bệnh lao</td>
+          <td>BCG</td>
+          <td>20/09/2020</td>
+          <td>Tốt</td>
+          <td><button class="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop">Phản hồi</button></td>
+        </tr>
+        <tr>
+          <td>Võ Văn A</td>
+          <td>20/09/1990</td>
+          <td>Nam</td>
+          <td>Đà Nẵng</td>
+          <td>Phòng bệnh lao</td>
+          <td>BCG</td>
+          <td>20/09/2020</td>
+          <td>Tốt</td>
+          <td><button class="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop">Phản hồi</button></td>
+        </tr>
+        <tr>
+          <td>Võ Văn A</td>
+          <td>20/09/1990</td>
+          <td>Nam</td>
+          <td>Đà Nẵng</td>
+          <td>Phòng bệnh lao</td>
+          <td>BCG</td>
+          <td>20/09/2020</td>
+          <td>Tốt</td>
+          <td><button class="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop">Phản hồi</button></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="row mt-2">
+        <div class="col-md">
+          <button class="btn btn-success">Quay lại</button>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="d-flex justify-content-end mt-2">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
