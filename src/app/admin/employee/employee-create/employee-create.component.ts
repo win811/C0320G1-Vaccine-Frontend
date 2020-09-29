@@ -34,6 +34,8 @@ export class EmployeeCreateComponent implements OnInit {
     })
   }
 
+
+  // Quân
   onSubmit() {
 
     let employee = this.employeeForm.value as Employee;

@@ -37,22 +37,27 @@ export class EmployeeService {
 
   private readonly API_URL = "http://localhost:8080/api/v1/employee"
 
+  // Quân
   getListEmployee(page?: number): Observable<Employee[]> {
     return this.httpClient.get<Employee[]>(this.API_URL, this.getOptions(page));
   }
 
+  // Quân
   createEmployee(employee: Employee): Observable<Employee> {
     return this.httpClient.post<Employee>(this.API_URL + '/create', employee);
   }
 
+  // Quân
   updateEmployee(employee: Employee): Observable<Employee> {
     return this.httpClient.put<Employee>(this.API_URL + '/update', employee);
   }
 
+  // Quân
   deleteEmployee(id: number): Observable<any> {
     return this.httpClient.delete(this.API_URL + `/delete/${id}`);
   }
 
+  // Quân
   getSearchEmployee(page: number, searchForm: FormGroup): Observable<Page<Employee>> {
     return this.httpClient.get<Page<Employee>>(this.API_URL + '/search',
       this.getOptions(page, searchForm.value.code, searchForm.value.fullName, searchForm.value.position))
