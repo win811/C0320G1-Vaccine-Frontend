@@ -45,12 +45,6 @@ export class VaccineListComponent implements OnInit {
     this.vaccines = this.vaccineService.getVaccine(this.searchFields, pageNumber).pipe(
       tap(res => {
         console.log(res);
-        if (res === null) {
-          this.message = 'Không tìm thấy dữ liệu khớp với tìm kiếm !';
-          this.hideableDiv = false;
-        } else {
-          this.message = '';
-        }
         this.totalElements = res.totalElements;
         this.pageSize = res.size;
         this.currentPage = pageNumber;

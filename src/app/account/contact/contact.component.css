@@ -155,4 +155,14 @@ body {
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+.px-btn:focus {
+  color: black;
+  border: 0px solid white !important;
+  outline: none !important;
+  box-shadow: none;
+}
+.px-btn:hover {
+  font-size: 15px;
+
+}
 

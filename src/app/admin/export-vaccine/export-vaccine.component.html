@@ -1,0 +1,120 @@
+<div class=" p-0 ml-3 mr-3 mt-4" [formGroup]="exportForm"> 
+    <div class="row d-flex justify-content-center">
+        <h3 class="modal-title">THÔNG TIN VẮC XIN CẦN XUẤT KHO</h3>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="row">
+                <label class="col-sm-6 pr-0 "><strong>Tên vắc xin :</strong></label>
+                <span class="col-sm-6 " >
+                    {{vaccine.name}}
+                </span>
+            </div>
+        </div>
+        <div class="col-lg-6 ">
+            <div class="row">
+                <label  class="col-sm-6 pr-0 "><strong>Số lượng :</strong></label>
+                <span class="col-sm-6 " >
+                    {{vaccine.amount}}
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="row">
+                <label  class="col-sm-6 pr-0 "><strong>Loại vắc xin : </strong></label>
+                <span class="col-sm-6 " >
+                    {{vaccine.category}}
+                </span>
+            </div>
+        </div>
+        <div class="col-lg-6 ">
+            <div class="row">
+                <label  class="col-sm-6 pr-0 "><strong>Hạn sử dụng :</strong></label>
+                <span class="col-sm-6 " >
+                    {{vaccine.expiryDate | date : "dd-MM-yyyy"}}
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="row">
+                <label  class="col-sm-6 pr-0 "><strong>Ngày nhập :</strong></label>
+                <span class="col-sm-6 " >
+                    {{vaccine.receiveDate | date : "dd-MM-yyyy"}}
+                </span>
+            </div>
+        </div>
+        <div class="col-lg-6 ">
+            <div class="row">
+                <label  class="col-sm-6 pr-0 "><strong>Điều kiện bảo quản :</strong></label>
+                <span class="col-sm-6 " >
+                    {{vaccine.conditions}}
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="row">
+                <label  class="col-sm-6 pr-0 "><strong>Số giấy phép :</strong></label>
+                <span class="col-sm-6 " >
+                    {{vaccine.licenseCode}}
+                </span>
+            </div>
+        </div>
+        <div class="col-lg-6 ">
+            <div class="row">
+                <label  class="col-sm-6 pr-0 "><strong>Độ tuổi tiêm chủng :</strong></label>
+                <span class="col-sm-6 " >
+                    {{ vaccine.limitAge < 0 ? ("Dưới" + vaccine.limitAge/-1) : ("Trên" + vaccine.limitAge/-1) }}
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="row">
+                <label  class="col-sm-6 pr-0 "><strong>Nước sản xuất :</strong></label>
+                <span class="col-sm-6 " >
+                    {{vaccine.country}}
+                </span>
+            </div>
+        </div>
+        <div class="col-lg-6 ">
+            <div class="row">
+                <label  class="col-sm-6 pr-0 "><strong>Số lượng cần xuất :</strong></label>
+                <div class="col-sm-6">
+                    <input type="number" formControlName="amountExport" class="form-control">
+                    <div *ngIf="amountExport.touched">
+                        <ng-container>
+                            <small *ngIf="amountExport.hasError('required')" class="d-block text-danger">
+                                Vui lòng nhập số lượng!
+                            </small>
+                        </ng-container>
+                        <ng-container>
+                            <small *ngIf="amountExport.dirty &&amountExport.hasError('isNaN')" class="d-block text-danger">
+                                Số lượng phải là số!
+                            </small>
+                        </ng-container>
+                        <ng-container>
+                            <small *ngIf="amountExport.hasError('isHigher')" class="d-block text-danger">
+                                Số lượng cần xuất phải nhỏ hơn hoặc bằng số lượng hiện có! 
+                            </small>
+                        </ng-container>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row d-flex justify-content-center mb-3">           
+        <button type="submit" class="btn btn-info mr-3 pr-3 pl-3" [disabled]="exportForm.invalid" (click)="doConfirm()" data-dismiss="modal">Xuất kho</button>
+        <button type="button" class="btn btn-danger pr-3 pl-3" data-dismiss="modal">Hủy</button>
+    </div>
+</div>
+

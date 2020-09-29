@@ -12,7 +12,7 @@ import {tap,map} from 'rxjs/operators';
 })
 export class InjectionHistoryComponent implements OnInit {
   myInjectionHistory: Observable<InjectionHistory[]>;
-  accountId: number;
+  patientId = 1;
   currentPage: number;
   pageSize: number;
   totalElements: number;
@@ -24,10 +24,11 @@ export class InjectionHistoryComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getPage(1);
   }
 
   getPage(pageNumber: number) {
-    this.myInjectionHistory = this.injectionHistoryService.getInjectionHistory(this.accountId,pageNumber - 1).pipe(
+    this.myInjectionHistory = this.injectionHistoryService.getInjectionHistory(this.patientId,pageNumber).pipe(
       tap(res => {
         this.totalElements = res.totalElements;
         this.pageSize = res.size;

@@ -5,6 +5,7 @@ import {AccountRoutingModule} from './account-routing.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import { InjectionHistoryComponent } from './injection-history/injection-history.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [ContactComponent, InjectionHistoryComponent],
@@ -12,6 +13,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     CommonModule,
     AccountRoutingModule,
     ReactiveFormsModule,
+    ToastrModule.forRoot(),
     NgxPaginationModule
   ]
 })

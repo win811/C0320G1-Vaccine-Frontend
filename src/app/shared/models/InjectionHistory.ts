@@ -1,5 +1,6 @@
 import {Vaccine} from './Vaccine';
 import {Account} from './Account';
+import {Patient} from './patient';
 
 export interface InjectionHistory {
   id: number;
@@ -8,5 +9,6 @@ export interface InjectionHistory {
   reponseContent: string;
   registerType: string;
   account: Account;
-  vaccine: Vaccine
+  vaccine: Vaccine;
+  patient: Patient
 }
