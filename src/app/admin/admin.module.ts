@@ -8,9 +8,10 @@ import { EmployeeUpdateComponent } from './employee/employee-update/employee-upd
 import { EmployeeListComponent } from './employee/employee-list/employee-list.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PeriodicInjectionComponent } from './injection/periodic-injection/periodic-injection.component';
 
 @NgModule({
-  declarations: [EmployeeListComponent, EmployeeCreateComponent, EmployeeUpdateComponent],
+  declarations: [EmployeeListComponent, EmployeeCreateComponent, EmployeeUpdateComponent, PeriodicInjectionComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

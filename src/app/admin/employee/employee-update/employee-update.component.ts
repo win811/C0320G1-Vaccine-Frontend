@@ -38,6 +38,7 @@ export class EmployeeUpdateComponent implements OnInit {
     this.employeeUpdateForm.patchValue(this.data.dataEmployee);
   }
 
+  // Quân
   onSubmit() {
 
     let employee = this.employeeUpdateForm.value as Employee;
