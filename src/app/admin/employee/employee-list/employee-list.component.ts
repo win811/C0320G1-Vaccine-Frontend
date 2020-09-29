@@ -3,7 +3,6 @@ import { EmployeeUpdateComponent } from './../employee-update/employee-update.co
 import { EmployeeCreateComponent } from './../employee-create/employee-create.component';
 import { Employee } from './../../../shared/models/employee';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
 
 import { MatDialog } from '@angular/material/dialog';
@@ -30,6 +29,7 @@ export class EmployeeListComponent implements OnInit {
     private dialog: MatDialog,
     private formBuilder: FormBuilder) { }
 
+
   ngOnInit() {
     this.searchForm = this.formBuilder.group({
       code: [""],
@@ -40,6 +40,7 @@ export class EmployeeListComponent implements OnInit {
 
   }
 
+  // Quân
   getPage(page: number) {
 
     this.employeeService.getSearchEmployee(page, this.searchForm).pipe(
@@ -68,6 +69,8 @@ export class EmployeeListComponent implements OnInit {
     });
   }
 
+
+  // Quân
   openDialog(): void {
     const dialogRef = this.dialog.open(EmployeeCreateComponent, {
       width: "810px",
@@ -82,6 +85,8 @@ export class EmployeeListComponent implements OnInit {
     });
   }
 
+
+  // Quân
   openEdit(employee) {
     const dialogRef = this.dialog.open(EmployeeUpdateComponent, {
       width: "810px",
@@ -98,10 +103,12 @@ export class EmployeeListComponent implements OnInit {
     });
   }
 
+  // Quân
   search() {
     this.getPage(1)
   }
 
+  // Quân
   delete(id: number) {
     this.employeeService.deleteEmployee(id).subscribe(() => {
       this.employeeList = this.employeeList.filter(

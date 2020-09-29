@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
 
-
+// Quân
 export const CheckPhoneNumber: ValidatorFn = (control: FormControl): ValidationErrors | null => {
     const phoneRegex = /^0[35789]\d{8}$/;
     const characterRegex = /^[^\d]+$/;
@@ -22,12 +22,14 @@ export const CheckPhoneNumber: ValidatorFn = (control: FormControl): ValidationE
 }
 
 
+// Quân
 export const checkAge: ValidatorFn = (date: AbstractControl): ValidationErrors | null => {
     const y = differenceInYears(new Date(), new Date(date.value));
     return y < 18 ? { age: true } : null;
 }
 
 
+// Quân
 export const validateCode = (Service: any): AsyncValidatorFn => {
     return (control: AbstractControl): Observable<ValidationErrors> | null => {
         return Service.getListEmployee().pipe(
@@ -41,6 +43,7 @@ export const validateCode = (Service: any): AsyncValidatorFn => {
     };
 }
 
+// Quân
 export const EMPLOYEE_MESSAGES = {
     code: [
         { code: 'required', message: 'Vui lòng nhập mã nhân viên' },
