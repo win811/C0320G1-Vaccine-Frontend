@@ -35,18 +35,13 @@ export class ContactComponent implements OnInit {
   saveContact() {
     this.contact = this.contactForm.value;
     this.contactService.addNewContact(this.contact).subscribe(data => {
+      console.log(data);
       this.message = data.message;
       this.classMessage = 'alert alert-success';
       this.showToasterSuccess(this.message);
-      setTimeout(() => {
-        this.message = '';
-      }, 2000);
     }, error => {
       this.message = error.error.message;
       this.classMessage = 'alert alert-danger';
-      setTimeout(() => {
-        this.message = '';
-      }, 2000);
     });
   }
 
