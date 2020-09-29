@@ -17,7 +17,7 @@ import { TransEditComponent } from './finance-management/trans-w-patient/trans-e
 import { PeriodicInjectionComponent } from './injection/periodic-injection/periodic-injection.component';
 
 @NgModule({
-  declarations: [ContactBoxComponent,EmployeeListComponent, EmployeeCreateComponent,ContactReplyComponent],
+  declarations: [ContactBoxComponent,EmployeeListComponent, EmployeeCreateComponent,ContactReplyComponent,PeriodicInjectionComponent,EmployeeUpdateComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
