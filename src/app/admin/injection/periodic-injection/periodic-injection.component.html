@@ -6,7 +6,7 @@
         <form (ngSubmit)="search()" [formGroup]="searchForm">
             <div class=" d-flex justify-content-end col-sm-7 mb-4 pr-0 float-right">
                 <input class="form-control mr-3" type="text" placeholder="Họ và tên" formControlName="fullName">
-                <select class="form-control" formControlName="injected">
+                <select class="form-control" style="height: 36px;" formControlName="injected">
                     <option [selected]=true disabled>Tình trạng</option>
                     <option value="Chưa tiêm">Chưa tiêm</option>
                     <option value="Đã tiêm">Đã tiêm</option>

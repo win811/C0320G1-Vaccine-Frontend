@@ -1,4 +1,4 @@
-import { element } from 'protractor';
+import {ToastrService} from '../../../../node_modules/ngx-toastr';
 import { Vaccine } from './../../shared/models/Vaccine';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { VaccineService } from '../../shared/services/vaccine.service';
@@ -24,7 +24,10 @@ export class VaccineStorageComponent implements OnInit {
   exportAmount : number;
 
 
-  constructor(private vaccineService : VaccineService) { }
+  constructor(
+    private vaccineService : VaccineService,
+    private toastr: ToastrService
+    ) { }
 
   ngOnInit() {
     this.searchVaccine = {
@@ -54,16 +57,9 @@ export class VaccineStorageComponent implements OnInit {
 
   doExport() {
     this.vaccineService.exportVaccine(this.exportVaccine.id,this.exportAmount).subscribe(data => {
-      this.exportSuccess();
+      this.toastr.success("Xuất kho thành công","Thông báo");
+      this.getPage(this.currentPage);
     })
-  }
-
-  exportSuccess() {
-    this.getPage(this.currentPage);
-    $('#exportSuccess').modal('show');
-    setTimeout(() => {
-      $('#exportSuccess').modal('hide');
-    },1000)
   }
 
   getPage(page : number) {

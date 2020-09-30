@@ -6,7 +6,7 @@
         <form (ngSubmit)="search()" [formGroup]="searchForm">
 
             <div class="float-left col-sm-2 pl-0">
-                <button (click)="openDialog()" class="btn btn-success  " data-toggle="modal">
+                <button (click)="openDialog()" class="btn btn-outline-success  " data-toggle="modal">
                     <i class="fas fa-plus-circle"></i> Tạo mới nhân viên</button>
             </div>
 
@@ -14,7 +14,7 @@
 
                 <input class="form-control mr-3" type="text" placeholder="Mã nhân viên" formControlName="code">
                 <input class="form-control mr-3" type="text" placeholder="Họ và tên" formControlName="fullName">
-                <select class="form-control" formControlName="position">
+                <select class="form-control" style="height: 36px;" formControlName="position">
                     <option [selected]=true disabled>Chức vụ</option>
                     <option>Trưởng phòng</option>
                     <option>Thủ kho</option>
@@ -23,7 +23,7 @@
                     <option>Thu ngân</option>
                     <option>Nhân viên</option>
                 </select>
-                <button class="btn btn-outline-success ml-3">Tìm kiếm</button>
+                <button class="btn btn-outline-info ml-3">Tìm kiếm</button>
             </div>
 
         </form>
@@ -54,11 +54,12 @@
                     <td>{{employee.address}}</td>
                     <td>{{employee.role}}</td>
                     <td>
-                        <a class="btn btn-link fas fa-edit text-warning fa-lg" (click)="openEdit(employee)"></a>
+                        <a class="btn btn-link " (click)="openEdit(employee)"><i
+                                class="fas fa-edit text-warning fa-lg"></i></a>
                     </td>
                     <td>
-                        <a class="btn btn-link text-danger fas fa-trash-alt fa-lg" data-toggle="modal"
-                            [attr.data-target]="'#remove'+employee.id"></a>
+                        <a class="btn btn-link " data-toggle="modal" [attr.data-target]="'#remove'+employee.id"><i
+                                class="text-danger fas fa-trash-alt fa-lg"></i></a>
                     </td>
 
                     <div class="modal fade" [id]="'remove'+employee.id" tabindex="-1" role="dialog"

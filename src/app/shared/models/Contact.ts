@@ -8,6 +8,6 @@ export interface Contact {
   text?: string;
   receivingTime?: Date;
   endTime?: Date;
-  status?: boolean;
+  status?: string;
   contactReply?: ContactReply[];
 }

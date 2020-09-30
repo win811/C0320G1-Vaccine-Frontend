@@ -8,7 +8,7 @@
         
     <div class="row mt-5">
             <div class="col-md-3">
-                <button class="btn btn-success" data-toggle="modal" data-target="#create">
+                <button class="btn btn-outline-success" data-toggle="modal" data-target="#importModal">
                     <i class="fas fa-plus-circle"></i> Nhập vắc xin</button>
             </div>
 
@@ -19,7 +19,7 @@
                 [(ngModel)]="currentSearchVaccine.category" type="text" placeholder="Loại vắc xin">
                 <input style="width: 140px;" class="form-control mr-3"
                 [(ngModel)]="currentSearchVaccine.country" type="text" placeholder="Nước sản xuất">
-                <select style="width: auto;" class="form-control" 
+                <select style="width: auto; height: 36px" class="form-control" 
                 [(ngModel)]="currentSearchVaccine.inventoryStatus" id="exampleFormControlSelect1">
                     <option selected disabled value="">Tình trạng vắc xin</option>
                     <option value="">Tất cả</option>
@@ -116,33 +116,12 @@
         </div>
     </div>
 
-    <!-- Export Success -->
-    <div class="modal fade" id="exportSuccess">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header d-flex justify-content-center">
-                    <div class="d-flex justify-content-center ">
-                        <h3 class="modal-title ">THÔNG BÁO</h3>
-                    </div>
-                </div>
-                
-                <div class="modal-body">
-                    <div class="alert alert-success text-center" role="alert">
-                        Xuất kho thành công
-                    </div>
-                </div>
-
-                <div class="modal-footer d-flex justify-content-center" >           
-                </div>
-            </div>
-        </div>
-    </div>
-
      <!--Import-->
-     <div class="modal fade" id="importModal">
+    <div class="modal fade" id="importModal">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <app-import-vaccine></app-import-vaccine>
+            </div>
         </div>
     </div>
 

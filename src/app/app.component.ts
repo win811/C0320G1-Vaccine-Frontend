@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'C0320G1-Vaccine-Frontend';
+
 }
