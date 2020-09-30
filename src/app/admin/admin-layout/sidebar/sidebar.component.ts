@@ -11,7 +11,7 @@ export const ROUTES: RouteInfo[] = [
   { path: 'employee-list', title: 'Quản lý nhân viên', icon: 'person', class: '' },
   { path: 'vaccine-storage', title: 'Kho vắc xin', icon: 'content_paste', class: '' },
   { path: 'injected-list', title: 'DS tiêm định kỳ', icon: 'library_books', class: '' },
-  { path: 'contactBox', title: 'Hộp thư phản hồi', icon: 'bubble_chart', class: '' },
+  { path: 'contactBox', title: 'Hộp thư phản hồi', icon: 'contact_mail', class: '' },
   { path: '/maps', title: 'Maps', icon: 'location_on', class: '' },
   { path: '/notifications', title: 'Notifications', icon: 'notifications', class: '' },
   // { path: '/upgrade', title: 'Upgrade to PRO', icon: 'unarchive', class: 'active-pro' },
