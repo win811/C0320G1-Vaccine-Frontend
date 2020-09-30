@@ -1,7 +1,7 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {AdminRoutingModule} from './admin-routing.module';
+import { AdminRoutingModule } from './admin-routing.module';
 import { VaccineStorageComponent } from './vaccine-storage/vaccine-storage.component';
 import { ImportVaccineComponent } from './import-vaccine/import-vaccine.component';
 import { ExportVaccineComponent } from './export-vaccine/export-vaccine.component';
@@ -18,6 +18,10 @@ import { TransCenterComponent } from './finance-management/trans-center/trans-ce
 import { TransListComponent } from './finance-management/trans-w-patient/trans-list/trans-list.component';
 import { TransEditComponent } from './finance-management/trans-w-patient/trans-edit/trans-edit.component';
 import { PeriodicInjectionComponent } from './injection/periodic-injection/periodic-injection.component';
+import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
+import { FooterComponent } from './admin-layout/footer/footer.component';
+import { NavbarComponent } from './admin-layout/navbar/navbar.component';
+import { SidebarComponent } from './admin-layout/sidebar/sidebar.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
@@ -29,14 +33,19 @@ import { NgxPaginationModule } from 'ngx-pagination';
     EmployeeListComponent, 
     EmployeeCreateComponent, 
     EmployeeUpdateComponent,
-    ContactBoxComponent,EmployeeListComponent, 
+    ContactBoxComponent,
+    EmployeeListComponent, 
     EmployeeCreateComponent,
     ContactReplyComponent,
     PeriodicInjectionComponent,
     EmployeeUpdateComponent,
     TransCenterComponent,
     TransListComponent,
-    TransEditComponent
+    TransEditComponent,
+    AdminLayoutComponent,
+    FooterComponent,
+    NavbarComponent,
+    SidebarComponent
   ],
   imports: [
     CommonModule,

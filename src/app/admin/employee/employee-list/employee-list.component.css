@@ -1,3 +1,4 @@
+
 ::ng-deep.mat-dialog-container {
     padding: 0px !important; 
     overflow: hidden !important;
@@ -5,5 +6,15 @@
 
 .form-control{
     width: auto !important;
+}
+
+.fa-edit:hover,
+.fa-edit:active{
+color: #ebb20a !important;
+}
+
+.fa-trash-alt:hover,
+.fa-trash-alt:active{
+color: #c41f30 !important;
 }
 
