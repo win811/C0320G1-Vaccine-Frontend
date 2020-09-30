@@ -12,9 +12,10 @@ import { TransCenterComponent } from './finance-management/trans-center/trans-ce
 import { TransListComponent } from './finance-management/trans-w-patient/trans-list/trans-list.component';
 import { TransEditComponent } from './finance-management/trans-w-patient/trans-edit/trans-edit.component';
 import { PeriodicInjectionComponent } from './injection/periodic-injection/periodic-injection.component';
+import { TransDelComponent } from './finance-management/trans-w-patient/trans-del/trans-del.component';
 
 @NgModule({
-  declarations: [EmployeeListComponent, EmployeeCreateComponent, EmployeeUpdateComponent, PeriodicInjectionComponent, TransCenterComponent, TransListComponent, TransEditComponent],
+  declarations: [EmployeeListComponent, EmployeeCreateComponent, EmployeeUpdateComponent, PeriodicInjectionComponent, TransCenterComponent, TransListComponent, TransEditComponent, TransDelComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
@@ -28,7 +29,9 @@ import { PeriodicInjectionComponent } from './injection/periodic-injection/perio
   ],
   entryComponents: [
     EmployeeCreateComponent,
-    EmployeeUpdateComponent
+    EmployeeUpdateComponent,
+    TransEditComponent,
+    TransDelComponent
   ],
 })
 export class AdminModule { }
