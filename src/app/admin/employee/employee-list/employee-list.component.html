@@ -54,11 +54,12 @@
                     <td>{{employee.address}}</td>
                     <td>{{employee.role}}</td>
                     <td>
-                        <a class="btn btn-link fas fa-edit text-warning fa-lg" (click)="openEdit(employee)"></a>
+                        <a class="btn btn-link " (click)="openEdit(employee)"><i
+                                class="fas fa-edit text-warning fa-lg"></i></a>
                     </td>
                     <td>
-                        <a class="btn btn-link text-danger fas fa-trash-alt fa-lg" data-toggle="modal"
-                            [attr.data-target]="'#remove'+employee.id"></a>
+                        <a class="btn btn-link " data-toggle="modal" [attr.data-target]="'#remove'+employee.id"><i
+                                class="text-danger fas fa-trash-alt fa-lg"></i></a>
                     </td>
 
                     <div class="modal fade" [id]="'remove'+employee.id" tabindex="-1" role="dialog"

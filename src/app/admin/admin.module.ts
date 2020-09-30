@@ -9,9 +9,14 @@ import { EmployeeListComponent } from './employee/employee-list/employee-list.co
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PeriodicInjectionComponent } from './injection/periodic-injection/periodic-injection.component';
+import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
+import { FooterComponent } from './admin-layout/footer/footer.component';
+import { NavbarComponent } from './admin-layout/navbar/navbar.component';
+import { SidebarComponent } from './admin-layout/sidebar/sidebar.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [EmployeeListComponent, EmployeeCreateComponent, EmployeeUpdateComponent, PeriodicInjectionComponent],
+  declarations: [EmployeeListComponent, EmployeeCreateComponent, EmployeeUpdateComponent, PeriodicInjectionComponent, AdminLayoutComponent, FooterComponent, NavbarComponent, SidebarComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
@@ -19,8 +24,6 @@ import { PeriodicInjectionComponent } from './injection/periodic-injection/perio
     NgxPaginationModule,
     ReactiveFormsModule,
     FormsModule,
-
-
 
   ],
   entryComponents: [
