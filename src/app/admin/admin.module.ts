@@ -23,18 +23,19 @@ import { FooterComponent } from './admin-layout/footer/footer.component';
 import { NavbarComponent } from './admin-layout/navbar/navbar.component';
 import { SidebarComponent } from './admin-layout/sidebar/sidebar.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import {NotificationsComponent} from './notifications/notifications.component';
 
 @NgModule({
   declarations: [
-    VaccineStorageComponent, 
-    ImportVaccineComponent, 
+    VaccineStorageComponent,
+    ImportVaccineComponent,
     ExportVaccineComponent,
     AdminCenterComponent,
-    EmployeeListComponent, 
-    EmployeeCreateComponent, 
+    EmployeeListComponent,
+    EmployeeCreateComponent,
     EmployeeUpdateComponent,
     ContactBoxComponent,
-    EmployeeListComponent, 
+    EmployeeListComponent,
     EmployeeCreateComponent,
     ContactReplyComponent,
     PeriodicInjectionComponent,
@@ -45,7 +46,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AdminLayoutComponent,
     FooterComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    NotificationsComponent
   ],
   imports: [
     CommonModule,
