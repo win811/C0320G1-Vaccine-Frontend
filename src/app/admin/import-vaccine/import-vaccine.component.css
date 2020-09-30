@@ -5,3 +5,7 @@
 td,th {
     vertical-align: middle !important ;
 }
+
+.form-check, label {
+    color: black;
+}

@@ -1,0 +1,8 @@
+.nav-link:hover {
+    background-color: #f44336 !important;
+    color: white !important;
+   
+}
+.nav-link:hover i {
+    color: white !important;
+}

@@ -203,13 +203,13 @@
                   <td class="inbox-small-cells">
                     <input type="checkbox" class="mail-checkbox">
                   </td>
-                  <td *ngIf="contact.status=='Chưa xử lí'" class="view-message"><span
+                  <td *ngIf="contact.status =='Chưa xử lí'" class="view-message"><span
                     class="label label-danger">{{contact.status}}</span></td>
-                  <td *ngIf="contact.status=='Đang xử lí'" class="view-message"><span class="label label-warning">{{contact.status}}</span></td>
-                  <td *ngIf="contact.status=='hoàn thành'" class="view-message"><span class="label label-success">{{contact.status}}</span></td>
+                  <td *ngIf="contact.status =='Đang xử lí'" class="view-message"><span class="label label-warning">{{contact.status}}</span></td>
+                  <td *ngIf="contact.status =='hoàn thành'" class="view-message"><span class="label label-success">{{contact.status}}</span></td>
                   <td class="view-message  dont-show">{{contact.fullName}}</td>
                   <td class="view-message ">
-                    <a [routerLink]="['contact',contact.id]">{{contact.subject}}</a></td>
+                    <a [routerLink]="['/admin/contact',contact.id]">{{contact.subject}}</a></td>
                   <td class="view-message  inbox-small-cells"><i class="fa fa-paperclip"></i></td>
                   <td class="view-message  text-right">{{contact.receivingTime|date:'medium'}}</td>
                 </tr>
