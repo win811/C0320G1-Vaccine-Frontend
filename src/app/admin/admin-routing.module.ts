@@ -7,6 +7,7 @@ import { EmployeeListComponent } from './employee/employee-list/employee-list.co
 import { PeriodicInjectionComponent } from './injection/periodic-injection/periodic-injection.component';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 
+
 const routes: Routes = [
   {
     path: "", component: AdminLayoutComponent, children: [
@@ -14,7 +15,7 @@ const routes: Routes = [
       {path: "injected-list", component: PeriodicInjectionComponent },
       {path: 'vaccine-storage',component: VaccineStorageComponent},
       {path: 'contactBox', component: ContactBoxComponent},
-      {path: 'contact/:id', component: ContactReplyComponent}
+      {path: 'contact/:id', component: ContactReplyComponent},
     ]
   },
 
