@@ -15,6 +15,7 @@ export class VaccineService {
 
   constructor(private http: HttpClient) { }
 
+  // Thành Long
   getVaccineHttpOptions(searchField: VaccineSearchDTO, page: number): Object {
     const vaccine = {
       headers: new HttpHeaders({
@@ -34,22 +35,14 @@ export class VaccineService {
     return vaccine;
   }
 
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
-  };
-
+  // Thành Long
   getVaccine(searchField: VaccineSearchDTO, page: number): Observable<Page<Vaccine>> {
     return this.http.get<Page<Vaccine>>(`${this.URL}/admin/vaccine-list`, this.getVaccineHttpOptions(searchField, page));
   }
 
-  updateVaccine(id: number, value: any): Observable<Vaccine>{
-    return this.http.put<Vaccine>(`${this.URL}/admin/vaccine-list/${id}`,value,this.httpOptions)
-  }
-
-  getVaccineById(id: number): Observable<Vaccine>{
-    return this.http.get<Vaccine>(`${this.URL}/admin/vaccine/${id}`,this.httpOptions)
+  // Thành Long
+  updateVaccinePrice(vaccine: Vaccine): Observable<Vaccine> {
+    return this.http.put<Vaccine>(this.URL + '/admin/vaccine-list/update', vaccine);
   }
 
   getVaccineStorageOptions(name : string,category : string, country : string,
@@ -78,7 +71,7 @@ export class VaccineService {
         id,
         exportAmount
       }
-    }
+    };
     return options;
   }
 

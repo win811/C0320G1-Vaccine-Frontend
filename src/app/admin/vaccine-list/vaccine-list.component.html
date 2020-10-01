@@ -46,6 +46,7 @@
             <button (click)="search()" type="button" class="btn btn-info"><i
               class="fas fa-search"></i> Lọc kết quả
             </button>
+            <p class="text-danger"><b><i>{{message}}</i></b></p>
           </div>
         </div>
       </form>
@@ -75,7 +76,7 @@
           <td>{{getAge(vaccine.limitAge)}}</td>
           <td>{{vaccine.price}}</td>
           <td>
-            <button type="button" (click)="openModalEdit(vaccine.id)" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">Chỉnh sửa giá</button>
+            <button type="button" (click)="openEdit(vaccine)" class="btn btn-warning">Chỉnh sửa giá</button>
           </td>
         </tr>
         </tbody>
@@ -101,27 +102,3 @@
   </div>
 </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title" id="exampleModalLabel">Chỉnh sửa giá</h2>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Nhập giá mới (VND/ml):</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-        <button type="button" class="btn btn-primary" (click)="updateVaccinePrice()">Cập nhật</button>
-      </div>
-    </div>
-  </div>
-</div>

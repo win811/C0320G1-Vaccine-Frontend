@@ -20,6 +20,10 @@ import { TransEditComponent } from './finance-management/trans-w-patient/trans-e
 import { PeriodicInjectionComponent } from './injection/periodic-injection/periodic-injection.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { VaccineListComponent } from './vaccine-list/vaccine-list.component';
+import { VaccineUpdatePriceComponent } from './vaccine-update-price/vaccine-update-price.component';
+import { PatientListComponent } from './patient/patient-list/patient-list.component';
+import { PatientCreateComponent } from './patient/patient-create/patient-create.component';
+import { PatientUpdateComponent } from './patient/patient-update/patient-update.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +42,11 @@ import { VaccineListComponent } from './vaccine-list/vaccine-list.component';
     EmployeeUpdateComponent,
     TransCenterComponent,
     TransListComponent,
-    TransEditComponent
+    TransEditComponent,
+    VaccineUpdatePriceComponent,
+    PatientListComponent,
+    PatientCreateComponent,
+    PatientUpdateComponent
   ],
   imports: [
     CommonModule,
@@ -53,7 +61,10 @@ import { VaccineListComponent } from './vaccine-list/vaccine-list.component';
   ],
   entryComponents: [
     EmployeeCreateComponent,
-    EmployeeUpdateComponent
+    EmployeeUpdateComponent,
+    VaccineUpdatePriceComponent,
+    PatientUpdateComponent,
+    PatientCreateComponent
   ],
 })
 export class AdminModule { }

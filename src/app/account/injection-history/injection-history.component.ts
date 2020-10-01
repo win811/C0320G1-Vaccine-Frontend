@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import {InjectionHistory} from '../../shared/models/InjectionHistory';
 import {InjectionHistoryService} from '../../shared/services/injection-history.service';
-import {Router} from '@angular/router';
 import {tap,map} from 'rxjs/operators';
 
 @Component({
@@ -20,13 +19,13 @@ export class InjectionHistoryComponent implements OnInit {
 
   constructor(
     private injectionHistoryService: InjectionHistoryService,
-    private router : Router
   ) { }
 
   ngOnInit() {
     this.getPage(1);
   }
 
+  // Thành Long
   getPage(pageNumber: number) {
     this.myInjectionHistory = this.injectionHistoryService.getInjectionHistory(this.patientId,pageNumber).pipe(
       tap(res => {

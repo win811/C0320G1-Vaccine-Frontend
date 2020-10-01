@@ -1,0 +1,36 @@
+<div class="container vh-30">
+  <div class="d-flex justify-content-center">
+    <h3 class="modal-title " id="exampleModalLabel">Cập nhật giá vắc xin</h3>
+  </div>
+  <form [formGroup]="vaccineUpdatePriceForm" (ngSubmit)="onSubmit()">
+    <div class="row mt-3">
+      <label>Nhập giá mới:</label>
+    </div>
+    <input type="hidden" formControlName="id">
+    <input type="hidden" formControlName="name">
+    <input type="hidden" formControlName="code">
+    <input type="hidden" formControlName="category">
+    <input type="hidden" formControlName="receiveDate">
+    <input type="hidden" formControlName="licenseCode">
+    <input type="hidden" formControlName="country">
+    <input type="hidden" formControlName="content">
+    <input type="hidden" formControlName="amount">
+    <input type="hidden" formControlName="expiryDate">
+    <input type="hidden" formControlName="conditions">
+    <input type="hidden" formControlName="limitAge">
+    <input type="hidden" formControlName="inventoryStatus">
+    <div class="row mt-2">
+      <input class="form-control" type="text" formControlName="price">
+      <p *ngIf="vaccineUpdatePriceForm.controls.price.errors?.required && vaccineUpdatePriceForm.controls.price.touched"
+         class="text-danger font-weight-bold" style="margin-bottom: 0px"><b><i>
+        Giá vắc xin không được để trống !</i></b></p>
+      <p *ngIf="vaccineUpdatePriceForm.controls.price.errors?.pattern && vaccineUpdatePriceForm.controls.price.touched"
+         class="text-danger font-weight-bold" style="margin-bottom: 0px"><b><i>
+        Giá vắc xin phải là kí tự số !</i></b></p>
+    </div>
+    <div class="d-flex justify-content-center mt-5 mb-3">
+      <button type="button" class="btn btn-danger mr-3" style="width: 100px" mat-dialog-close="cancel">Hủy</button>
+      <button [disabled]="vaccineUpdatePriceForm.invalid" type="submit" class="btn btn-primary mr-3" style="width: 100px">Cập nhật</button>
+    </div>
+  </form>
+</div>

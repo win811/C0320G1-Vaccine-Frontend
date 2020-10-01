@@ -6,6 +6,8 @@ import {Vaccine} from '../../shared/models/Vaccine';
 import {map, tap} from 'rxjs/operators';
 import {VaccineSearchDTO} from '../../shared/models/dto/vaccineSearchDTO';
 import {Router} from '@angular/router';
+import {MatDialog} from '@angular/material/dialog';
+import {VaccineUpdatePriceComponent} from '../vaccine-update-price/vaccine-update-price.component';
 
 @Component({
   selector: 'app-vaccine-list',
@@ -28,23 +30,31 @@ export class VaccineListComponent implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     private vaccineService: VaccineService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit() {
     this.formSearchVaccine = this.formBuilder.group({
       code: [''],
       category: ['', [Validators.pattern('^[A-ZẮẰẲẴẶĂẤẦẨẪẬÂÁÀÃẢẠĐẾỀỂỄỆÊÉÈẺẼẸÍÌỈĨỊỐỒỔỖỘÔỚỜỞỠỢƠÓÒÕỎỌỨỪỬỮỰƯÚÙỦŨỤÝỲỶỸỴa-zắằẳẵặăấầẩẫậâáàãảạđếềểễệêéèẻẽẹíìỉĩịốồổỗộôớờởỡợơóòõỏọứừửữựưúùủũụýỳỷỹỵ0-9\\ ]*$')]],
-      country: ['', [Validators.pattern('^[A-ZẮẰẲẴẶĂẤẦẨẪẬÂÁÀÃẢẠĐẾỀỂỄỆÊÉÈẺẼẸÍÌỈĨỊỐỒỔỖỘÔỚỜỞỠỢƠÓÒÕỎỌỨỪỬỮỰƯÚÙỦŨỤÝỲỶỸỴa-zắằẳẵặăấầẩẫậâáàãảạđếềểễệêéèẻẽẹíìỉĩịốồổỗộôớờởỡợơóòõỏọứừửữựưúùủũụýỳỷỹỵ0\\ ]*$')]],
+      country: ['', [Validators.pattern('^[A-ZẮẰẲẴẶĂẤẦẨẪẬÂÁÀÃẢẠĐẾỀỂỄỆÊÉÈẺẼẸÍÌỈĨỊỐỒỔỖỘÔỚỜỞỠỢƠÓÒÕỎỌỨỪỬỮỰƯÚÙỦŨỤÝỲỶỸỴa-zắằẳẵặăấầẩẫậâáàãảạđếềểễệêéèẻẽẹíìỉĩịốồổỗộôớờởỡợơóòõỏọứừửữựưúùủũụýỳỷỹỵ\\ ]*$')]],
       price: ['']
     });
     this.getPage(1);
   }
 
+  // Thành Long
   getPage(pageNumber) {
     this.vaccines = this.vaccineService.getVaccine(this.searchFields, pageNumber).pipe(
       tap(res => {
         console.log(res);
+        if (res === null) {
+          this.message = 'Không tìm thấy thông tin khách hàng khớp với tìm kiếm !';
+          this.hideableDiv = false;
+        } else {
+          this.message = '';
+        }
         this.totalElements = res.totalElements;
         this.pageSize = res.size;
         this.currentPage = pageNumber;
@@ -61,6 +71,7 @@ export class VaccineListComponent implements OnInit {
     );
   }
 
+  // Thành Long
   search() {
     this.searchFields = this.formSearchVaccine.value as VaccineSearchDTO;
     switch (this.formSearchVaccine.get('price').value) {
@@ -88,6 +99,7 @@ export class VaccineListComponent implements OnInit {
     this.getPage(1);
   }
 
+  // Thành Long
   getAge(age: number): string{
     if (age>0){
       return "Trên "+ age + " tuổi"
@@ -96,14 +108,20 @@ export class VaccineListComponent implements OnInit {
     }
   }
 
-  updateVaccinePrice() {
-    this.vaccineService.updateVaccine(this.id, this.formSearchVaccine.value).subscribe((data:Vaccine) => {
-      this.router.navigateByUrl('')
-    })
-  }
-
-  openModalEdit(id : number):void {
-    this.vaccineService.getVaccineById(id).subscribe((data:Vaccine) =>{
-    })
+  // Thành Long
+  openEdit(vaccine) {
+    const dialogRef = this.dialog.open(VaccineUpdatePriceComponent, {
+      width: "500px",
+      height: "300px",
+      autoFocus: true,
+      data: {
+        dataVaccine: vaccine,
+      },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result != "cancel") {
+        this.getPage(this.currentPage)
+      }
+    });
   }
 }
