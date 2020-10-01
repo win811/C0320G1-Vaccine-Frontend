@@ -1,0 +1,75 @@
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-10 col-sm-12">
+        <div class="card">
+          <div class="card-header text-center">Register</div>
+          <div class="card-body">
+            <form [formGroup]="formSigin" (ngSubmit)="submitForm()">
+<!--              username-->
+              <div class="form-group row">
+                <label for="username" class="col-md-4 col-form-label text-md-right"><i class="fa fa-user col-md-2"></i> UserName :</label>
+                <div class="col-md-6">
+                  <input type="text" id="username" class="form-control" name="email-address" required autofocus formControlName="username">
+                  <p class="text-danger text-center font-weight-bold "*ngIf="submitted && formSigin.controls.username.errors?.required" >Vui lòng nhập username !!</p>
+                  <p class="text-danger text-center font-weight-bold "*ngIf="submitted && formSigin.controls.username.errors?.pattern" >Tên tài khoản ít nhất 6 kí tự !!</p>
+                </div>
+              </div>
+<!--              password-->
+              <div class="form-group row">
+                <label for="password" class="col-md-4 col-form-label text-md-right"><i class="fa fa-unlock col-md-2"></i> Password :</label>
+                <div class="col-md-6">
+                  <input type="password" id="password" class="form-control" name="email-address" required autofocus formControlName="password">
+                  <p class="text-danger text-center font-weight-bold "*ngIf="submitted && formSigin.controls.password.errors?.required" >Vui lòng nhập mật khẩu !!</p>
+                  <p class="text-danger text-center font-weight-bold "*ngIf="submitted && formSigin.controls.password.errors?.pattern" >Mật khẩu chứa ít nhất 8 kí tự !!</p>
+                </div>
+              </div>
+<!--              name-->
+              <div class="form-group row">
+                <label for="name" class="col-md-4 col-form-label text-md-right"><i class="fa fa-file-signature col-md-2"></i> Name :</label>
+                <div class="col-md-6">
+                  <input type="text" id="name" class="form-control" name="email-address" required autofocus formControlName="name">
+                  <p class="text-danger text-center font-weight-bold "*ngIf="submitted && formSigin.controls.name.errors?.required" >Vui lòng cùng cấp tên tài khoản !!</p>
+                </div>
+              </div>
+<!--              CMND-->
+              <div class="form-group row">
+                <label for="CMND" class="col-md-4 col-form-label text-md-right"><i class="fa fa-id-card-alt col-md-2"></i> IdCard :</label>
+                <div class="col-md-6">
+                  <input type="text" id="CMND" class="form-control" name="email-address" required autofocus formControlName="idCard">
+                  <p class="text-danger text-center font-weight-bold "*ngIf="submitted && formSigin.controls.idCard.errors?.required" >Vui lòng cung cấp số CMND !!</p>
+                </div>
+              </div>
+<!--              address-->
+              <div class="form-group row">
+                <label for="address" class="col-md-4 col-form-label text-md-right"><i class="fa fa-map-marker-alt col-md-2"></i> Address :</label>
+                <div class="col-md-6">
+                  <input type="text" id="address" class="form-control" name="email-address" required autofocus formControlName="address">
+                  <p class="text-danger text-center font-weight-bold "*ngIf="submitted && formSigin.controls.address.errors?.required" >Vui lòng cung cấp số CMND !!</p>
+
+                </div>
+              </div>
+<!--              email-->
+              <div class="form-group row">
+                <label for="email" class="col-md-4 col-form-label text-md-right"><i class="fa fa-envelope col-md-2"></i> Email :</label>
+                <div class="col-md-6">
+                  <input type="text" id="email" class="form-control" name="email-address" required autofocus formControlName="email">
+                  <p class="text-danger text-center font-weight-bold "*ngIf="submitted && formSigin.controls.email.errors?.required" >Vui lòng nhập email !!</p>
+                  <p class="text-danger text-center font-weight-bold "*ngIf="submitted && formSigin.controls.email.errors?.email" >Email nhập sai định dạng !!</p>
+                </div>
+              </div>
+              <hr>
+<!--              <p class="text-danger text-center font-weight-bold >{{message}}</p>-->
+
+
+              <div class="d-flex justify-content-center  ">
+                <button type="submit"class="btn btn-primary button1">Register</button>
+                <button type="button" class="btn btn-primary button2" (click)="cancel()">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
