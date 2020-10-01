@@ -1,18 +1,16 @@
-import {Component, OnInit} from '@angular/core';
+import {Injectable} from '@angular/core';
 
 declare var $: any;
 
-@Component({
-  selector: 'app-notifications',
-  templateUrl: './notifications.component.html',
-  styleUrls: ['./notifications.component.css']
+@Injectable({
+  providedIn: 'root'
 })
-export class NotificationsComponent implements OnInit {
+export class NotifiByDucService {
 
   constructor() {
   }
 
-  setNotification(type, title, text) {
+  showNotification(type, title, text) {
     // const type = ['', 'info', 'success', 'warning', 'danger'];
 
     const color = Math.floor((Math.random() * 4) + 1);
@@ -39,9 +37,6 @@ export class NotificationsComponent implements OnInit {
         '<a href="{3}" target="{4}" data-notify="url"></a>' +
         '</div>'
     });
-  }
-
-  ngOnInit() {
   }
 
 }
