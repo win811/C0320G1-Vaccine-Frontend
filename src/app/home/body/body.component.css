@@ -278,13 +278,14 @@ img:hover {
 .body1 .titleImage span {
   font-weight: bold;
   font-family: Arial, cursive;
-  font-size: 17px
+  font-size: 17px;
+  color: white;
 }
 
 .body2 {
   margin-top: 35px;
   background-color: #17A2B8;
-  height: 402px
+  height: 439px
 }
 
 .body2 .content {
@@ -507,4 +508,120 @@ img:hover {
   width: 30%;
   text-decoration: none;
   font-weight: normal;
+}
+
+/* -------------------------------- */
+.col-xs-12 {
+  width: 100%;
+}
+.div_dichvu .home_dv_title span {
+  color: #2A388F;
+  display: block;
+  border-bottom: 1px solid #2A388F;
+  margin: 20px 0 0;
+  font-weight: bold;
+  padding-bottom: 8px;
+}
+.div_dichvu .dv_item {
+  border: 1px solid #2A388F;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+.div_dichvu .dv_item a {
+  display: block;
+  text-align: center;
+}
+.div_dichvu .dv_item a {
+  position: relative;
+}
+.div_dichvu a {
+  overflow: hidden;
+}
+a, a:hover, a:focus {
+  outline: none !important;
+}
+a {
+  color: #337ab7;
+  text-decoration: none;
+}
+a {
+  background-color: transparent;
+}
+.div_dichvu .dv_item a:before {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  opacity: 0.5;
+  background: #fff;
+}
+.div_dichvu .dv_item .dv_title span p {
+  line-height: 1.2;
+  z-index: 99;
+  display: block;
+  position: relative;
+  padding: 10px 10px 6px;
+  margin: 0;
+}
+.div_dichvu .dv_item .dv_title span {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  text-shadow: 0 0 1px #ccc;
+  font-weight: bold;
+}
+.div_dichvu .dv_item .dv_title {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  text-align: center;
+  width: 100%;
+  color: #2A388F;
+  height: 50px;
+  margin-top: -25px;
+}
+.div_dichvu .dv_item a {
+  display: block;
+  text-align: center;
+}
+body {
+  font-size: 16px;
+  font-family: "MyriadPro-Regular";
+  color: #6D6E70;
+  background-color: white !important;
+}
+.div_dichvu .dv_item .dv_title span:before {
+  background: #f2f2f2;
+  background: -webkit-radial-gradient(farthest-side at 50% -40%, #ccc, white 0%, #fff 90%);
+  background: -o-radial-gradient(farthest-side at 50% -40%, #ccc, white 0%, #fff 90%);
+  background: -moz-radial-gradient(farthest-side at 50% -40%, #ccc, white 0%, #fff 90%);
+  background: radial-gradient(farthest-side at 50% -40%, #ccc, white 0%, #fff 90%);
+  background: -webkit-radial-gradient(farthest-side at 40% -20%, #ccc, #f2f2f2 0%, #ffff 80%);
+  background: -o-radial-gradient(farthest-side at 40% -20%, #ccc, #f2f2f2 0%, #fff 80%);
+  background: -moz-radial-gradient(farthest-side at 40% -20%, #ccc, #f2f2f2 0%, #fff 80%);
+  background: radial-gradient(farthest-side at 40% -20%, #ccc, #f2f2f2 0%, #fff 80%);
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  z-index: 1;
+}
+.bdhome h2 {
+  font-size: 20px !important;
+  margin: 15px 0;
+}
+.h2, h2 {
+  font-size: 1.5rem;
+}
+.container img {
+  max-width: 100%;
+  height: auto;
+}
+.div_dichvu .dv_item .dv_title span:hover {
+  color: #2A388F;
 }
