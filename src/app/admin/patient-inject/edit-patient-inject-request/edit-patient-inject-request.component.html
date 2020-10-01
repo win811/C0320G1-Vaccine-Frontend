@@ -1,0 +1,19 @@
+<div id="modal-content-wrapper" class="d-fex justify-content-center">
+  <header id="modal-header">
+    <h2 id="modal-title" style="color: red;text-align: center">Tiêm theo yêu cầu ! </h2>
+  </header>
+  <section id="modal-body mt-2">
+    <p class="mat-primary">
+      Bệnh nhân : <span class="text-primary font-weight-bold ml-4" style="margin-left: 10px">{{namePatient}}</span><br class="mt-2">
+      Mã bệnh nhân: <span class="text-primary font-weight-bold ml-2"> {{code}} </span><br class="mt-2">
+      Số điện thoại:  <span class="text-primary font-weight-bold ml-3"> {{phoneNumber}} </span>
+    </p>
+
+    <span class="text-danger font-weight-bold">Chú ý:</span> Cập nhập bệnh nhân thành đã được tiêm
+  </section>
+  <footer id="modal-footer" style="float: right">
+    <button  mat-raised-button class="btn btn-primary mr-3" id="modal-cancel-button" mat-dialog-close>Hủy</button>
+    <button mat-raised-button class="btn btn-warning mr-3" id="modal-submit-button" mat-dialog-close (click)="edit(id)" >Đã xử lý</button>
+  </footer>
+</div>
+

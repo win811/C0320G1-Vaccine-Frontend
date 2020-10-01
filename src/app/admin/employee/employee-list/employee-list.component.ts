@@ -1,12 +1,12 @@
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { EmployeeUpdateComponent } from './../employee-update/employee-update.component';
-import { EmployeeCreateComponent } from './../employee-create/employee-create.component';
-import { Employee } from './../../../shared/models/employee';
+import { EmployeeUpdateComponent } from '../employee-update/employee-update.component';
+import { EmployeeCreateComponent } from '../employee-create/employee-create.component';
+import { Employee } from '../../../shared/models/employee';
 import { Component, OnInit } from '@angular/core';
 import { tap, map } from 'rxjs/operators';
 
 import { MatDialog } from '@angular/material/dialog';
-import { EmployeeService } from './../../../shared/services/employee.service';
+import { EmployeeService } from '../../../shared/services/employee.service';
 
 @Component({
   selector: 'app-employee-list',

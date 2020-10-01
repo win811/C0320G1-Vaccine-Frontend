@@ -278,13 +278,14 @@ img:hover {
 .body1 .titleImage span {
   font-weight: bold;
   font-family: Arial, cursive;
-  font-size: 17px
+  font-size: 17px;
+  color: white;
 }
 
 .body2 {
   margin-top: 35px;
   background-color: #17A2B8;
-  height: 402px
+  height: 439px
 }
 
 .body2 .content {

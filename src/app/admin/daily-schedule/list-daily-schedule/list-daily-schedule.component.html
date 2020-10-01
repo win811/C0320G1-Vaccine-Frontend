@@ -1,0 +1,119 @@
+<div class="container mt-3" id="container">
+  <div class="row ml-5" id="content">
+    <h2>Xem Lịch Tiêm Chủng Định Kì Của Trung Tâm</h2>
+
+
+    <div class="searchDate col-sm-9  mt-2">
+      <form [formGroup]="formSearch" >
+        <div class="d-flex">
+          <div class="searchDate1">
+            Ngày tiêm :
+            <div class="d-flex searchDate2">
+              <div>
+                Từ
+                <input type="date" class="searchDate3" formControlName="startDay">
+              </div>
+              <div class="searchDate4">
+                đến
+                <input type="date" class="searchDate5" formControlName="endDay">
+              </div>
+            </div>
+          </div>
+          <div class="searchNameVaccine">
+            Tên vacin:
+            <div class="d-flex searchNameVaccine1">
+              <div class="ml-1">
+                <input class="searchNameVaccine2" placeholder="Tên vacin" formControlName="nameVaccine">
+              </div>
+            </div>
+          </div>
+          <div class="searchStatus">
+            Trạng thái :
+            <div class="d-flex searchStatus1">
+              <div class="ml-1">
+                <input class="searchStatus2" placeholder="Trạng thái" formControlName="status">
+              </div>
+            </div>
+          </div>
+          <div>
+            <button class="buttonSearch"  (click)="search()">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <table class="table table-striped custab">
+      <thead class="bg-primary table-hover">
+      <tr id="trHead">
+        <th>Thời Gian</th>
+        <th>Ngày Tiêm</th>
+        <th>Địa điểm</th>
+        <th>Tên vacin</th>
+        <th>Loại vacin</th>
+        <th>Đối tượng tiêm</th>
+        <th>Trạng thái</th>
+        <th>Ghi chú</th>
+        <th class="text-center">Thao tác</th>
+      </tr>
+      </thead>
+      <tr class="tr" *ngFor="let dailySchedule of dailySchedules">
+        <td>{{dailySchedule.startTime}} đến {{dailySchedule.endTime}}</td>
+        <td>{{dailySchedule.vaccinationDate}}</td>
+        <td>{{dailySchedule.address}}</td>
+        <td>{{dailySchedule.vaccine.name}}</td>
+        <td>{{dailySchedule.vaccine.category}}</td>
+        <td>{{dailySchedule.vaccine.conditions}}</td>
+        <td>{{dailySchedule.vaccine.inventoryStatus}}</td>
+        <td>{{dailySchedule.note}}</td>
+        <td class="text-center">
+          <button  class="select_hover_edit">
+            <i class="far fa-edit"></i>
+            <p class="hiddenEdit">
+              cập nhật
+            </p>
+          </button>
+          <button  class="select_hover_list ml-2" (click)="list(dailySchedule.id)">
+            <i class="far fa-list-alt"></i>
+            <p class="hiddenList">
+              danh sách
+            </p>
+          </button>
+        </td>
+      </tr>
+
+    </table>
+    <div class="Find">
+      <h3>
+        <span class="letter ml-2">Tạo</span>
+        <span class="letter"> </span>
+        <span class="letter ml-1">mới</span>
+        <span class="letter"> </span>
+        <span class="letter ml-1">lịch tiêm</span>
+        <a id="findTicket" href="#">tại đây</a>
+      </h3>
+    </div>
+    <div class="clearfix">
+      <ul class="pagination ">
+        <li class="page-item">
+          <button class="page-link mr-3 firstPage"
+                  (click)="first()">Trang đầu
+          </button>
+        </li>
+        <li class="page-item">
+          <button class="page-link action mr-1" (click)="previous()" *ngIf="pageNumber!=0">Lui</button>
+        </li>
+        <li class="page-item  "><a class="page-link title">{{pageNumber + 1}} / {{totalPages}}</a></li>
+        <li class="page-item">
+          <button class="page-link action ml-1" (click)="next()"  *ngIf="pageNumber!=totalPages-1">Tới</button>
+        </li>
+        <li class="page-item">
+          <button class="page-link ml-3 lastPage"
+                  (click)="last()">Trang cuối
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
