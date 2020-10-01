@@ -2,7 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {VaccineService} from '../../shared/services/vaccine.service';
 import {Vaccine} from '../../shared/models/Vaccine';
 import {ToastrService} from 'ngx-toastr';
-import {Router} from '@angular/router';
+import {NavigationExtras, Router} from '@angular/router';
 
 declare var $: any;
 
@@ -54,8 +54,11 @@ export class TableVacxinComponent implements OnInit {
     this.exportVaccine = vaccine;
   }
 
-  registrationVaccination() {
-    this.router.navigate(['registration']);
+  registrationVaccination(vaccine) {
+    const navigationExtras: NavigationExtras = {
+      state: vaccine
+    };
+    this.router.navigate(['registration'], navigationExtras);
   }
 
   exportConfirm(exportAmount: number) {

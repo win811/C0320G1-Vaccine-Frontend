@@ -53,6 +53,8 @@ export class ContactReplyComponent implements OnInit {
         console.log('Gửi ContactReply thành Công');
         this.textReply = '';
         this.getContactAndReply();
+      }, error1 => {
+        console.log('gửi reply thất bại');
       });
     }
   }

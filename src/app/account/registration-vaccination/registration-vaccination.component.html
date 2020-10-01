@@ -1,4 +1,3 @@
-
 <mat-horizontal-stepper [linear]="isLinear" #stepper>
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
@@ -8,50 +7,62 @@
         <mat-label>THÔNG TIN NGƯỜI ĐĂNG KÝ TIÊM</mat-label>
       </div>
       <div class="offset-sm-2">
-
         <div class="row justify-content-between">
           <div class="col-md">
             <mat-form-field class=" field-ad row ">
               <mat-label>Họ và tên bệnh nhân</mat-label>
-              <input matInput placeholder="Họ và tên" formControlName="firstCtrl" required>
+              <input matInput placeholder="Họ và tên" formControlName="fullName" required>
             </mat-form-field>
             <br>
             <mat-form-field class=" field-ad row ">
               <mat-label>Giới tính</mat-label>
-              <mat-select matInput placeholder="Họ và tên" formControlName="firstCtrl" required></mat-select>
+              <mat-select matInput placeholder="Giới Tính" formControlName="gender" required>
+                <mat-option value="Nam">Name</mat-option>
+                <mat-option value="Nữ">Nữ</mat-option>
+                <mat-option value="Khác">Khác</mat-option>
+                <mat-option></mat-option>
+              </mat-select>
             </mat-form-field>
             <br>
             <mat-form-field class=" field-ad row ">
               <mat-label>Ngày sinh</mat-label>
-              <input matInput [matDatepicker]="dp3" placeholder="dd/mm/yyyy" formControlName="firstCtrl" required
+              <input matInput [matDatepicker]="dp3" placeholder="dd/mm/yyyy" formControlName="birthday" required
                      readonly>
               <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
               <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class=" field-ad row " style="width:400px;">
+              <mat-label>Email</mat-label>
+              <input style="width: 300px"  matInput placeholder="Email" formControlName="email" required email>
+              <button class="float-right " mat-button matStepperNext >Gửi Mã</button>
             </mat-form-field>
           </div>
           <div class="col-md">
             <mat-form-field class=" field-ad row ">
               <mat-label>Người giám hộ</mat-label>
-              <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+              <input matInput placeholder="Người giám hộ" formControlName="parentName" required>
             </mat-form-field>
             <br>
             <mat-form-field class=" field-ad row ">
               <mat-label>Địa chỉ</mat-label>
-              <input class="mr-5" matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+              <input class="mr-5" matInput placeholder="Địa chỉ" formControlName="address" required>
             </mat-form-field>
             <br>
             <mat-form-field class=" field-ad row ">
               <mat-label>Số điện thoại</mat-label>
-              <input class="mr-5" matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+              <input class="mr-5" matInput placeholder="Số điện thoại" formControlName="phoneNumber" required>
             </mat-form-field>
+            <mat-form-field class=" field-ad row mt-4" style="width:300px">
+              <mat-label>Mã Xác Nhận</mat-label>
+              <input  matInput placeholder="Email" formControlName="email" required >
+            </mat-form-field>
+            <div class="field-ad row">
+              <button class="float-right mt-3 " mat-button matStepperNext [disabled]="firstFormGroup.invalid">Tiếp Tục
+              </button>
+            </div>
           </div>
         </div>
       </div>
-
-      <div>
-        <button class="float-right mt-1" mat-button matStepperNext>Next</button>
-      </div>
-
     </form>
 
 
@@ -64,46 +75,48 @@
       </div>
       <div class="">
         <div class="">
-      <div class="row ">
-        <div class="col-md-2"></div>
-        <div class="col-md-4">
-          <img style="width: 400px;height: 400px" src="../../../assets/anhvacxin.jpg">
+          <div class="row ">
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+              <img style="width: 400px;height: 400px" src="../../../assets/anhvacxin.jpg">
+            </div>
+            <div class="col-md-4">
+              <div>
+                <mat-form-field class="row field-ad  ">
+                  <mat-label>Tên Vắc-xin</mat-label>
+                  <input matInput formControlName="name" readonly>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field class=" row  field-ad">
+                  <mat-label>Loại Vắc-xin</mat-label>
+                  <input matInput formControlName="category" readonly>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field class=" field-ad row ">
+                  <mat-label>Nước sản xuất</mat-label>
+                  <input matInput formControlName="country" readonly>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field class=" field-ad row ">
+                  <mat-label>Ngày đăng kí tiêm</mat-label>
+                  <input matInput [matDatepicker]="dp4" placeholder="dd/mm/yyyy" formControlName="injectionDate"
+                         required
+                         readonly>
+                  <mat-datepicker-toggle matSuffix [for]="dp4"></mat-datepicker-toggle>
+                  <mat-datepicker #dp4 disabled="false"></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-md-2"></div>
+          </div>
         </div>
-        <div class="col-md-4">
-          <div>
-            <mat-form-field class="row field-ad  ">
-              <mat-label>Tên Vắc-xin</mat-label>
-              <input matInput formControlName="secondCtrl" readonly>
-            </mat-form-field>
-          </div>
-          <div>
-            <mat-form-field class=" row  field-ad">
-              <mat-label>Loại Vắc-xin</mat-label>
-              <input matInput formControlName="secondCtrl" readonly>
-            </mat-form-field>
-          </div>
-          <div>
-            <mat-form-field class=" field-ad row ">
-              <mat-label>Nước sản xuất</mat-label>
-              <input matInput formControlName="secondCtrl" readonly>
-            </mat-form-field>
-          </div>
-          <div>
-            <mat-form-field class=" field-ad row ">
-              <mat-label>Ngày sinh</mat-label>
-              <input matInput [matDatepicker]="dp4" placeholder="dd/mm/yyyy" formControlName="secondCtrl" required
-                     readonly>
-              <mat-datepicker-toggle matSuffix [for]="dp4"></mat-datepicker-toggle>
-              <mat-datepicker #dp4 disabled="false"></mat-datepicker>
-            </mat-form-field>
-          </div>
-        </div>
-        <div class="col-md-2"></div>
-      </div></div>
       </div>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button matStepperPrevious>Quay Lại</button>
+        <button mat-button matStepperNext [disabled]="secondFormGroup.invalid">Tiếp Theo</button>
       </div>
     </form>
   </mat-step>
@@ -111,8 +124,10 @@
     <ng-template matStepLabel>Kết Thúc</ng-template>
     <p>You are now done.</p>
     <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
+      <button mat-button matStepperPrevious>Quay Lại</button>
+      <button mat-button (click)="registration()" [disabled]="firstFormGroup.invalid&&secondFormGroup.invalid">Hoàn
+        Thành
+      </button>
     </div>
   </mat-step>
 </mat-horizontal-stepper>
