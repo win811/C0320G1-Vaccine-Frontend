@@ -28,7 +28,7 @@
   background: #17A2B8;
   display: none;
   position: absolute;
-  min-width: 160px;
+  min-width: 180px;
   padding: 10px 10px;
   z-index: 1;
 }
@@ -416,7 +416,7 @@ header {
 }
 
 .header1 {
-  height: 160px;
+  height: 140px;
   background: #17A2B8
 }
 
@@ -522,7 +522,7 @@ marquee #text2 {
 .header2 {
   color: #17A2B8;
   font-size: 18px;
-  line-height: 36px;
+  line-height: 30px;
   background: whitesmoke
 }
 

@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {Vaccine} from '../models/Vaccine';
 import {Page} from '../models/dto/page';
 import { SearchVaccine } from '../../admin/vaccine-storage/vaccine-storage.component';
+import { isThisHour } from 'date-fns';
 
 
 @Injectable({
@@ -14,6 +15,12 @@ export class VaccineService {
   private readonly URL = 'http://localhost:8080/api/v1';
 
   constructor(private http: HttpClient) { }
+
+  httpOptions = {
+    headers : new HttpHeaders({
+      'Content-Type' : 'application/json'
+    })
+  }
 
   getVaccineStorageOptions(name : string,category : string, country : string,
      inventoryStatus : string, page : number) : Object {
@@ -54,6 +61,10 @@ export class VaccineService {
   }
 
   exportVaccine(id : number, exportAmount : number) : Observable<Vaccine> {
-    return this.http.put<Vaccine>(this.URL + '/export-vaccine',null,this.getExportVaccineOptions(id,exportAmount))
+    return this.http.put<Vaccine>(this.URL + '/export-vaccine',null,this.getExportVaccineOptions(id,exportAmount));
+  }
+
+  importVaccine(vaccine : Vaccine) : Observable<Vaccine> {
+    return this.http.post<Vaccine>(this.URL + '/import-vaccine',vaccine,this.httpOptions);
   }
 }

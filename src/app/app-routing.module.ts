@@ -7,7 +7,7 @@ const routes: Routes = [
     path: '', component: BodyComponent
   },
   {
-    path: 'contact', loadChildren: () => import('./account/account.module').then(mod => mod.AccountModule)
+    path: 'account', loadChildren: () => import('./account/account.module').then(mod => mod.AccountModule)
   },
   {
     path: 'admin', loadChildren: () => import('./admin/admin.module').then(mod => mod.AdminModule)
