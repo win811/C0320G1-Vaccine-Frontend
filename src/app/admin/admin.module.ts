@@ -32,7 +32,6 @@ import { EditPatientInjectRequestComponent } from './patient-inject/edit-patient
     VaccineStorageComponent,
     ImportVaccineComponent,
     ExportVaccineComponent,
-    (this.AdminCenterComponent),
     EmployeeListComponent,
     EmployeeCreateComponent,
     EmployeeUpdateComponent,
