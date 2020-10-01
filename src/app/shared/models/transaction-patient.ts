@@ -1,8 +1,11 @@
+import { Account } from './Account';
+import { Vaccine } from './Vaccine';
+
 export interface Transaction {
     id: number;
-    vaccineId: number;
+    vaccine: Vaccine;
     amount: number;
-    accountId: number;
+    account: Account;
     transactionDate: Date;
     totalPrice: number;
 }

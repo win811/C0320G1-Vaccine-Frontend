@@ -9,7 +9,7 @@ import { MaterialModule } from '../material.module';
 import { ContactBoxComponent } from './contact-box/contact-box.component';
 import { ContactReplyComponent } from './contact-reply/contact-reply.component';
 import { MatSliderModule } from '@angular/material/slider';
-import { ScrollingModule} from '@angular/cdk/scrolling';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { EmployeeCreateComponent } from './employee/employee-create/employee-create.component';
 import { EmployeeListComponent } from './employee/employee-list/employee-list.component';
 import { EmployeeUpdateComponent } from './employee/employee-update/employee-update.component';
@@ -17,6 +17,7 @@ import { TransCenterComponent } from './finance-management/trans-center/trans-ce
 import { TransListComponent } from './finance-management/trans-w-patient/trans-list/trans-list.component';
 import { TransEditComponent } from './finance-management/trans-w-patient/trans-edit/trans-edit.component';
 import { PeriodicInjectionComponent } from './injection/periodic-injection/periodic-injection.component';
+import { TransDelComponent } from './finance-management/trans-w-patient/trans-del/trans-del.component';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 import { FooterComponent } from './admin-layout/footer/footer.component';
 import { NavbarComponent } from './admin-layout/navbar/navbar.component';
@@ -44,6 +45,7 @@ import { EditPatientInjectRequestComponent } from './patient-inject/edit-patient
     TransCenterComponent,
     TransListComponent,
     TransEditComponent,
+    TransDelComponent,
     AdminLayoutComponent,
     FooterComponent,
     NavbarComponent,
@@ -68,7 +70,9 @@ import { EditPatientInjectRequestComponent } from './patient-inject/edit-patient
     EmployeeCreateComponent,
     EmployeeUpdateComponent,
     ListInjectComponent,
-    EditPatientInjectRequestComponent
+    EditPatientInjectRequestComponent,
+    TransEditComponent,
+    TransDelComponent
   ],
 })
 export class AdminModule { }
