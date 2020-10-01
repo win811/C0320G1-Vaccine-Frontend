@@ -1,3 +1,4 @@
+import { AccountModule } from './account/account.module';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
@@ -21,8 +22,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     HttpClientModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AccountModule
   ],
+  // exports : [
+  //   HeaderComponent,
+  //   FooterComponent
+  // ],
   providers: [],
   bootstrap: [AppComponent]
 })

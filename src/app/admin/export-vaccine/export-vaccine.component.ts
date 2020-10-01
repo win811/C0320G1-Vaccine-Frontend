@@ -1,3 +1,4 @@
+import { ToastrService } from '../../../../node_modules/ngx-toastr';
 import { FormBuilder, FormGroup, ValidationErrors, Validators, AbstractControl } from '@angular/forms';
 import { Component, Input, OnInit, Output,EventEmitter } from '@angular/core';
 import { Vaccine } from '../../shared/models/Vaccine';
@@ -22,7 +23,8 @@ export class ExportVaccineComponent implements OnInit {
 
   constructor(
     private vaccineServcice : VaccineService,
-    private formBuilder : FormBuilder
+    private formBuilder : FormBuilder,
+    private toastr : ToastrService
   ) { }
 
   ngOnInit() {
@@ -32,7 +34,8 @@ export class ExportVaccineComponent implements OnInit {
   }
 
   doConfirm() {
-    this.export.emit(this.amountExport.value);
+    if (this.exportForm.valid) this.export.emit(this.amountExport.value);
+    else this.toastr.warning("Không thể xuất kho","Thông báo");
   }
 
   isNotANumber(control : AbstractControl) : ValidationErrors {

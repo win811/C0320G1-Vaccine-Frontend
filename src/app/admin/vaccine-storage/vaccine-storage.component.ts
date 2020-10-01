@@ -56,9 +56,12 @@ export class VaccineStorageComponent implements OnInit {
   }
 
   doExport() {
+    
     this.vaccineService.exportVaccine(this.exportVaccine.id,this.exportAmount).subscribe(data => {
       this.toastr.success("Xuất kho thành công","Thông báo");
       this.getPage(this.currentPage);
+    },error => {
+      this.toastr.error("Xuất kho thất bại","Thông báo");
     })
   }
 
