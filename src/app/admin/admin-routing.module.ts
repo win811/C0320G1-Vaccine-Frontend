@@ -15,20 +15,21 @@ import {ListPatientInjectRequestComponent} from './patient-inject/list-patient-i
 const routes: Routes = [
   
     {
-      path: '', component: AdminLayoutComponent, children: [
-      {path: 'employee-list', component: EmployeeListComponent },
-      {path: 'injected-list', component: PeriodicInjectionComponent },
-      {path: 'vaccine-storage', component: VaccineStorageComponent},
-      {path: 'contactBox', component: ContactBoxComponent},
-      {path: 'contact/:id', component: ContactReplyComponent},
-      {path: 'dailySchedule', component: ListDailyScheduleComponent},
-      {path: 'listPatientInjectRequest', component: ListPatientInjectRequestComponent},
-      {path: "finance", component: TransCenterComponent,
-          children: [
-            { path: "patient", component: TransListComponent }
-          ]
-      }
-    ]
+      path: '', component: AdminLayoutComponent, children: 
+      [
+        {path: 'employee-list', component: EmployeeListComponent },
+        {path: 'injected-list', component: PeriodicInjectionComponent },
+        {path: 'vaccine-storage', component: VaccineStorageComponent},
+        {path: 'contactBox', component: ContactBoxComponent},
+        {path: 'contact/:id', component: ContactReplyComponent},
+        {path: 'dailySchedule', component: ListDailyScheduleComponent},
+        {path: 'listPatientInjectRequest', component: ListPatientInjectRequestComponent},
+        {path: "finance", component: TransCenterComponent,
+            children: [
+              { path: "patient", component: TransListComponent }
+            ]
+        }
+      ]
     }
 ];
 

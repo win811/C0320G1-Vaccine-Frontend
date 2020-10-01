@@ -16,11 +16,11 @@ import { EmployeeService } from '../../../shared/services/employee.service';
 export class EmployeeListComponent implements OnInit {
 
   searchForm: FormGroup
-  private employeeList: Employee[] = [];
-  private totalElements: number;
-  private pageSize: number;
-  private currentPage: number;
-  private list: Employee[] = []
+   employeeList: Employee[] = [];
+   totalElements: number;
+   pageSize: number;
+   currentPage: number;
+   list: Employee[] = []
 
 
 

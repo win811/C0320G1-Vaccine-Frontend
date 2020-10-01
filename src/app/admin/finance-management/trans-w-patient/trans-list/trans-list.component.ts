@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Transaction } from '../../../../shared/models/transaction-patient';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder } from '../../../../../../node_modules/@angular/forms';
 import { TransactionService } from './../../../../shared/services/transaction.service';
 import { tap, map } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
@@ -38,7 +38,7 @@ export class TransListComponent implements OnInit {
       vaccineId: [""],
       accountName: [""],
     });
-
+    console.log("vào")
     this.getPage(1);
   }
 

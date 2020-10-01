@@ -1,11 +1,12 @@
-<div class="container m-0 mw-100 vh-100">
+<div class="container m-0 mw-100 vh-100 bg-white">
   <div class="text-center mt-4 mb-5">
-      <h2>Danh sách nhân viên </h2>
+      <h2 >Danh sách nhân viên </h2>
   </div>
+  
   <div class="mt-5 ">
       <form (ngSubmit)="search()" [formGroup]="searchForm">
           <div class="float-left col-sm-2 pl-0">
-              <button (click)="openDialog()" class="btn btn-success  " data-toggle="modal">
+              <button (click)="openDialog()" class="btn btn-outline-success " data-toggle="modal">
                   <i class="fas fa-plus-circle"></i> Tạo mới nhân viên</button>
           </div>
           <div class=" d-flex justify-content-end col-sm-7 mb-4 pr-0 float-right">
