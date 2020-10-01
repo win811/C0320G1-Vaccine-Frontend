@@ -70,3 +70,9 @@ i {
   max-width: 110px;
   display: inline-block
 }
+
+.hethongtrungtamtinhthanh i {
+  font-size: 24px;
+  margin-left: 0;
+  margin-right: 5px;
+}

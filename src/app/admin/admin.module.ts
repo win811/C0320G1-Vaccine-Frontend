@@ -23,18 +23,22 @@ import { FooterComponent } from './admin-layout/footer/footer.component';
 import { NavbarComponent } from './admin-layout/navbar/navbar.component';
 import { SidebarComponent } from './admin-layout/sidebar/sidebar.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ListDailyScheduleComponent } from './daily-schedule/list-daily-schedule/list-daily-schedule.component';
+import { ListInjectComponent } from './daily-schedule/list-inject/list-inject.component';
+import { ListPatientInjectRequestComponent } from './patient-inject/list-patient-inject-request/list-patient-inject-request.component';
+import { EditPatientInjectRequestComponent } from './patient-inject/edit-patient-inject-request/edit-patient-inject-request.component';
 
 @NgModule({
   declarations: [
-    VaccineStorageComponent, 
-    ImportVaccineComponent, 
+    VaccineStorageComponent,
+    ImportVaccineComponent,
     ExportVaccineComponent,
     AdminCenterComponent,
-    EmployeeListComponent, 
-    EmployeeCreateComponent, 
+    EmployeeListComponent,
+    EmployeeCreateComponent,
     EmployeeUpdateComponent,
     ContactBoxComponent,
-    EmployeeListComponent, 
+    EmployeeListComponent,
     EmployeeCreateComponent,
     ContactReplyComponent,
     PeriodicInjectionComponent,
@@ -45,7 +49,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AdminLayoutComponent,
     FooterComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    ListDailyScheduleComponent,
+    ListInjectComponent,
+    ListPatientInjectRequestComponent,
+    EditPatientInjectRequestComponent
   ],
   imports: [
     CommonModule,
@@ -60,7 +68,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
   ],
   entryComponents: [
     EmployeeCreateComponent,
-    EmployeeUpdateComponent
+    EmployeeUpdateComponent,
+    ListInjectComponent,
+    EditPatientInjectRequestComponent
   ],
 })
 export class AdminModule { }

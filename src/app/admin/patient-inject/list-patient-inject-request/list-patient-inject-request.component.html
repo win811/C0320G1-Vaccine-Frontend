@@ -1,0 +1,97 @@
+<div class="container mt-3" id="container">
+  <div class="row ml-5" id="content">
+    <h2>Danh sách bệnh nhân tiêm chủng theo yêu cầu</h2>
+
+
+    <div class="searchDate col-sm-9  mt-2">
+      <form [formGroup]="formSearch" >
+        <div class="d-flex">
+          <div class="searchNameVaccine">
+            Tên bệnh nhân:
+            <div class="d-flex searchNameVaccine1">
+              <div class="ml-1">
+                <input class="searchNameVaccine2" placeholder="Tên bệnh nhân" formControlName="namePatient">
+              </div>
+            </div>
+          </div>
+          <div class="searchStatus">
+            Tình trạng :
+            <div class="d-flex searchStatus1">
+              <div class="ml-1">
+                <label>
+                  <select class="custom-select" formControlName="isInject" >
+                    <option value="chưa tiêm">chưa tiêm</option>
+                    <option value="đã tiêm">đã tiêm</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div>
+            <button class="buttonSearch"  (click)="search()">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <table class="table table-striped custab">
+      <thead class="bg-primary table-hover">
+      <tr id="trHead">
+        <th>Mã bệnh nhân</th>
+        <th>Họ và tên</th>
+        <th>Ngày sinh</th>
+        <th>Người giám hộ</th>
+        <th>Số điện thoại</th>
+        <th>Điện chỉ</th>
+        <th>Tên vắt xin</th>
+        <th>Loại vắt xin</th>
+        <th>Tình trạng</th>
+        <th class="text-center">Thao tác</th>
+      </tr>
+      </thead>
+      <tr class="tr" *ngFor="let patient of patients">
+        <td>{{patient.patient.code}}</td>
+        <td>{{patient.patient.fullName}}</td>
+        <td style="width: 10%">{{patient.patient.birthday}}</td>
+        <td>{{patient.patient.parentName}}</td>
+        <td>{{patient.patient.phoneNumber}}</td>
+        <td>{{patient.patient.address}}</td>
+        <td>{{patient.vaccine.name}}</td>
+        <td>{{patient.vaccine.category}}</td>
+        <td>{{patient.isInjected}}</td>
+        <td class="text-center">
+          <button  class="select_hover_edit" (click)="edit(patient.id)">
+            <i class="far fa-edit"></i>
+            <p class="hiddenEdit">
+              cập nhật
+            </p>
+          </button>
+        </td>
+      </tr>
+
+    </table>
+    <div class="clearfix">
+      <ul class="pagination ">
+        <li class="page-item">
+          <button class="page-link mr-3 firstPage"
+                  (click)="first()">Trang đầu
+          </button>
+        </li>
+        <li class="page-item">
+          <button class="page-link action mr-1" (click)="previous()" *ngIf="pageNumber!=0">Lui</button>
+        </li>
+        <li class="page-item  "><a class="page-link title">{{pageNumber + 1}} / {{totalPages}}</a></li>
+        <li class="page-item">
+          <button class="page-link action ml-1" (click)="next()"  *ngIf="pageNumber!=totalPages-1">Tới</button>
+        </li>
+        <li class="page-item">
+          <button class="page-link ml-3 lastPage"
+                  (click)="last()">Trang cuối
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
