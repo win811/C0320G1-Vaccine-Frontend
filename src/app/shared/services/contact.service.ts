@@ -10,12 +10,19 @@ export class ContactService {
 
   constructor(private  http: HttpClient) {
   }
+
   addNewContact(contact): Observable<any> {
     const link = this.API_URL_CONTACT;
     return this.http.post(link, contact);
   }
-  getAllEmployee(page): Observable<any> {
+
+  getAllContact(page): Observable<any> {
     const link = this.API_URL_CONTACT + '?page=' + page + '&size=' + 10;
+    return this.http.get(link);
+  }
+
+  getContactById(id): Observable<any> {
+    const link = this.API_URL_CONTACT + '/' + id;
     return this.http.get(link);
   }
 }
