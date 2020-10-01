@@ -1,0 +1,57 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <span class="glyphicon glyphicon-list"></span>Danh sách người tiêm
+    <div class="pull-right action-buttons">
+      <div class="btn-group pull-right">
+        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+          <span class="glyphicon glyphicon-cog" style="margin-right: 0px;"></span>
+        </button>
+        <ul class="dropdown-menu slidedown">
+          <li><a href="#"><span class="glyphicon glyphicon-pencil"></span>Sửa</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-trash"></span>Xóa</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-flag"></span>Cờ</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="panel-body">
+    <ul class="list-group" *ngFor="let inject of listInjects; index as i">
+      <li class="list-group-item">
+        <div class="checkbox">
+          <label style="font-size: 13px">
+            {{i+1}}. {{inject.patient.fullName}}
+          </label>
+        </div>
+        <div class="pull-right action-buttons">
+          <a href=""><span class="glyphicon glyphicon-pencil"></span></a>
+          <a href="" class="trash"><span class="glyphicon glyphicon-trash"></span></a>
+          <a href="" class="flag"><span class="glyphicon glyphicon-flag"></span></a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="panel-footer">
+    <div class="row">
+      <div class="col-md-6">
+        <h6>
+          Tổng người <span class="label label-info">{{totalElements}}</span></h6>
+      </div>
+      <div class="col-md-6">
+        <ul class="pagination pagination-sm pull-right">
+          <li><button (click)="previous()">lui</button></li>
+          <li><button>{{pageNumber+1}}/{{totalPages}}</button></li>
+          <li><button (click)="next()">tới</button></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<footer id="modal-footer" style="float: right">
+  <button  mat-raised-button class="btn btn-primary mr-3" id="modal-cancel-button" mat-dialog-close>Hủy</button>
+  <button mat-raised-button class="btn btn-warning mr-3" id="modal-submit-button" mat-dialog-close>OK</button>
+</footer>
+
