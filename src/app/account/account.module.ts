@@ -6,15 +6,26 @@ import {AccountRoutingModule} from './account-routing.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ToastrModule} from 'ngx-toastr';
 import { AccountLayoutComponent } from './account-layout/account-layout.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+
 
 @NgModule({
-  declarations: [ContactComponent, AccountLayoutComponent],
+  declarations: [
+    ContactComponent, 
+    AccountLayoutComponent,
+    FooterComponent,
+    HeaderComponent
+  ],
   imports: [
     CommonModule,
     AccountRoutingModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
-    AppModule
+  ],
+  exports : [
+    FooterComponent,
+    HeaderComponent
   ]
 })
 export class AccountModule { }
