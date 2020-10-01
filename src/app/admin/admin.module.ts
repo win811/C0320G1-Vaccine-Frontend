@@ -5,7 +5,6 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { VaccineStorageComponent } from './vaccine-storage/vaccine-storage.component';
 import { ImportVaccineComponent } from './import-vaccine/import-vaccine.component';
 import { ExportVaccineComponent } from './export-vaccine/export-vaccine.component';
-import { AdminCenterComponent } from './admin-center/admin-center.component';
 import { MaterialModule } from '../material.module';
 import { ContactBoxComponent } from './contact-box/contact-box.component';
 import { ContactReplyComponent } from './contact-reply/contact-reply.component';
@@ -33,7 +32,7 @@ import { EditPatientInjectRequestComponent } from './patient-inject/edit-patient
     VaccineStorageComponent,
     ImportVaccineComponent,
     ExportVaccineComponent,
-    AdminCenterComponent,
+    (this.AdminCenterComponent),
     EmployeeListComponent,
     EmployeeCreateComponent,
     EmployeeUpdateComponent,

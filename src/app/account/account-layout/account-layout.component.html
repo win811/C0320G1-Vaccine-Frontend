@@ -1,0 +1,19 @@
+<app-header></app-header>
+<div class="row">
+    <div class="col-md-2 static">
+        
+        <ul class="nav-news-feed">
+            <li><i class="fas fa-reply-all icon1"></i><div><a routerLink="/account/contact">Gửi phản hồi</a></div></li>
+            <li><i class="fa fa-users icon2"></i><div><a href="#">People Nearby</a></div></li>
+            <li><i class="fa fa-user icon3"></i><div><a href="#">Friends</a></div></li>
+            <li><i class="fa fa-comments icon4"></i><div><a href="#">Messages</a></div></li>
+            <li><i class="fas fa-images icon5"></i><div><a href="#">Images</a></div></li>
+            <li><i class="fas fa-camera-retro icon6"></i><div><a href="#">Videos</a></div></li>
+        </ul>
+        
+    </div>
+    <div class="container-fluid col-md-10">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+<app-footer></app-footer>

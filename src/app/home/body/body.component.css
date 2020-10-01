@@ -63,7 +63,7 @@
 }
 
 .slide-1 {
-  background-image: url("https://imagizer.imageshack.com/v2/1600x1200q90/923/0QWyOT.jpg");
+  background-image: url("https://www.gannett-cdn.com/-mm-/70b4cd59be29df8697308165711948ed641c0add/c=0-111-2119-1303/local/-/media/2020/09/10/USATODAY/usatsports/coronavirus-vaccine-bottles.jpg?width=2119&height=1192&fit=crop&format=pjpg&auto=webp");
   background-repeat: no-repeat;
 }
 
@@ -278,7 +278,8 @@ img:hover {
 .body1 .titleImage span {
   font-weight: bold;
   font-family: Arial, cursive;
-  font-size: 17px
+  font-size: 17px;
+  color: white;
 }
 
 .body2 {
