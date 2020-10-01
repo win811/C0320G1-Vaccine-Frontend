@@ -44,7 +44,11 @@ export class ImportVaccineComponent implements OnInit {
       this.vaccineService.importVaccine(vaccine).subscribe(data => {
         console.log(data);
         this.toastr.success("Nhập kho thành công","Thông báo");
+      },error => {
+        this.toastr.error("Nhập kho thất bại","Thông báo");
       })
+    } else {
+      this.toastr.warning("Không thể nhập kho","Thông báo")
     }
   }
 

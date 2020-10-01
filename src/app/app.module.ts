@@ -24,6 +24,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ToastrModule.forRoot(),
     BrowserAnimationsModule
   ],
+  exports : [
+    HeaderComponent,
+    FooterComponent
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

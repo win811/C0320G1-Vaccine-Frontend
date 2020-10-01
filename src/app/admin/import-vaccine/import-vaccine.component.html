@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="row">
-                    <label class="col-sm-5 pr-0 col-form-label">Tên vắc xin :</label>
+                    <label class="col-sm-5 pr-0 col-form-label">Tên vắc xin <span class="text-danger">*</span> :</label>
                     <div class="col-sm-7">
                         <input type="text" class="form-control" formControlName="name">
                         <div *ngIf="importForm.get('name').touched">
@@ -22,7 +22,7 @@
             </div>
             <div class="col-lg-6 ">
                 <div class="row ml-2 ">
-                    <label  class="col-sm-5 pr-0 col-form-label">Hàm lượng :</label>
+                    <label  class="col-sm-5 pr-0 col-form-label">Hàm lượng(ml) <span class="text-danger">*</span> :</label>
                     <div class="col-sm-7">
                         <input type="number" class="form-control" formControlName="content">
                         <div *ngIf="content.touched">
@@ -39,7 +39,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="row mt-4">
-                    <label class="col-sm-5 pr-0 col-form-label">Loại vắc xin :</label>
+                    <label class="col-sm-5 pr-0 col-form-label">Loại vắc xin <span class="text-danger">*</span> :</label>
                     <div class="col-sm-7">
                         <input type="text" name="name" class="form-control" formControlName="category">
                         <div *ngIf="category.touched">
@@ -54,7 +54,7 @@
             </div>
             <div class="col-lg-6 ">
                 <div class="row ml-2 mt-4">
-                    <label  class="col-sm-5 pr-0 col-form-label">Số lượng :</label>
+                    <label  class="col-sm-5 pr-0 col-form-label">Số lượng <span class="text-danger">*</span> :</label>
                     <div class="col-sm-7">
                         <input type="number" name="phone" class="form-control" formControlName="amount">
                         <div *ngIf="amount.touched">
@@ -71,7 +71,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="row mt-4">
-                    <label class="col-sm-5 pr-0 col-form-label">Ngày nhập :</label>
+                    <label class="col-sm-5 pr-0 col-form-label">Ngày nhập <span class="text-danger">*</span> :</label>
                     <div class="col-sm-7">
                         <input type="date" max="{{today | date: 'yyyy-MM-dd'}}" formControlName="receiveDate" class="form-control" >
                         <div *ngIf="receiveDate.touched">
@@ -86,7 +86,7 @@
             </div>
             <div class="col-lg-6">
                 <div class="row ml-2 mt-4">
-                    <label class="col-sm-5 pr-0 col-form-label">Hạn sử dụng :</label>
+                    <label class="col-sm-5 pr-0 col-form-label">Hạn sử dụng <span class="text-danger">*</span> :</label>
                     <div class="col-sm-7">
                         <input type="date" min="{{today | date: 'yyyy-MM-dd'}}" formControlName="expiryDate" class="form-control">
                         <div *ngIf="expiryDate.touched">
@@ -103,7 +103,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="row mt-4">
-                    <label  class="col-sm-5 pr-0 col-form-label">Số giấy phép :</label>
+                    <label  class="col-sm-5 pr-0 col-form-label">Số giấy phép <span class="text-danger">*</span> :</label>
                     <div class="col-sm-7">
                         <input type="text" formControlName="licenseCode" class="form-control">
                         <div *ngIf="licenseCode.touched">
@@ -118,7 +118,7 @@
             </div>
             <div class="col-lg-6 ">
                 <div class="row ml-2 mt-4">
-                    <label  class="col-sm-5 pr-0 col-form-label">Bảo quản :</label>
+                    <label  class="col-sm-5 pr-0 col-form-label">Bảo quản <span class="text-danger">*</span> :</label>
                     <div class="col-sm-7">
                         <input type="text" formControlName="conditions" class="form-control">
                         <div *ngIf="conditions.touched">
@@ -135,7 +135,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="row mt-4">
-                    <label  class="col-sm-5 pr-0 col-form-label">Nước sản xuất :</label>
+                    <label  class="col-sm-5 pr-0 col-form-label">Nước sản xuất <span class="text-danger">*</span> :</label>
                     <div class="col-sm-7">
                         <input type="text" formControlName="country" class="form-control">
                         <div *ngIf="country.touched">
@@ -150,7 +150,7 @@
             </div>
             <div class="col-lg-6 ">
                 <div class="row ml-2 mt-4">
-                    <label class="col-sm-5 pr-0 col-form-label">Độ tuổi :</label>
+                    <label class="col-sm-5 pr-0 col-form-label">Độ tuổi <span class="text-danger">*</span> :</label>
                     <div class="col-sm-7">
                         <input type="number" formControlName="limitAge" class="form-control">
                         <div *ngIf="limitAge.touched">
@@ -167,7 +167,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="row mt-4">
-                    <label  class="col-sm-5 pr-0 col-form-label">Đơn giá :</label>
+                    <label  class="col-sm-5 pr-0 col-form-label">Đơn giá(/ml) <span class="text-danger">*</span> :</label>
                     <div class="col-sm-7">
                         <input type="number" formControlName="price" class="form-control">
                         <div *ngIf="price.touched">
