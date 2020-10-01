@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {ContactComponent} from './contact/contact.component';
 import {TableVacxinComponent} from './table-vacxin/table-vacxin.component';
+import {RegistrationVaccinationComponent} from './registration-vaccination/registration-vaccination.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,8 @@ const routes: Routes = [
       }
       ,{
         path: 'vacxin', component: TableVacxinComponent
+      } ,{
+        path: 'registration', component: RegistrationVaccinationComponent
       }
     ]
   }

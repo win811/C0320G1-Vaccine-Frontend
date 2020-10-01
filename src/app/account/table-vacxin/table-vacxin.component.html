@@ -1,54 +1,87 @@
-<div class="container m-0 mw-100 vh-100">
-  <div class="text-center mt-4 mb-5">
-    <h2>Danh sách Vắc xin </h2>
-  </div>
-  <div class="mt-5 ">
-    <form  [formGroup]="searchForm">
-      <div class=" d-flex justify-content-end col-sm-10 float-right">
+<div class="container-fluid ">
 
-        <input class="form-control mr-2" type="text" placeholder="Tên Vắc-xin" formControlName="name">
-        <input class="form-control mr-2" type="text" placeholder="Loại Vắc-xin" formControlName="category">
-        <input class="form-control mr-2" type="text" placeholder="Nước Sản Xuất" formControlName="country">
-        <select class="form-control mr-2" style="height: 36px;" formControlName="conditions">
-          <option [selected]=true disabled>Lựa chọn</option>
-          <option>Còn Hàng</option>
-          <option>Đã Hết</option>
-        </select>
-        <button class="btn btn-outline-info" style="border: 0;margin: 0">Tìm kiếm</button>
-      </div>
-
-    </form>
-    <table class="table table-striped table-lg">
-      <thead class="bg-info text-white ">
-      <tr>
-        <th class="pb-3">Mã nhân viên</th>
-        <th class="pb-3">Tên Vắc-xin</th>
-        <th class="pb-3">Loại Vắc-xin</th>
-        <th class="pb-3">Nước Sản Xuất</th>
-        <th class="pb-3">Độ Tuổi Tiêm Chủng</th>
-        <th class="pb-3">Tình Trạng Vắc-xin</th>
-        <th class="pb-3">Đăng Kí Tiêm</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr
-        *ngFor="let vaccine of vaccines ">
-        <td>{{vaccine.id}}</td>
-        <td>{{vaccine.name}}</td>
-        <td>{{vaccine.category}}</td>
-        <td>{{vaccine.country}}</td>
-        <td>{{vaccine.limitAge}}</td>
-        <td>{{vaccine.conditions}}</td>
-      </tr>
-
-      </tbody>
-    </table>
-    <div class="mt-4 mb-4">
-
-
-<!--      <div class="pagination float-right">-->
-<!--        <pagination-controls (pageChange)="getPage($event)"></pagination-controls>-->
-<!--      </div>-->
+  <div class="row mt-4">
+    <div class="col d-flex justify-content-center">
+      <h2>BẢNG THÔNG TIN VẮC XIN CỦA TRUNG TÂM</h2>
     </div>
   </div>
+
+  <div class="row mt-5">
+    <div class="col-md-1">
+      <!--      <button class="btn btn-outline-success" data-toggle="modal" data-target="#importModal">-->
+      <!--        <i class="fas fa-plus-circle"></i> Nhập vắc xin-->
+      <!--      </button>-->
+    </div>
+
+    <div class=" d-flex justify-content-end col-md-9 ">
+      <input style="width: 120px;" #focusOn class="form-control mr-3"
+             [(ngModel)]="currentSearchVaccine.name" type="text" placeholder="Tên vắc xin">
+      <input style="width: 120px;" class="form-control mr-3"
+             [(ngModel)]="currentSearchVaccine.category" type="text" placeholder="Loại vắc xin">
+      <input style="width: 140px;" class="form-control mr-3"
+             [(ngModel)]="currentSearchVaccine.country" type="text" placeholder="Nước sản xuất">
+      <select style="width: auto; height: 36px" class="form-control"
+              [(ngModel)]="currentSearchVaccine.inventoryStatus" id="exampleFormControlSelect1">
+        <option selected disabled value="">Tình trạng vắc xin</option>
+        <option value="">Tất cả</option>
+        <option value="còn">Còn</option>
+        <option value="hết">Hết</option>
+      </select>
+      <button class="btn btn-outline-info ml-3" (click)="search()">
+        <i class="fas fa-search"></i> Tìm kiếm
+      </button>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col">
+      <div *ngIf="vaccineList?.length == 0" class="text-danger mb-4">
+        <h5>Không tìm thấy dữ liệu phù hợp</h5>
+      </div>
+      <table class="table table-light text-center table-sm ">
+        <thead class="bg-info text-white">
+        <tr class="">
+          <th class="">Tên Vắc-xin</th>
+          <th class="">Loại Vắc-xin</th>
+          <th class="">Nước sản xuất</th>
+          <th class="">Độ tuổi tiêm chủng</th>
+          <th class="">Tình trạng</th>
+          <th class="">Đăng ký tiêm</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr
+          *ngFor="let vaccine of vaccineList | paginate : {itemsPerPage: pageSize, currentPage: currentPage, totalItems: totalElements}; index as i">
+          <td>{{vaccine.name}}</td>
+          <td>{{vaccine.category}}</td>
+          <td>{{vaccine.country}}</td>
+          <td>{{vaccine.limitAge < 0 ? ("Dưới " + vaccine.limitAge / -1) : ("Trên " + vaccine.limitAge) }}</td>
+          <td>{{vaccine.inventoryStatus}}</td>
+          <td>
+            <button class="btn btn-warning"
+                    (click)="registrationVaccination()">
+              Đăng ký tiêm
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="mt-3 d-flex justify-content-end">
+    <pagination-controls (pageChange)="getPage($event)"></pagination-controls>
+  </div>
+
+
+  <!--Export-->
+  <div class="modal fade" id="exportModal">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <app-export-vaccine *ngIf="exportVaccine" (export)="exportConfirm($event)"
+                            [vaccine]="exportVaccine"></app-export-vaccine>
+      </div>
+    </div>
+  </div>
+
 </div>

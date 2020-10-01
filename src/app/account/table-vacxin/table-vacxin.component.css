@@ -1,20 +1,10 @@
-
-::ng-deep.mat-dialog-container {
-  padding: 0px !important;
-  overflow: hidden !important;
+.col-form-label{
+  font-weight: bold;
+  text-align: left;
 }
-
-.form-control{
-  width: auto !important;
+td,th {
+  vertical-align: middle !important ;
 }
-
-.fa-edit:hover,
-.fa-edit:active{
-  color: #ebb20a !important;
-}
-
-.fa-trash-alt:hover,
-.fa-trash-alt:active{
-  color: #c41f30 !important;
-}
-
+/* .container-fluid{
+    margin-top: 100px !important;
+} */

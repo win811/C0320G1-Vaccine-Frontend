@@ -5,7 +5,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { VaccineStorageComponent } from './vaccine-storage/vaccine-storage.component';
 import { ImportVaccineComponent } from './import-vaccine/import-vaccine.component';
 import { ExportVaccineComponent } from './export-vaccine/export-vaccine.component';
-import { AdminCenterComponent } from './admin-center/admin-center.component';
+// import { AdminCenterComponent } from './admin-center/admin-center.component';
 import { MaterialModule } from '../material.module';
 import { ContactBoxComponent } from './contact-box/contact-box.component';
 import { ContactReplyComponent } from './contact-reply/contact-reply.component';
@@ -30,7 +30,7 @@ import {NotificationsComponent} from './notifications/notifications.component';
     VaccineStorageComponent,
     ImportVaccineComponent,
     ExportVaccineComponent,
-    AdminCenterComponent,
+    // AdminCenterComponent,
     EmployeeListComponent,
     EmployeeCreateComponent,
     EmployeeUpdateComponent,
@@ -64,5 +64,8 @@ import {NotificationsComponent} from './notifications/notifications.component';
     EmployeeCreateComponent,
     EmployeeUpdateComponent
   ],
+  exports: [
+    ExportVaccineComponent
+  ]
 })
 export class AdminModule { }
