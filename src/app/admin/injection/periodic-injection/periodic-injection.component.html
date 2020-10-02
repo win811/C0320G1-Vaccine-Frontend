@@ -1,6 +1,6 @@
-<div class="container m-0 mw-100 vh-100">
-    <div class="text-center mt-4 mb-5">
-        <h2>Danh sách bệnh nhân đã đăng ký tiêm chuẩn theo định kỳ của trung tâm </h2>
+<div class="container m-0 mw-100 bg-white vh-100">
+    <div class="text-center text-info mt-4 mb-5">
+        <h2>Danh sách bệnh nhân đã đăng ký tiêm định kỳ</h2>
     </div>
     <div class="mt-5 ">
         <form (ngSubmit)="search()" [formGroup]="searchForm">
@@ -11,7 +11,7 @@
                     <option value="Chưa tiêm">Chưa tiêm</option>
                     <option value="Đã tiêm">Đã tiêm</option>
                 </select>
-                <button class="btn btn-outline-success ml-3">Tìm kiếm</button>
+                <button class="btn btn-outline-info ml-3">Tìm kiếm</button>
             </div>
 
         </form>

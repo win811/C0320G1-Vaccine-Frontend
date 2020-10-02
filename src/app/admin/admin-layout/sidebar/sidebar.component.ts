@@ -10,10 +10,11 @@ declare interface RouteInfo {
 export const ROUTES: RouteInfo[] = [
   { path: 'employee-list', title: 'Quản lý nhân viên', icon: 'person', class: '' },
   { path: 'vaccine-storage', title: 'Kho vắc xin', icon: 'content_paste', class: '' },
+  { path: 'dailySchedule' , title: 'Lịch tiêm địch kỳ', icon: 'list', class: ''},
   { path: 'injected-list', title: 'DS tiêm định kỳ', icon: 'library_books', class: '' },
+  { path: 'listPatientInjectRequest', title: 'DS tiêm yêu cầu', icon: 'import_contacts', class: '' },
   { path: 'contactBox', title: 'Hộp thư phản hồi', icon: 'contact_mail', class: '' },
-  { path: 'finance/patient', title: 'Giao dịch với KH', icon: 'location_on', class: '' },
-  { path: '/notifications', title: 'Notifications', icon: 'notifications', class: '' },
+  { path: 'finance/patient', title: 'Giao dịch với KH', icon: 'local_atm', class: '' }, 
   // { path: '/upgrade', title: 'Upgrade to PRO', icon: 'unarchive', class: 'active-pro' },
 ];
 
