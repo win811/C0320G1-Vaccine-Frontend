@@ -1,10 +1,11 @@
 /*       container trang danh sách        */
 #container {
-  border: 1px black solid;
+  /* border: 1px black solid; */
   padding: 1px;
   height: 650px;
   margin-right: 30px;
-  background: -webkit-linear-gradient(top, whitesmoke 100%, #cce7f0 0%)
+  background: -webkit-linear-gradient(top, #cce7f0 0%);
+  background-color: white;
 }
 
 .container #content {

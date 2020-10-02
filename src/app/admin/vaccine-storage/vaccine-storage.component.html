@@ -1,7 +1,7 @@
 <div class="container-fluid bg-white">
 
     <div class="row">
-        <div class="col d-flex justify-content-center">
+        <div class="col text-info d-flex justify-content-center">
             <h2>Quản lý kho vắc xin</h2>
         </div>
     </div>
@@ -62,7 +62,7 @@
                         <td>{{vaccine.receiveDate | date : "dd-MM-yyyy"}}</td>
                         <td>{{vaccine.licenseCode}}</td>
                         <td>{{vaccine.country}}</td>
-                        <td>{{vaccine.content}}</td>
+                        <td>{{vaccine.content}} ml</td>
                         <td>{{vaccine.amount}}</td>
                         <td>{{vaccine.expiryDate | date : "dd-MM-yyyy"}}</td>
                         <td>{{vaccine.conditions}}</td>
