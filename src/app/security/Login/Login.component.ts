@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import {AccountService} from '../../shared/services/account.service';
 import {Login} from '../../shared/models/Login';
 import {TokenStorageService} from '../../shared/services/TokenStorageService';
-import {$} from 'protractor';
+import {MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-sigin',
@@ -26,7 +26,8 @@ export class LoginComponent implements OnInit {
   constructor(public formBuilder: FormBuilder,
               public route: Router,
               public accountService: AccountService,
-              public tokenStorage: TokenStorageService) { }
+              public tokenStorage: TokenStorageService,
+              public dialogRef: MatDialogRef<LoginComponent>) { }
 
   ngOnInit() {
     this.formLogin = this.formBuilder.group({
@@ -42,6 +43,7 @@ export class LoginComponent implements OnInit {
       console.table(data);
       this.tokenStorage.saveToken(data, this.isRemember);
     });
+    this.dialogRef.close();
   }
   remember($event) {
     this.isRemember = $event.target.checked;
