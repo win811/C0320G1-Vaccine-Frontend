@@ -24,6 +24,7 @@ import {
   MatRadioModule, MatSelectModule,
   MatStepperModule
 } from '@angular/material';
+import { GuestLayoutComponent } from './guest-layout/guest-layout.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -36,7 +37,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     FooterComponent,
     HeaderComponent,
     TableVacxinComponent,
-    RegistrationVaccinationComponent
+    RegistrationVaccinationComponent,
+    GuestLayoutComponent
   ],
   imports: [
     CommonModule,
