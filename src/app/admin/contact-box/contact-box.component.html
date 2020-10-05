@@ -68,7 +68,7 @@
                   </ul>
                 </div>
                 <ul class="unstyled inbox-pagination">
-                  <li><span>1-20 trong số 234</span></li>
+                  <li><span>1-10 trong số 234</span></li>
                   <li>
                     <a href="#" class="np-btn"><i class="fa fa-angle-left  pagination-left"></i></a>
                   </li>
@@ -84,13 +84,15 @@
                   <td class="inbox-small-cells">
                     <input type="checkbox" class="mail-checkbox">
                   </td>
-                  <td *ngIf="contact.status =='Chưa xử lí'" class="view-message"><span
-                    class="label label-danger">{{contact.status}}</span></td>
-                  <td *ngIf="contact.status =='Đang xử lí'" class="view-message"><span class="label label-warning">{{contact.status}}</span></td>
-                  <td *ngIf="contact.status =='hoàn thành'" class="view-message"><span class="label label-success">{{contact.status}}</span></td>
+                  <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
                   <td class="view-message  dont-show">{{contact.fullName}}</td>
+                  <td *ngIf="contact.status =='Chưa xử lí'" class="view-message"><span
+                    class="badge badge-danger">{{contact.status}}</span></td>
+                  <td *ngIf="contact.status =='Đang xử lí'" class="view-message"><span class="badge badge-warning">{{contact.status}}</span></td>
+                  <td *ngIf="contact.status =='hoàn thành'" class="view-message"><span class="badge badge-success">{{contact.status}}</span></td>
                   <td class="view-message ">
                     <a [routerLink]="['/admin/contact',contact.id]">{{contact.subject}}</a></td>
+
                   <td class="view-message  inbox-small-cells"><i class="fa fa-paperclip"></i></td>
                   <td class="view-message  text-right">{{contact.receivingTime|date:'medium'}}</td>
                 </tr>
