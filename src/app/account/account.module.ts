@@ -25,6 +25,7 @@ import {
   MatStepperModule
 } from '@angular/material';
 import { GuestLayoutComponent } from './guest-layout/guest-layout.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -63,6 +64,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatRadioModule,
     MatDatepickerModule,
     MatSelectModule,
+    NgbModule
   ],
   exports : [
     FooterComponent,

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {TranslateService} from '../../../../node_modules/@ngx-translate/core';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import {LoginComponent} from '../../security/Login/Login.component';
+import { JwtResponse } from '../../shared/models/dto/jwt-response';
+import { TokenStorageService } from '../../shared/services/TokenStorageService';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -10,15 +13,30 @@ import {LoginComponent} from '../../security/Login/Login.component';
 })
 export class HeaderComponent implements OnInit {
   language = 'vi';
-
+  userLogged: JwtResponse;
+  isLogged: boolean;
   constructor(
     private translate: TranslateService,
-    public matDialog: MatDialog) {
+    public matDialog: MatDialog,private tokenStorage: TokenStorageService, private activatedRoute: ActivatedRoute) {
     translate.setDefaultLang('vi');
     translate.use('vi');
   }
 
   ngOnInit() {
+    if (this.tokenStorage.getJwtResponse() != null) {
+      this.userLogged = this.tokenStorage.getJwtResponse();
+      this.isLogged = (this.tokenStorage.getJwtResponse().accountName != null);
+      console.log(this.isLogged);
+    } else {
+      console.log("chuwa ddawng nhap");
+      this.isLogged = false;
+    }
+    this.activatedRoute.queryParamMap.subscribe(value => {
+      const returnUrl = value.get('returnUrl');
+      if (returnUrl) {
+        this.openModal();
+      }
+    })
   }
 
   switchLanguage(language: string){

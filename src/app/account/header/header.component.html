@@ -171,11 +171,27 @@
         {{'row5.34' | translate}}
       </a>
     </div>
-    <div class=" ml-5 button login">
+    <div *ngIf="!isLogged" class=" ml-5 button login">
       <a (click)="openModal()">
         {{'row5.35' | translate}}   
       </a>
     </div>
+    <div *ngIf="isLogged" class="nav-item dropdown d-inline-flex ml-2">
+
+      <a type="button" class="dropdown-toggle _3unRI btn-outline-primary" placement="bottom"
+          [ngbPopover]="popContent">
+        
+          {{userLogged?.name}}
+
+      </a>
+      <ng-template #popContent>
+          <button type="button" class="list-item text-center " >Xem hồ sơ</button>
+          <hr class="line">
+          <button type="button" data-toggle="modal" data-target="#exampleModal"
+              class="list-item text-center">Đăng xuất</button>
+
+      </ng-template>
+  </div>
   </div>
  
    

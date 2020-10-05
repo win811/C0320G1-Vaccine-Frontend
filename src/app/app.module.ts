@@ -13,6 +13,7 @@ import { LoginComponent } from './security/Login/Login.component';
 import {MatDialogModule} from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
 import { SiginComponent } from './security/sigin/sigin.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { SiginComponent } from './security/sigin/sigin.component';
     AccountModule,
     MatDialogModule,
     ReactiveFormsModule,
+   
   ],
   providers: [],
   bootstrap: [AppComponent],
