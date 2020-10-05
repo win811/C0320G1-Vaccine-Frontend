@@ -7,6 +7,7 @@ import {TableVacxinComponent} from './table-vacxin/table-vacxin.component';
 import {RegistrationVaccinationComponent} from './registration-vaccination/registration-vaccination.component';
 
 const routes: Routes = [
+  
   { path: '', component: AccountLayoutComponent, children : [
       
     ]
@@ -18,9 +19,7 @@ const routes: Routes = [
   ]
   },
   
-
 ];
-
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

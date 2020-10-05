@@ -12,22 +12,22 @@ import { InjectionHistoryService } from './../../../shared/services/injection-hi
   styleUrls: ['./periodic-injection.component.css']
 })
 export class PeriodicInjectionComponent implements OnInit {
-  searchForm: FormGroup
+  searchForm: FormGroup;
   private injectionList: InjectionHistoryDTO[] = [];
   private totalElements: number;
   private pageSize: number;
   private currentPage: number;
-  private list: InjectionHistoryDTO[] = []
+  private list: InjectionHistoryDTO[] = [];
 
 
   constructor(private injectionService: InjectionHistoryService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.searchForm = this.formBuilder.group({
-      fullName: [""],
-      injected: [""]
-    })
-    this.getPage(1)
+      fullName: [''],
+      injected: ['']
+    });
+    this.getPage(1);
 
   }
 
@@ -50,18 +50,18 @@ export class PeriodicInjectionComponent implements OnInit {
       }),
       map(res => {
         if (res != null) {
-          return res.content
+          return res.content;
         } else {
-          return this.list
+          return this.list;
         }
       })
     ).subscribe((data) => {
-      this.injectionList = data
+      this.injectionList = data;
     });
   }
 
   // Quân
   search() {
-    this.getPage(1)
+    this.getPage(1);
   }
 }

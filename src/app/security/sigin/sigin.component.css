@@ -1,0 +1,15 @@
+.container{
+  margin: 20px auto;
+}
+.btn{
+  margin: auto 20px;
+}
+.form-group{
+  margin: 2px 2px;
+  height: 60px;
+}
+.form-group p{
+  font-size: .7rem;
+  margin: 0;
+  margin: 3px auto;
+}
