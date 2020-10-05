@@ -79,7 +79,7 @@
   <div class="header2 d-flex">
     <div class="col-md-1 button" style="padding-left: 0px;">
     <div class="dropdown">
-      <a class="dropbtn">
+      <a class="dropbtn" routerLink="/">
         {{'row5.1' | translate}}
       </a>
     </div>
@@ -172,8 +172,8 @@
       </a>
     </div>
     <div class=" ml-5 button login">
-      <a href="#">
-        {{'row5.35' | translate}}
+      <a (click)="openModal()">
+        {{'row5.35' | translate}}   
       </a>
     </div>
   </div>

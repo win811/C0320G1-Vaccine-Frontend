@@ -48,4 +48,8 @@ export class LoginComponent implements OnInit {
   remember($event) {
     this.isRemember = $event.target.checked;
   }
+
+  toCreate() {
+    this.dialogRef.close();
+  }
 }

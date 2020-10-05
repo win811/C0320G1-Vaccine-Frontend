@@ -61,6 +61,7 @@ export class SiginComponent implements OnInit {
     console.table(this.account);
     this.accountService.createNewAccount(this.account).subscribe(data => {
       console.log(data);
+      this.route.navigateByUrl('/');
     });
   }
   get f() {
