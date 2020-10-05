@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>C0320G1VaccineFrontend</title>
+  <title>C0320G1 VaccineFrontend</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -12,29 +12,67 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-  
-
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-  <!-- <link href="https://cdn.jsdelivr.net/npm/material-dashboard@2.1.0/assets/css/material-dashboard.min.css"
-    rel="stylesheet"> -->
-
-</head>
-
-<body>
-  <app-root></app-root>
-  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
           integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+  </script> 
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/material-dashboard@2.1.0/assets/css/material-dashboard.min.css"
+    rel="stylesheet">
+  <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/mouse0270-bootstrap-notify/3.1.3/bootstrap-notify.js"> -->
+
+</head>
+
+<body>
+
+  <app-root></app-root>
+  
+  
+
+  <script>
+
+  let __protocol = document.location.protocol;
+  let __baseUrl = __protocol + '//livechat.fpt.ai/v35/src';
+
+  let prefixNameLiveChat = 'Mr Leon';
+  let objPreDefineLiveChat = {
+      appCode: 'f2fb29b709584bb97ecc89e92d31018c',
+      themes: '',
+      appName: prefixNameLiveChat ? prefixNameLiveChat : 'Live support',
+      thumb: '',
+      icon_bot: ''
+    },
+    appCodeHash = window.location.hash.substr(1);
+  if (appCodeHash.length == 32) {
+    objPreDefineLiveChat.appCode = appCodeHash;
+  }
+
+  let fpt_ai_livechat_script = document.createElement('script');
+  fpt_ai_livechat_script.id = 'fpt_ai_livechat_script';
+  fpt_ai_livechat_script.src = __baseUrl + '/static/fptai-livechat.js';
+  document.body.appendChild(fpt_ai_livechat_script);
+
+  let fpt_ai_livechat_stylesheet = document.createElement('link');
+  fpt_ai_livechat_stylesheet.id = 'fpt_ai_livechat_script';
+  fpt_ai_livechat_stylesheet.rel = 'stylesheet';
+  fpt_ai_livechat_stylesheet.href = __baseUrl + '/static/fptai-livechat.css';
+  document.body.appendChild(fpt_ai_livechat_stylesheet);
+
+  fpt_ai_livechat_script.onload = function () {
+    fpt_ai_render_chatbox(objPreDefineLiveChat, __baseUrl, 'livechat.fpt.ai:443').catch(e => {
+      console.log(e);
+    });
+  }
   </script>
 <!--  <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>-->
 <!--  <script src="http://netdna.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>-->
   <script type="text/javascript"></script>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </body>
 
 </html>

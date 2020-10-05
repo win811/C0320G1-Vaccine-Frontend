@@ -3,14 +3,27 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContactComponent } from './contact/contact.component';
 import {AccountRoutingModule} from './account-routing.module';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ToastrModule} from 'ngx-toastr';
+import { TableVacxinComponent } from './table-vacxin/table-vacxin.component';
 import { AccountLayoutComponent } from './account-layout/account-layout.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import {HttpClient} from '@angular/common/http';
 import {TranslateHttpLoader} from '../../../node_modules/@ngx-translate/http-loader';
 import {TranslateLoader, TranslateModule} from '../../../node_modules/@ngx-translate/core';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {AdminModule} from '../admin/admin.module';
+import { RegistrationVaccinationComponent } from './registration-vaccination/registration-vaccination.component';
+import {
+  MatButtonModule,
+  MatCheckboxModule,
+  MatDatepickerModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatRadioModule, MatSelectModule,
+  MatStepperModule
+} from '@angular/material';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -21,7 +34,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     ContactComponent,
     AccountLayoutComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    TableVacxinComponent,
+    RegistrationVaccinationComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +49,18 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    FormsModule,
+    NgxPaginationModule,
+    AdminModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatSelectModule,
   ],
   exports : [
     FooterComponent,

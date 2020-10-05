@@ -5,6 +5,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { VaccineStorageComponent } from './vaccine-storage/vaccine-storage.component';
 import { ImportVaccineComponent } from './import-vaccine/import-vaccine.component';
 import { ExportVaccineComponent } from './export-vaccine/export-vaccine.component';
+// import { AdminCenterComponent } from './admin-center/admin-center.component';
 import { MaterialModule } from '../material.module';
 import { ContactBoxComponent } from './contact-box/contact-box.component';
 import { ContactReplyComponent } from './contact-reply/contact-reply.component';
@@ -27,12 +28,14 @@ import { ListDailyScheduleComponent } from './daily-schedule/list-daily-schedule
 import { ListInjectComponent } from './daily-schedule/list-inject/list-inject.component';
 import { ListPatientInjectRequestComponent } from './patient-inject/list-patient-inject-request/list-patient-inject-request.component';
 import { EditPatientInjectRequestComponent } from './patient-inject/edit-patient-inject-request/edit-patient-inject-request.component';
+import {NotificationsComponent} from './notifications/notifications.component';
 
 @NgModule({
   declarations: [
     VaccineStorageComponent,
     ImportVaccineComponent,
     ExportVaccineComponent,
+    // AdminCenterComponent,
     EmployeeListComponent,
     EmployeeCreateComponent,
     EmployeeUpdateComponent,
@@ -53,7 +56,8 @@ import { EditPatientInjectRequestComponent } from './patient-inject/edit-patient
     ListDailyScheduleComponent,
     ListInjectComponent,
     ListPatientInjectRequestComponent,
-    EditPatientInjectRequestComponent
+    EditPatientInjectRequestComponent,
+    NotificationsComponent
   ],
   imports: [
     CommonModule,
@@ -74,5 +78,8 @@ import { EditPatientInjectRequestComponent } from './patient-inject/edit-patient
     TransEditComponent,
     TransDelComponent
   ],
+  exports: [
+    ExportVaccineComponent
+  ]
 })
 export class AdminModule { }

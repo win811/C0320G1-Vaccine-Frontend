@@ -4,10 +4,12 @@ import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
+
 import {BodyComponent} from './home/body/body.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ToastrModule} from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -22,10 +24,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     AccountModule
   ],
-  // exports : [
-  //   HeaderComponent,
-  //   FooterComponent
-  // ],
   providers: [],
   bootstrap: [AppComponent]
 })
