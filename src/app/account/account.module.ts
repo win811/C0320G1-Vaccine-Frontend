@@ -12,6 +12,10 @@ import { FooterComponent } from './footer/footer.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {AdminModule} from '../admin/admin.module';
 import { RegistrationVaccinationComponent } from './registration-vaccination/registration-vaccination.component';
+import {HttpClient} from '@angular/common/http';
+import {TranslateHttpLoader} from '../../../node_modules/@ngx-translate/http-loader';
+import {TranslateLoader, TranslateModule} from '../../../node_modules/@ngx-translate/core';
+
 import {
   MatButtonModule,
   MatCheckboxModule,
@@ -22,6 +26,9 @@ import {
   MatStepperModule
 } from '@angular/material';
 
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -48,6 +55,13 @@ import {
     MatRadioModule,
     MatDatepickerModule,
     MatSelectModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   exports : [
     FooterComponent,

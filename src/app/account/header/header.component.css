@@ -28,7 +28,7 @@
   background: #17A2B8;
   display: none;
   position: absolute;
-  min-width: 180px;
+  min-width: 160px;
   padding: 10px 10px;
   z-index: 1;
 }
@@ -412,11 +412,11 @@ a {
 }
 
 header {
-  height: 223px
+  height: 216px
 }
 
 .header1 {
-  height: 140px;
+  height: 150px;
   background: #17A2B8
 }
 
@@ -426,8 +426,8 @@ header {
 }
 
 .logo img {
-  width: 72px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   float: left;
   margin-left: 50px;
   margin-top: 15px
@@ -511,7 +511,7 @@ header .title2 {
 
 marquee #text1 {
   color: blue;
-  margin-right: 120px
+  margin-right: 5px;
 }
 
 marquee #text2 {
@@ -522,7 +522,7 @@ marquee #text2 {
 .header2 {
   color: #17A2B8;
   font-size: 18px;
-  line-height: 30px;
+  line-height: 36px;
   background: whitesmoke
 }
 
@@ -531,5 +531,191 @@ marquee #text2 {
 }
 
 .widget-content {
-  color: #1989ae
+  tecolor: #1989ae
 }
+
+.time {
+  position: absolute;
+  color: white;
+  margin-top: 105px;
+  float: bottom;
+  margin-left: 50px;
+  width: 200px;
+  font-size: 12px;
+  font-weight: normal;
+
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width:60px;
+  height: 30px;
+  margin-top: 70px;
+  margin-left: 95% ;
+}
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+input:checked + .slider {
+  background-color: lightblue;
+}
+input:focus + .slider {
+  box-shadow: 0 0 1px #17A2B8;
+}
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+.slider.round {
+  border-radius: 34px;
+  font-size: 18px;
+  padding-top: 5px;
+  padding-left: 7px;
+  white-space: nowrap;
+}
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* ------------------- */
+
+.rounded-circle{
+  margin-top: -5px;
+  width: 25px;
+  height: 25px;
+  margin-right: 3px;
+}
+
+.btn-1{
+  width: 180px;
+  background-color: #4469B0;
+  color: white;
+  border: #4469B0;
+}
+.btn-1:hover,
+.btn-outline-primary:active
+.btn-outline-primary:default{
+  background-color:white;
+  border: 2px solid #4469B0;
+  color: #4469B0;
+  transform: none !important;
+}
+
+.btn-outline-primary:focus{
+  outline:0 !important;
+  box-shadow: none !important
+}
+
+.border-list{
+  border-bottom:1px solid black ;
+  border-top:1px solid black ;
+}
+.list-item{
+  width: 160px;
+  padding: 5px;
+  font-size: 15px;
+  border: 0px solid white;
+  background-color: white;
+  font-weight: bold;
+}
+
+.list-item:active,
+.list-item:hover,
+.list-item:focus,
+.list-item:default{
+  transform: scale(1.1) !important;
+  background-color: white !important;
+  color: black;
+  border: 0px solid white !important;
+  outline: none;
+}
+
+
+
+.navbar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+    height: 35%;
+    width: 100%;
+    background-color:  #4469B0;
+    display: block;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 26px;
+    font-weight: bold;
+    color: white;
+    border-bottom: 4px solid #FFBF00;
+    padding-top: 10px;
+    padding-bottom: 6px;
+    z-index: 1000;
+
+}
+._3unRI {
+    display: inline-block;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 10px 15px;
+    vertical-align: top;
+    color: white;
+    margin-left: 20px;
+
+}
+
+.dropdown:hover>.dropdown-menu {
+    display: block;
+}
+.dropdown .dropdown-menu .dropdown-item:focus {
+    outline: none;
+}
+.btn-outline-primary{
+   border: 0px solid white;
+   background: #4469B0;
+   border-radius: 20px;
+
+}
+.btn-outline-primary:hover,
+.btn-outline-primary:active{
+    background-color:white !important;
+    color:#4469B0 !important;
+    border: 0px solid white;
+}
+
+.line{
+  margin: 5px 0px;
+  color: black !important;
+}
+
+#wrapper {
+  background: #f6f6f6 !important;
+  padding-bottom: 30px;
+  height: 80px !important;
+}
+

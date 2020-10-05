@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {Vaccine} from '../models/Vaccine';
-import {Page} from '../models/dto/page';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Vaccine } from '../models/Vaccine';
+import { Page } from '../models/dto/page';
 import { SearchVaccine } from '../../admin/vaccine-storage/vaccine-storage.component';
 import { isThisHour } from 'date-fns';
 
@@ -39,12 +39,12 @@ export class VaccineService {
         return options;
   }
 
-  getExportVaccineOptions(id : number,exportAmount : number) : Object {
+  getExportVaccineOptions(id: number, exportAmount: number): Object {
     let options = {
-      headers : new HttpHeaders({
-        'Content-Type' : 'application/json'
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
       }),
-      params : {
+      params: {
         id,
         exportAmount
       }
@@ -52,11 +52,11 @@ export class VaccineService {
     return options;
   }
 
-  getVaccineStorage(searchVaccine : SearchVaccine,page : number) : Observable<Page<Vaccine>> {
+  getVaccineStorage(searchVaccine: SearchVaccine, page: number): Observable<Page<Vaccine>> {
 
-      return this.http.get<Page<Vaccine>>(this.URL + '/vaccine-storage',
-      this.getVaccineStorageOptions(searchVaccine.name.trim(),searchVaccine.category.trim(),
-        searchVaccine.country.trim(),searchVaccine.inventoryStatus.trim(), page));
+    return this.http.get<Page<Vaccine>>(this.URL + '/vaccine-storage',
+      this.getVaccineStorageOptions(searchVaccine.name.trim(), searchVaccine.category.trim(),
+        searchVaccine.country.trim(), searchVaccine.inventoryStatus.trim(), page));
 
   }
 

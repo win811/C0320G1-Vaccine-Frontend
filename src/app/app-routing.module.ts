@@ -5,6 +5,9 @@ import {NotificationsComponent} from './admin/notifications/notifications.compon
 
 const routes: Routes = [
   {
+    path: 'admin', loadChildren: () => import('./admin/admin.module').then(mod => mod.AdminModule)
+  },
+  {
     path: '', component: BodyComponent
   },
   {

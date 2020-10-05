@@ -18,12 +18,17 @@ import { TransCenterComponent } from './finance-management/trans-center/trans-ce
 import { TransListComponent } from './finance-management/trans-w-patient/trans-list/trans-list.component';
 import { TransEditComponent } from './finance-management/trans-w-patient/trans-edit/trans-edit.component';
 import { PeriodicInjectionComponent } from './injection/periodic-injection/periodic-injection.component';
+import { TransDelComponent } from './finance-management/trans-w-patient/trans-del/trans-del.component';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 import { FooterComponent } from './admin-layout/footer/footer.component';
 import { NavbarComponent } from './admin-layout/navbar/navbar.component';
 import { SidebarComponent } from './admin-layout/sidebar/sidebar.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import {NotificationsComponent} from './notifications/notifications.component';
+import { ListDailyScheduleComponent } from './daily-schedule/list-daily-schedule/list-daily-schedule.component';
+import { ListInjectComponent } from './daily-schedule/list-inject/list-inject.component';
+import { ListPatientInjectRequestComponent } from './patient-inject/list-patient-inject-request/list-patient-inject-request.component';
+import { EditPatientInjectRequestComponent } from './patient-inject/edit-patient-inject-request/edit-patient-inject-request.component';
 
 @NgModule({
   declarations: [
@@ -43,11 +48,17 @@ import {NotificationsComponent} from './notifications/notifications.component';
     TransCenterComponent,
     TransListComponent,
     TransEditComponent,
+    TransDelComponent,
     AdminLayoutComponent,
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    SidebarComponent,
+    ListDailyScheduleComponent,
+    ListInjectComponent,
+    ListPatientInjectRequestComponent,
+    EditPatientInjectRequestComponent
   ],
   imports: [
     CommonModule,
@@ -62,7 +73,11 @@ import {NotificationsComponent} from './notifications/notifications.component';
   ],
   entryComponents: [
     EmployeeCreateComponent,
-    EmployeeUpdateComponent
+    EmployeeUpdateComponent,
+    ListInjectComponent,
+    EditPatientInjectRequestComponent,
+    TransEditComponent,
+    TransDelComponent
   ],
   exports: [
     ExportVaccineComponent
