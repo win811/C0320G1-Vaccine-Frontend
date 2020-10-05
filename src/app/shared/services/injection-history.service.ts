@@ -29,8 +29,8 @@ export class InjectionHistoryService {
   }
 
   // Thành Long
-  getInjectionHistory(patientId: number, page: number): Observable<Page<InjectionHistory>> {
-    return this.http.get<Page<InjectionHistory>>(this.URL + "/account/injection-history/" + patientId, this.getInjectionHistoryHttpOptions(page));
+  getInjectionHistory(accountId: number, page: number): Observable<Page<InjectionHistory>> {
+    return this.http.get<Page<InjectionHistory>>(this.URL + "/account/injection-history/" + accountId, this.getInjectionHistoryHttpOptions(page));
   }
 
   getOptions(page?: number, fullName?: string, injected?: string): Object {
