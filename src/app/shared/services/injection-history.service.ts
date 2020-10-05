@@ -10,8 +10,12 @@ import {Page} from '../models/page';
   providedIn: 'root'
 })
 export class InjectionHistoryService {
-  private readonly API_URL_REG = 'http://localhost:8080/api/v1/injection/registration';
+  private readonly API_URL_REG = 'http://localhost:8080/api/v1/injection';
 
+  sendVerifyToken(email): Observable<any> {
+    const link = this.API_URL_REG + '/verify';
+   return  this.httpClient.post(link, email);
+  }
 
   getOptions(page?: number, fullName?: string, injected?: string): Object {
     let options = {
@@ -39,7 +43,8 @@ export class InjectionHistoryService {
 
   // CREATE BY ANH DUC
   RegistrationHistory(injectionHistory): Observable<any> {
-    return this.httpClient.post(this.API_URL_REG, injectionHistory);
+    const link = this.API_URL_REG + '/registration';
+    return this.httpClient.post(link, injectionHistory);
   }
 
   // Quân

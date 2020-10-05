@@ -5,6 +5,7 @@ import {Patient} from '../../shared/models/patient';
 import {InjectionHistory} from '../../shared/models/injectionHistory';
 import {Router} from '@angular/router';
 import {InjectionHistoryService} from '../../shared/services/injection-history.service';
+import {NotifiByDucService} from '../../shared/services/notifi-by-duc.service';
 
 export interface DTO {
   name: string;
@@ -30,7 +31,15 @@ export class RegistrationVaccinationComponent implements OnInit {
   injection: InjectionHistory = {} as InjectionHistory;
   dto: DTO;
   message: string;
-  constructor(private formBuilder: FormBuilder, private router: Router, private injectionHistoryService: InjectionHistoryService) {
+  maxDate= Date.now();
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private injectionHistoryService: InjectionHistoryService,
+    private noti: NotifiByDucService
+  ) {
+
     const navigation = this.router.getCurrentNavigation();
     this.vacxin = navigation.extras.state as Vaccine;
     console.log(this.vacxin);
@@ -59,16 +68,26 @@ export class RegistrationVaccinationComponent implements OnInit {
     }
 
   }
+
   registration() {
     this.injection.vaccine = this.vacxin;
     this.injection.patient = this.firstFormGroup.value;
     this.dto = this.secondFormGroup.value;
     this.injection.injectionDate = this.dto.injectionDate;
     this.injectionHistoryService.RegistrationHistory(this.injection).subscribe(data => {
-      this.message = data.message;
-      console.log('Đăng kí tiêm chủng thành công ');
+      this.noti.showNotification('success', 'Thông Báo', data.message);
     }, error1 => {
-      this.message = error1.message;
+      this.noti.showNotification('danger', 'Thông Báo', error1.error.message);
+    });
+  }
+
+  sendVerifyToken() {
+    this.injection.patient = this.firstFormGroup.value;
+    const email = this.injection.patient.email;
+    this.injectionHistoryService.sendVerifyToken(email).subscribe(data => {
+      this.noti.showNotification('success', 'Thông Báo', data.message);
+    }, error => {
+      this.noti.showNotification('danger', 'Thông Báo', error.error.message);
     });
   }
 }

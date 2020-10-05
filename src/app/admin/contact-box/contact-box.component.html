@@ -1,4 +1,3 @@
-
 <div class="container bootstrap snippets bootdeys">
   <div class="row">
     <div class="col-lg-12">
@@ -8,13 +7,13 @@
           <aside class="lg-side">
             <div class="inbox-head">
               <h3>Hộp Thư Phản Hồi</h3>
-<!--              <form class="pull-right position" action="#">-->
-<!--                <div class="input-append">-->
-<!--                  <input type="text" placeholder="Tìm Kiếm" class="sr-input">-->
-<!--                  <button type="button" class="btn sr-btn" data-original-title="" title=""><i class="fa fa-search"></i>-->
-<!--                  </button>-->
-<!--                </div>-->
-<!--              </form>-->
+              <!--              <form class="pull-right position" action="#">-->
+              <!--                <div class="input-append">-->
+              <!--                  <input type="text" placeholder="Tìm Kiếm" class="sr-input">-->
+              <!--                  <button type="button" class="btn sr-btn" data-original-title="" title=""><i class="fa fa-search"></i>-->
+              <!--                  </button>-->
+              <!--                </div>-->
+              <!--              </form>-->
             </div>
             <div class="inbox-body">
               <div class="mail-option">
@@ -88,8 +87,10 @@
                   <td class="view-message  dont-show">{{contact.fullName}}</td>
                   <td *ngIf="contact.status =='Chưa xử lí'" class="view-message"><span
                     class="badge badge-danger">{{contact.status}}</span></td>
-                  <td *ngIf="contact.status =='Đang xử lí'" class="view-message"><span class="badge badge-warning">{{contact.status}}</span></td>
-                  <td *ngIf="contact.status =='hoàn thành'" class="view-message"><span class="badge badge-success">{{contact.status}}</span></td>
+                  <td *ngIf="contact.status =='Đang xử lí'" class="view-message"><span
+                    class="badge badge-warning">{{contact.status}}</span></td>
+                  <td *ngIf="contact.status =='Hoàn thành'" class="view-message"><span
+                    class="badge badge-success">{{contact.status}}</span></td>
                   <td class="view-message ">
                     <a [routerLink]="['/admin/contact',contact.id]">{{contact.subject}}</a></td>
 

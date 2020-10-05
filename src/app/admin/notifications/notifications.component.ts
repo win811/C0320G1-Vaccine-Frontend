@@ -22,7 +22,7 @@ export class NotificationsComponent implements OnInit {
       message: ' <b>' + title + '</b> ' + text
 
     }, {
-      type: type[color],
+      type: type,
       timer: 4000,
       placement: {
         from: 'top',
