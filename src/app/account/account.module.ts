@@ -13,8 +13,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {AdminModule} from '../admin/admin.module';
 import { RegistrationVaccinationComponent } from './registration-vaccination/registration-vaccination.component';
 import {HttpClient} from '@angular/common/http';
-import {TranslateHttpLoader} from '../../../node_modules/@ngx-translate/http-loader';
-import {TranslateLoader, TranslateModule} from '../../../node_modules/@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 
 import {
   MatButtonModule,
