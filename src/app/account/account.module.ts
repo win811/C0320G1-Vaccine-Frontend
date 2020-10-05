@@ -3,15 +3,18 @@ import { CommonModule } from '@angular/common';
 import { ContactComponent } from './contact/contact.component';
 import {AccountRoutingModule} from './account-routing.module';
 import {ReactiveFormsModule} from '@angular/forms';
+import { InjectionHistoryComponent } from './injection-history/injection-history.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
-  declarations: [ContactComponent],
+  declarations: [ContactComponent, InjectionHistoryComponent],
   imports: [
     CommonModule,
     AccountRoutingModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    NgxPaginationModule
   ]
 })
 export class AccountModule { }

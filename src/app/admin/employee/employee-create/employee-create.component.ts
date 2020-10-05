@@ -1,9 +1,9 @@
-import { Employee } from './../../../shared/models/employee';
+import { Employee } from '../../../shared/models/employee';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from './../../../shared/services/employee.service';
+import { EmployeeService } from '../../../shared/services/employee.service';
 import { MatDialogRef } from '@angular/material/dialog'
-import { CheckPhoneNumber, checkAge, validateCode, EMPLOYEE_MESSAGES } from './../../../shared/validations/custom-validators';
+import { CheckPhoneNumber, checkAge, validateCode, EMPLOYEE_MESSAGES } from '../../../shared/validations/custom-validators';
 
 @Component({
   selector: 'app-employee-create',

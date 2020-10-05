@@ -26,6 +26,11 @@ import { FooterComponent } from './admin-layout/footer/footer.component';
 import { NavbarComponent } from './admin-layout/navbar/navbar.component';
 import { SidebarComponent } from './admin-layout/sidebar/sidebar.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { VaccineListComponent } from './vaccine-list/vaccine-list.component';
+import { VaccineUpdatePriceComponent } from './vaccine-update-price/vaccine-update-price.component';
+import { PatientListComponent } from './patient/patient-list/patient-list.component';
+import { PatientCreateComponent } from './patient/patient-create/patient-create.component';
+import { PatientUpdateComponent } from './patient/patient-update/patient-update.component';
 
 
 
@@ -34,10 +39,13 @@ import { NgxPaginationModule } from 'ngx-pagination';
     EmployeeListComponent, EmployeeCreateComponent, EmployeeUpdateComponent, PeriodicInjectionComponent, TransCenterComponent, TransListComponent, TransEditComponent, TransWSupplierComponent, TransSupEditComponent, TransSupCreateComponent,
     VaccineStorageComponent, 
     ImportVaccineComponent, 
+    VaccineStorageComponent,
+    VaccineListComponent,
+    ImportVaccineComponent,
     ExportVaccineComponent,
     AdminCenterComponent,
-    EmployeeListComponent, 
-    EmployeeCreateComponent, 
+    EmployeeListComponent,
+    EmployeeCreateComponent,
     EmployeeUpdateComponent,
     ContactBoxComponent,
     EmployeeListComponent, 
@@ -51,7 +59,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AdminLayoutComponent,
     FooterComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    VaccineUpdatePriceComponent,
+    PatientListComponent,
+    PatientCreateComponent,
+    PatientUpdateComponent
   ],
   imports: [
     CommonModule,
@@ -66,7 +78,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
   ],
   entryComponents: [
     EmployeeCreateComponent,
-    EmployeeUpdateComponent
+    EmployeeUpdateComponent,
+    VaccineUpdatePriceComponent,
+    PatientUpdateComponent,
+    PatientCreateComponent
   ],
 })
 export class AdminModule { }

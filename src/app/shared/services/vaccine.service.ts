@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {Vaccine} from '../models/Vaccine';
 import {Page} from '../models/dto/page';
 import { SearchVaccine } from '../../admin/vaccine-storage/vaccine-storage.component';
-
+import {VaccineSearchDTO} from '../models/dto/vaccineSearchDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +14,36 @@ export class VaccineService {
   private readonly URL = 'http://localhost:8080/api/v1';
 
   constructor(private http: HttpClient) { }
+
+  // Thành Long
+  getVaccineHttpOptions(searchField: VaccineSearchDTO, page: number): Object {
+    const vaccine = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      'Access-Control-Allow-Origin': 'http://localhost:4200',
+      'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+      params: {
+        code: searchField.code,
+        category: searchField.category,
+        country: searchField.country,
+        minPrice: searchField.minPrice,
+        maxPrice: searchField.maxPrice,
+        page
+      }
+    };
+    return vaccine;
+  }
+
+  // Thành Long
+  getVaccine(searchField: VaccineSearchDTO, page: number): Observable<Page<Vaccine>> {
+    return this.http.get<Page<Vaccine>>(`${this.URL}/admin/vaccine-list`, this.getVaccineHttpOptions(searchField, page));
+  }
+
+  // Thành Long
+  updateVaccinePrice(vaccine: Vaccine): Observable<Vaccine> {
+    return this.http.put<Vaccine>(this.URL + '/admin/vaccine-list/update', vaccine);
+  }
 
   getVaccineStorageOptions(name : string,category : string, country : string,
      inventoryStatus : string, page : number) : Object {
@@ -41,7 +71,7 @@ export class VaccineService {
         id,
         exportAmount
       }
-    }
+    };
     return options;
   }
 

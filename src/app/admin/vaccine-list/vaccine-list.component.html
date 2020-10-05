@@ -1,0 +1,104 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col">
+      <h1>Trang quản lý giá Vắc xin</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col mt-3">
+      <form [formGroup]="formSearchVaccine">
+        <div class="row">
+          <div class="col-md">
+            <label>Mã vắc xin</label>
+            <input type="text" class="form-control" placeholder="vd: MVX-0001" formControlName="code">
+          </div>
+          <div class="col-md">
+            <label>Loại vắc xin</label>
+            <input type="text" class="form-control" placeholder="vd: Phòng bệnh lao" formControlName="category">
+            <p
+              *ngIf="formSearchVaccine.controls.category.errors?.pattern && formSearchVaccine.controls.category.touched"
+              class="text-danger font-weight-bold"><b><i>
+              Loại vắc xin không được chứa kí tự đặc biệt !</i></b></p>
+          </div>
+          <div class="col-md">
+            <label>Nước sản xuất</label>
+            <input type="text" class="form-control" placeholder="vd: Việt Nam" formControlName="country">
+            <p *ngIf="formSearchVaccine.controls.country.errors?.pattern && formSearchVaccine.controls.country.touched"
+              class="text-danger font-weight-bold"><b><i>
+              Nước sản xuất không được chứa kí tự đặc biệt và số !</i></b></p>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-md-4">
+            <label>Giá</label>
+            <select class="custom-select" formControlName="price">
+              <option selected disabled value="">Chọn...</option>
+              <option value="">Tất cả</option>
+              <option value="0">Từ 0 đến 100.000 VND</option>
+              <option value="1">Từ 100.000 đến 500.000 VND</option>
+              <option value="2">Từ 500.000 đến 1.000.000 VND</option>
+              <option value="3">Trên 1.000.000 VND</option>
+            </select>
+          </div>
+          <div class="col-md">
+            <label>&nbsp;</label><br>
+            <button (click)="search()" type="button" class="btn btn-info"><i
+              class="fas fa-search"></i> Lọc kết quả
+            </button>
+            <p class="text-danger"><b><i>{{message}}</i></b></p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col">
+      <table class="table table-striped mt-2 text-center">
+        <thead class="bg-info text-white">
+        <tr>
+          <th scope="col">Mã vắc xin</th>
+          <th scope="col">Tên vắc xin</th>
+          <th scope="col">Loại vắc xin</th>
+          <th scope="col">Nước sản xuất</th>
+          <th scope="col">Độ tuổi tiêm chủng</th>
+          <th scope="col">Giá (VND/ml)</th>
+          <th scope="col">Chỉnh sửa</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let vaccine of vaccines | async | paginate: { itemsPerPage: pageSize, currentPage: currentPage, totalItems: totalElements}">
+          <td>{{vaccine.code}}</td>
+          <td>{{vaccine.name}}</td>
+          <td>{{vaccine.category}}</td>
+          <td>{{vaccine.country}}</td>
+          <td>{{getAge(vaccine.limitAge)}}</td>
+          <td>{{vaccine.price}}</td>
+          <td>
+            <button type="button" (click)="openEdit(vaccine)" class="btn btn-warning">Chỉnh sửa giá</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="row mt-2">
+        <div class="col-md">
+          <button class="btn btn-success">Tạo mới vắc xin</button>
+        </div>
+      </div>
+    </div>
+    <div class="col mt-2">
+      <div class="d-flex justify-content-end">
+          <div class=" d-flex justify-content-end">
+            <pagination-controls (pageChange)="getPage($event)"></pagination-controls>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
