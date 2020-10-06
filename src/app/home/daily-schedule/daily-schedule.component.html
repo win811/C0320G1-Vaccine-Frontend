@@ -1,33 +1,10 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
-
 <div class="container-fluid">
   <div class="banner">
     <h1>THÔNG TIN LỊCH TIÊM CHỦNG ĐỊNH KỲ CỦA TRUNG TÂM</h1>
   </div>
 
-  <table class="table table-striped  text-center">
-    <thead class="bg-primary">
+  <table class="table table-striped  text-left">
+    <thead class="bg-primary" style="background: #17A2B8!important">
     <tr>
       <th scope="col">#</th>
       <th scope="col">Thời gian</th>
@@ -41,93 +18,27 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>07h00-11h20</td>
-      <td>24/09/2020</td>
-      <td>TTYT-Hòa Khánh -Liên chiểu </td>
-      <td>Viêm Gan B</td>
-      <td>BCG</td>
-      <td>Dưới 2 Tuổi</td>
-      <td>Miễn phí</td>
+    <tr
+      *ngFor="let dl of dailySchedule | async | paginate: { itemsPerPage: pageSize, currentPage: currentPage, totalItems: totalElements}; index as j">
+      <th scope="row">{{stt[j]}}</th>
+      <td>{{dl.startTime}}-{{dl.endTime}}</td>
+      <td>{{dl.vaccinationDate | date: 'dd/MM/yyyy'}}</td>
+      <td>{{dl.address}}</td>
+      <td>{{dl.vaccine.name}}</td>
+      <td>{{dl.vaccine.category}}</td>
+      <td>{{getAge(dl.vaccine.limitAge)}}</td>
+      <td>{{dl.note}}</td>
 
       <td>
-        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop">
-          Đăng ký
-        </button>
+        <button class="btn btn-warning" mat-button (click)="openCreate(dl)">Đăng ký  </button>
+
       </td>
-
-    </tr>
-
-    <tr>
-      <th scope="row">2</th>
-      <td>07h00-11h20</td>
-      <td>27/09/2020</td>
-      <td>TTYT-Hải Châu -Liên chiểu </td>
-      <td>Viêm Não Nhật Bản</td>
-      <td>BCG</td>
-      <td>Trên 2 Tuổi</td>
-      <td>Miễn phí</td>
-
-      <td>
-        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop">
-          Đăng ký
-        </button>
-      </td>
-
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>07h00-11h20</td>
-      <td>24/09/2020</td>
-      <td>TTYT-Hòa Khánh -Liên chiểu </td>
-      <td>Viêm Gan B</td>
-      <td>BCG</td>
-      <td>Dưới 2 Tuổi</td>
-      <td>Miễn phí</td>
-
-      <td>
-        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop">
-          Đăng ký
-        </button>
-      </td>
-
-    </tr>
-
-    <tr>
-      <th scope="row">4</th>
-      <td>07h00-11h20</td>
-      <td>24/09/2020</td>
-      <td>TTYT-Hòa Khánh -Liên chiểu </td>
-      <td>Viêm Gan B</td>
-      <td>BCG</td>
-      <td>Dưới 2 Tuổi</td>
-      <td>Miễn phí</td>
-
-      <td>
-        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop">
-          Đăng ký
-        </button>
-      </td>
-
-    </tr>
-
-    <tr>
-      <th scope="row">5</th>
-      <td>07h00-11h20</td>
-      <td>24/09/2020</td>
-      <td>TTYT-Hòa Khánh -Liên chiểu </td>
-      <td>Viêm Gan B</td>
-      <td>BCG</td>
-      <td>Dưới 2 Tuổi</td>
-      <td>Miễn phí</td>
-
-      <td>
-        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop">
-          Đăng ký
-        </button>
-      </td>
-
     </tr>
     </tbody>
   </table>
+  <div class="col mt-2">
+    <div class="row d-flex justify-content-end">
+      <pagination-controls (pageChange)="getDailySchedule($event)"></pagination-controls>
+    </div>
+  </div>
+</div>
