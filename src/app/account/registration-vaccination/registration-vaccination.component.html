@@ -8,7 +8,8 @@
       </div>
       <div class="offset-sm-2">
         <div class="row justify-content-between">
-          <div class="col-md">
+          <div class="col-md-2"></div>
+          <div class="col-md-4">
             <mat-form-field class=" field-ad row ">
               <mat-label *ngIf="firstFormGroup.controls.fullName.touched&&firstFormGroup.controls.fullName.errors?.pattern"
                          class="text-danger">Tên không được chứa kí tự đặc biệt</mat-label>
@@ -38,7 +39,7 @@
               <button class="float-right " mat-button (click)="sendVerifyToken()" >Gửi Mã</button>
             </mat-form-field>
           </div>
-          <div class="col-md">
+          <div class="col-md-4">
             <mat-form-field class=" field-ad row ">
               <mat-label *ngIf="firstFormGroup.controls.parentName.touched&&firstFormGroup.controls.parentName.errors?.pattern"
                          class="text-danger">Tên không được chưa kí tự đặc biệt</mat-label>
@@ -64,6 +65,7 @@
               </button>
             </div>
           </div>
+          <div class="col-md-2"></div>
         </div>
       </div>
     </form>
