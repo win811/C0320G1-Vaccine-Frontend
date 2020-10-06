@@ -42,8 +42,9 @@ export class LoginComponent implements OnInit {
     this.accountService.login(this.login).subscribe(data => {
       console.table(data);
       this.tokenStorage.saveToken(data, this.isRemember);
+      this.dialogRef.close(true);
     });
-    this.dialogRef.close();
+    
   }
   remember($event) {
     this.isRemember = $event.target.checked;

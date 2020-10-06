@@ -17,7 +17,9 @@ export class HeaderComponent implements OnInit {
   isLogged: boolean;
   constructor(
     private translate: TranslateService,
-    public matDialog: MatDialog,private tokenStorage: TokenStorageService, private activatedRoute: ActivatedRoute) {
+    public matDialog: MatDialog,
+    private tokenStorage: TokenStorageService, 
+    private activatedRoute: ActivatedRoute) {
     translate.setDefaultLang('vi');
     translate.use('vi');
   }
@@ -56,6 +58,23 @@ export class HeaderComponent implements OnInit {
     dialogConfig.height = '350px';
     dialogConfig.width = '500px';
     const modalDialog = this.matDialog.open(LoginComponent, dialogConfig);
+
+    modalDialog.afterClosed().subscribe(result => {
+      console.log(result);
+      this.isLogged = result;
+      console.log('The dialog was closed');
+      this.activatedRoute.queryParamMap.subscribe(value => {
+        const returnUrl = value.get('returnUrl');
+        if (!returnUrl) {
+          this.ngOnInit();
+        }
+      })
+    })
+  }
+
+  logOut(): void {
+    this.tokenStorage.signOut()
+    this.isLogged = false;
   }
 
 }
