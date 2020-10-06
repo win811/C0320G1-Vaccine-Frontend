@@ -4,7 +4,7 @@ import {HttpHeaders, HttpClient} from '@angular/common/http';
 import {FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {Page} from '../models/page';
-
+import {InjectionHistory} from '../models/InjectionHistory';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,28 @@ import {Page} from '../models/page';
 export class InjectionHistoryService {
   private readonly API_URL_REG = 'http://localhost:8080/api/v1/injection/registration';
 
+  private readonly URL = 'http://localhost:8080/api/v1';
+  private readonly API_URL = "http://localhost:8080/api/v1/injection-list";
+
+  constructor(private http: HttpClient,
+              private httpClient: HttpClient) { }
+
+  getInjectionHistoryHttpOptions(page: number): Object {
+    let injectionHistory = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      params: {
+        page: page
+      }
+    };
+    return injectionHistory;
+  }
+
+  // Thành Long
+  getInjectionHistory(accountId: number, page: number): Observable<Page<InjectionHistory>> {
+    return this.http.get<Page<InjectionHistory>>(this.URL + "/account/injection-history/" + accountId, this.getInjectionHistoryHttpOptions(page));
+  }
 
   getOptions(page?: number, fullName?: string, injected?: string): Object {
     let options = {
@@ -32,10 +54,6 @@ export class InjectionHistoryService {
       'Access-Control-Allow-Origin': 'http://localhost:4200'
     })
   };
-  private readonly API_URL = 'http://localhost:8080/api/v1/injection-list';
-
-  constructor(private httpClient: HttpClient) {
-  }
 
   // CREATE BY ANH DUC
   RegistrationHistory(injectionHistory): Observable<any> {

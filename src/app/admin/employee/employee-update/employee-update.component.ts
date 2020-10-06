@@ -1,10 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { EMPLOYEE_MESSAGES, validateCode, checkAge, CheckPhoneNumber } from './../../../shared/validations/custom-validators';
-import { EmployeeService } from './../../../shared/services/employee.service';
+import { EMPLOYEE_MESSAGES, validateCode, checkAge, CheckPhoneNumber } from '../../../shared/validations/custom-validators';
+import { EmployeeService } from '../../../shared/services/employee.service';
 
 import { EmployeeCreateComponent } from '../employee-create/employee-create.component';
-import { Employee } from './../../../shared/models/employee';
+import { Employee } from '../../../shared/models/employee';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({

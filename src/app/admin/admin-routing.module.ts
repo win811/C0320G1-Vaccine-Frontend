@@ -12,12 +12,14 @@ import {ListDailyScheduleComponent} from './daily-schedule/list-daily-schedule/l
 import {ListPatientInjectRequestComponent} from './patient-inject/list-patient-inject-request/list-patient-inject-request.component';
 
 import {NotificationsComponent} from './notifications/notifications.component';
+import { PatientListComponent } from './patient/patient-list/patient-list.component';
+import { VaccineListComponent } from './vaccine-list/vaccine-list.component';
 
 const routes: Routes = [
     {
       path: '', component: AdminLayoutComponent, children: 
       [
-        {path: "employee-list", component: EmployeeListComponent },
+      {path: "employee-list", component: EmployeeListComponent },
       {path: "injected-list", component: PeriodicInjectionComponent },
       {path: 'vaccine-storage',component: VaccineStorageComponent},
       {path: 'contactBox', component: ContactBoxComponent},
@@ -25,6 +27,8 @@ const routes: Routes = [
       {path: 'contact/:id', component: ContactReplyComponent},
       {path: 'dailySchedule', component: ListDailyScheduleComponent},
       {path: 'listPatientInjectRequest', component: ListPatientInjectRequestComponent},
+      {path: 'vaccine-list', component: VaccineListComponent},
+      {path: 'patient-list', component: PatientListComponent},
       {path: "finance", component: TransCenterComponent,
           children: [
             { path: "patient", component: TransListComponent }
