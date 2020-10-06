@@ -9,6 +9,7 @@ import {BodyComponent} from './home/body/body.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ToastrModule} from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatTooltipModule} from '@angular/material';
 
 
 @NgModule({
@@ -16,14 +17,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     BodyComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ToastrModule.forRoot(),
-    BrowserAnimationsModule,
-    AccountModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ToastrModule.forRoot(),
+        BrowserAnimationsModule,
+        AccountModule,
+        MatTooltipModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

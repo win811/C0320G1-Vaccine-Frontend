@@ -35,14 +35,14 @@ export const CheckPhoneNumber: ValidatorFn = (control: FormControl): ValidationE
         return { format: true };
     }
     return null;
-}
+};
 
 
 // Quân
 export const checkAge: ValidatorFn = (date: AbstractControl): ValidationErrors | null => {
     const y = differenceInYears(new Date(), new Date(date.value));
     return y < 18 ? { age: true } : null;
-}
+};
 
 
 // Quân
@@ -57,7 +57,7 @@ export const validateCode = (Service: any): AsyncValidatorFn => {
             catchError(() => of(null))
         );
     };
-}
+};
 
 // Duy
 export const TRANSACTION_MESSAGE = {
@@ -69,7 +69,7 @@ export const TRANSACTION_MESSAGE = {
     dateErrors: [
         { code: 'invalidDate', message: 'Ngày giao dịch không hợp lệ. Vui lòng chọn lại.' },
     ]
-}
+};
 // Quân
 export const EMPLOYEE_MESSAGES = {
     code: [
