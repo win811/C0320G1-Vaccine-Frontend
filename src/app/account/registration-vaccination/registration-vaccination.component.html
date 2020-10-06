@@ -33,7 +33,7 @@
             </mat-form-field>
             <mat-form-field class=" field-ad row " style="width:400px;">
               <mat-label>Email</mat-label>
-              <input style="width: 300px"  matInput placeholder="Email" formControlName="email" required email>
+              <input style="width: 250px"  matInput placeholder="Email" formControlName="email" required email>
               <button class="float-right " mat-button (click)="sendVerifyToken()" >Gửi Mã</button>
             </mat-form-field>
           </div>
@@ -84,8 +84,8 @@
               <div>
                 <mat-form-field class="row field-ad  ">
                   <mat-label>Tên Vắc-xin</mat-label>
-                  <input matInput formControlName="name" readonly>
-                  <button class="float-right " mat-button [routerLink]="['/vacxin']" >Chọn Vắc Xin</button>
+                  <input style="width: 250px" matInput formControlName="name" readonly>
+                  <button class="float-right " mat-button [routerLink]="['/guest/vacxin']" >Chọn Vắc Xin</button>
                 </mat-form-field>
               </div>
               <div>

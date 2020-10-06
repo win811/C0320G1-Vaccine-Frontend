@@ -29,7 +29,6 @@ import { ListDailyScheduleComponent } from './daily-schedule/list-daily-schedule
 import { ListInjectComponent } from './daily-schedule/list-inject/list-inject.component';
 import { ListPatientInjectRequestComponent } from './patient-inject/list-patient-inject-request/list-patient-inject-request.component';
 import { EditPatientInjectRequestComponent } from './patient-inject/edit-patient-inject-request/edit-patient-inject-request.component';
-
 @NgModule({
   declarations: [
     VaccineStorageComponent,
@@ -58,7 +57,8 @@ import { EditPatientInjectRequestComponent } from './patient-inject/edit-patient
     ListDailyScheduleComponent,
     ListInjectComponent,
     ListPatientInjectRequestComponent,
-    EditPatientInjectRequestComponent
+    EditPatientInjectRequestComponent,
+    NotificationsComponent
   ],
   imports: [
     CommonModule,

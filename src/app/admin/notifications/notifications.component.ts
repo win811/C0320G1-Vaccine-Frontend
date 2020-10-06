@@ -13,6 +13,8 @@ export class NotificationsComponent implements OnInit {
   }
 
   setNotification(type, title, text) {
+
+    // $('#test').modal('show');
     // const type = ['', 'info', 'success', 'warning', 'danger'];
 
     const color = Math.floor((Math.random() * 4) + 1);

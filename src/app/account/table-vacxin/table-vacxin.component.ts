@@ -58,7 +58,7 @@ export class TableVacxinComponent implements OnInit {
     const navigationExtras: NavigationExtras = {
       state: vaccine
     };
-    this.router.navigate(['registration'], navigationExtras);
+    this.router.navigate(['/account/guest/registration'], navigationExtras);
   }
 
   exportConfirm(exportAmount: number) {

@@ -1,0 +1,9 @@
+.login-form {
+  width: 340px;
+  margin: 10px;
+  font-size: 15px;
+}
+
+/*::ng-deep .mat-dialog-container{*/
+/*  color: #f7f7f7;*/
+/*}*/

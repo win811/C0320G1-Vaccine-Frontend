@@ -26,9 +26,9 @@ const routes: Routes = [
         {path: 'contact/noti', component: NotificationsComponent},
         {path: 'dailySchedule', component: ListDailyScheduleComponent},
         {path: 'listPatientInjectRequest', component: ListPatientInjectRequestComponent},
-        {path: "finance", component: TransCenterComponent,
+        {path: 'finance', component: TransCenterComponent,
             children: [
-              { path: "patient", component: TransListComponent }
+              { path: 'patient', component: TransListComponent }
             ]
         }
       ]
