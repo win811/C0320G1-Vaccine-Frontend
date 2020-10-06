@@ -6,6 +6,7 @@ import {InjectionHistory} from '../../shared/models/injectionHistory';
 import {Router} from '@angular/router';
 import {InjectionHistoryService} from '../../shared/services/injection-history.service';
 import {NotifiByDucService} from '../../shared/services/notifi-by-duc.service';
+import {VaccineService} from '../../shared/services/vaccine.service';
 
 export interface DTO {
   name: string;
@@ -26,35 +27,46 @@ export class RegistrationVaccinationComponent implements OnInit {
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  vacxin: Vaccine = {} as Vaccine;
+  vacxin2: Vaccine = {} as Vaccine;
+  vacxin: Vaccine = {
+    id: 0,
+    name: '',
+    category: '',
+    country: '',
+  };
   patient: Patient = {} as Patient;
   injection: InjectionHistory = {} as InjectionHistory;
   dto: DTO;
   message: string;
-  maxDate= Date.now();
+  maxDate = Date.now();
+  vaccineList: Vaccine[];
+  currentPage: number;
+  pageSize: number;
+  totalElements: number;
+  searchVaccine: SearchVaccine;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private injectionHistoryService: InjectionHistoryService,
+    private vaccineService: VaccineService,
     private noti: NotifiByDucService
   ) {
-
     const navigation = this.router.getCurrentNavigation();
-    this.vacxin = navigation.extras.state as Vaccine;
-    console.log(this.vacxin);
+    this.vacxin2 = navigation.extras.state as Vaccine;
+    console.log(this.vacxin2);
   }
 
   ngOnInit() {
     this.firstFormGroup = this.formBuilder.group({
-      fullName: ['', Validators.required],
+      fullName: ['', [Validators.required,Validators.pattern(/^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/)]],
       gender: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.pattern(/^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$/)]],
       birthday: ['', Validators.required],
       code: ['', Validators.required],
-      parentName: ['', Validators.required],
+      parentName: ['', [Validators.required,Validators.pattern(/^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/)]],
       address: ['', Validators.required],
-      phoneNumber: ['', Validators.required]
+      phoneNumber: ['', [Validators.required,Validators.pattern(/^0[0-9]{9}$/)]]
     });
     this.secondFormGroup = this.formBuilder.group({
       name: ['', Validators.required],
@@ -63,10 +75,28 @@ export class RegistrationVaccinationComponent implements OnInit {
       injectionDate: ['', Validators.required],
     });
     // tslint:disable-next-line:triple-equals
-    if (this.vacxin != null) {
-      this.secondFormGroup.patchValue(this.vacxin);
+    if (this.vacxin2 != null) {
+      this.vacxin = this.vacxin2;
+      this.secondFormGroup.patchValue(this.vacxin2);
     }
+    this.searchVaccine = {
+      name: '',
+      category: '',
+      country: '',
+      inventoryStatus: ''
+    };
+    this.getPage(1);
+  }
 
+  getPage(page: number) {
+    this.vaccineService.getVaccineStorage(this.searchVaccine, page).subscribe(res => {
+      this.totalElements = res.totalElements;
+      this.pageSize = 100;
+      this.currentPage = page;
+      this.vaccineList = res.content;
+    }, error => {
+      console.log(error);
+    });
   }
 
   registration() {
@@ -89,5 +119,26 @@ export class RegistrationVaccinationComponent implements OnInit {
     }, error => {
       this.noti.showNotification('danger', 'Thông Báo', error.error.message);
     });
+  }
+
+  setInjection() {
+    this.injection.vaccine = this.vacxin;
+    this.injection.patient = this.firstFormGroup.value;
+    this.dto = this.secondFormGroup.value;
+    this.injection.injectionDate = this.dto.injectionDate;
+  }
+}
+
+export class SearchVaccine {
+  name: string;
+  category: string;
+  country: string;
+  inventoryStatus: string;
+
+  constructor(searchVaccine: SearchVaccine) {
+    this.name = searchVaccine.name;
+    this.category = searchVaccine.category;
+    this.country = searchVaccine.country;
+    this.inventoryStatus = searchVaccine.inventoryStatus;
   }
 }
