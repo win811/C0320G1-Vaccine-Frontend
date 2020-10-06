@@ -85,6 +85,7 @@
                 <mat-form-field class="row field-ad  ">
                   <mat-label>Tên Vắc-xin</mat-label>
                   <input matInput formControlName="name" readonly>
+                  <button class="float-right " mat-button [routerLink]="['/vacxin']" >Chọn Vắc Xin</button>
                 </mat-form-field>
               </div>
               <div>
@@ -116,7 +117,7 @@
       </div>
       <div>
         <button mat-button matStepperPrevious>Quay Lại</button>
-        <button mat-button matStepperNext [disabled]="secondFormGroup.invalid" (click)="registration()">Tiếp Theo</button>
+        <button mat-button matStepperNext [disabled]="secondFormGroup.invalid">Tiếp Theo</button>
       </div>
     </form>
   </mat-step>
@@ -125,7 +126,7 @@
     <div class="row justify-content-center mt-3 mb-3" style="font-size: 30px">
       <mat-label>PHIẾU ĐĂNG KÝ TIÊM THEO YÊU CẦU</mat-label>
     </div>
-    <div *ngIf="injection.patient" class="row justify-content-center mt-3 mb-3">
+    <div *ngIf="injection.patient">
       <label>Khách hàng :</label>
       <p>{{injection.patient.fullName}}</p>
       <label>Số Điện Thoại :</label>
@@ -139,8 +140,7 @@
 
    <div>
       <button mat-button matStepperPrevious>Quay Lại</button>
-      <button mat-button (click)="registration()" [disabled]="firstFormGroup.invalid&&secondFormGroup.invalid">Hoàn
-        Thành
+      <button mat-button (click)="registration()" [disabled]="firstFormGroup.invalid&&secondFormGroup.invalid">Gửi Đăng Ký
       </button>
     </div>
   </mat-step>

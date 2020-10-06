@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import * as RecordRTC from 'recordrtc';
 import {Router} from '@angular/router';
 import {BrandService} from './shared/services/brand.service';
 import {NotifiByDucService} from './shared/services/notifi-by-duc.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,7 +13,7 @@ import {NotifiByDucService} from './shared/services/notifi-by-duc.service';
 export class AppComponent {
   title = 'C0320G1-Vaccine-Frontend';
   private record;
-  private actionNext='';
+  private actionNext = '';
   private recording = false;
   private url;
   private error;
@@ -21,8 +22,10 @@ export class AppComponent {
   // tslint:disable-next-line:variable-name
   private bot_voice: string;
 
-  constructor(private domSanitizer: DomSanitizer, private brandService: BrandService, private router: Router,private noti:NotifiByDucService) {
+  // tslint:disable-next-line:max-line-length
+  constructor(private domSanitizer: DomSanitizer, private brandService: BrandService, private router: Router, private noti: NotifiByDucService) {
   }
+
   sanitize(url: string) {
     console.log(url);
     return this.domSanitizer.bypassSecurityTrustUrl(url);
@@ -69,9 +72,9 @@ export class AppComponent {
 
   testText(voice) {
     this.brandService.TextToSpeech(voice).subscribe(data => {
-      setTimeout(()=> {
+      setTimeout(() => {
         this.url = data.async;
-      },1000);
+      }, 1000);
 
       console.log('success');
       if (this.actionNext != '') {
@@ -118,7 +121,7 @@ export class AppComponent {
     } else if (bot_ear.search('Tư vấn') != -1 || bot_ear.search('tư vấn') != -1) {
       this.actionNext = 'vacxin';
       return 'mời bạn xem các thông tin về các gói tiêm chủng mới nhất bên mình ';
-    } else if (bot_ear.search('phản hồi') ) {
+    } else if (bot_ear.search('phản hồi') != -1) {
       this.actionNext = 'contact';
       return 'Xin vui lòng nhập thông tin phản hồi theo mẫu dưới đây ';
     } else {
