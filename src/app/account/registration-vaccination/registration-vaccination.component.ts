@@ -90,11 +90,8 @@ export class RegistrationVaccinationComponent implements OnInit {
   }
 
   getPage(page: number) {
-    this.vaccineService.getVaccineStorage(this.searchVaccine, page).subscribe(res => {
-      this.totalElements = res.totalElements;
-      this.pageSize = 100;
-      this.currentPage = page;
-      this.vaccineList = res.content;
+    this.vaccineService.getAllVacxin().subscribe(res => {
+      this.vaccineList = res.body;
       console.log('list vacxin');
       console.log(this.vaccineList);
     }, error => {

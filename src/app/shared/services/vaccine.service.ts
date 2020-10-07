@@ -98,4 +98,9 @@ export class VaccineService {
   importVaccine(vaccine: Vaccine): Observable<Vaccine> {
     return this.http.post<Vaccine>(this.URL + '/import-vaccine', vaccine, this.httpOptions);
   }
+
+  getAllVacxin():Observable<any> {
+    const link = this.URL + '/admin/vaccines';
+    return this.http.get(link);
+  }
 }
