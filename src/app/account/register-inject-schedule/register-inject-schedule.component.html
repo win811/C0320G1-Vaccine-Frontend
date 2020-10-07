@@ -1,0 +1,121 @@
+<form [formGroup]="registerInjectForm" style="z-index: 0" >
+<div class="modal-header">
+  <h5 class="modal-title"> ĐĂNG KÝ TIÊM VẮC XIN ĐỊNH KỲ </h5>
+  <button mat-button [mat-dialog-close] type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+  <div class="container-fluid">
+    <div class="container">
+      <div class="row content">
+        <div class="col-sm left">
+
+          <h3><b>Thông tin bệnh nhân </b></h3>
+
+          <div class="row">
+              <p class="col-sm b">Họ và tên bệnh nhân</p>
+              <p class="col-sm"><input type="text" class="form-control" placeholder="Nhập tên bệnh nhân" formControlName="fullName"></p>
+          </div>
+          <p *ngIf="registerInjectForm.controls.fullName.errors?.required && registerInjectForm.controls.fullName.touched" class="text-danger " >
+            <b><i>Tên người tiêm không được để trống !</i></b></p>
+
+          <p *ngIf="registerInjectForm.controls.fullName.errors?.pattern && registerInjectForm.controls.fullName.touched" class="text-danger font-weight-bold">
+            <b><i>Tên người dùng có ít nhất 3 ký tự !!!</i></b></p>
+
+          <div class="row">
+            <p class="col-sm b">Giới tính</p>
+            <div class="col-sm"  >
+              <div class="form-check form-check-inline">
+                <label>
+                  <input class="form-check-input" type="radio"  name="gender" formControlName="gender" value="Nam"  >
+                </label>
+                <label class="form-check-label" >Nam</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label>
+                  <input class="form-check-input" type="radio" name="gender" formControlName="gender" value="Nữ" >
+                </label>
+                <label class="form-check-label" >Nữ</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <label class="col-sm b">Ngày sinh</label>
+            <p class="col-sm"><input type="date" id="datepicker" class="form-control" formControlName="birthday"></p>
+          </div>
+          <p *ngIf="registerInjectForm.controls.birthday.errors?.required && registerInjectForm.controls.birthday.touched"
+             class="text-danger "><b><i>Ngày sinh không được để trống !</i></b></p>
+
+
+          <div class="row">
+            <p class="col-sm b">Người giám hộ</p>
+            <p class="col-sm"><input type="text" class="form-control" formControlName="parentName"></p>
+          </div>
+          <p *ngIf="registerInjectForm.controls.parentName.errors?.required && registerInjectForm.controls.parentName.touched"
+             class="text-danger " ><b><i>Người giám hộ không được để trống !</i></b></p>
+          <p *ngIf="registerInjectForm.controls.parentName.errors?.pattern && registerInjectForm.controls.parentName.touched" class="text-danger font-weight-bold">
+            <b><i>Tên người giám hộ có ít nhất 3 ký tự !!!</i></b></p>
+
+          <div class="row">
+            <p class="col-sm b">Địa chỉ :</p>
+            <p class="col-sm"><input type="text" class="form-control" formControlName="address"></p>
+          </div>
+          <p *ngIf="registerInjectForm.controls.address.errors?.required && registerInjectForm.controls.address.touched"
+             class="text-danger " ><b><i>Địa chỉ không được để trống !</i></b></p>
+
+          <div class="row">
+            <p class="col-sm b">Số điện thoại :</p>
+            <p class="col-sm"><input type="text" class="form-control" formControlName="phoneNumber"></p>
+          </div>
+          <p *ngIf="registerInjectForm.controls.phoneNumber.errors?.required && registerInjectForm.controls.phoneNumber.touched"
+             class="text-danger " ><b><i>Số điện thoại không được để trống !</i></b></p>
+          <p *ngIf="registerInjectForm.controls.phoneNumber.errors?.pattern && registerInjectForm.controls.phoneNumber.touched" class="text-danger font-weight-bold">
+            <b><i>Số điện thoại phải theo dịnh dạng 9 số (số từ 0-9)</i></b></p>
+
+        </div>
+        <div class="col-sm">
+          <h3><b>Thông tin vắc-xin đăng ký tiêm </b></h3>
+          <div class="row">
+            <p class="col-sm b">Tên vắc-xin</p>
+<!--            <p class="col-7">{{infoVaccine.vaccine.name}}</p>-->
+            <p class="col-7">{{data.dataDl.vaccine.name}}</p>
+          </div>
+
+          <div class="row">
+            <p class="col-sm b">Loại Vắc-Xin</p>
+            <p class="col-7">{{data.dataDl.vaccine.category}}</p>
+          </div>
+
+          <div class="row">
+            <p class="col-sm b" style="height: 54px">Nước sản xuất </p>
+            <p class="col-7">{{data.dataDl.vaccine.country}}</p>
+          </div>
+
+          <div class="row">
+            <p class="col-sm b">Giá vaccine </p>
+            <p class="col-7">{{data.dataDl.vaccine.price}} VNĐ</p>
+          </div>
+
+          <div class="row">
+            <p class="col-sm b ">Ngày tiêm </p>
+            <p class="col-7">{{data.dataDl.vaccinationDate | date:'dd/MM/yyyy'}}</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+<div class="modal-footer">
+  <button  mat-button [mat-dialog-close] type="button" class="btn btn-secondary"  style="width: 150px" >Hủy</button>
+  <button  type="submit" class="btn btn-warning" style="width: 150px" [disabled]="registerInjectForm.invalid" (click)="import()" >Đăng Ký</button>
+</div>
+</form>
+
+
+
