@@ -20,7 +20,7 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {
   MatButtonModule,
   MatCheckboxModule,
-  MatDatepickerModule,
+  MatDatepickerModule, MatDialogModule,
   MatFormFieldModule,
   MatInputModule,
   MatRadioModule, MatSelectModule,
@@ -28,6 +28,9 @@ import {
 } from '@angular/material';
 import {GuestLayoutComponent} from './guest-layout/guest-layout.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {DailyScheduleComponent} from '../home/daily-schedule/daily-schedule.component';
+import {RegisterInjectScheduleComponent} from './register-inject-schedule/register-inject-schedule.component';
+import {ConfirmRegisterComponent} from './register-inject-schedule/confirm-register/confirm-register.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -42,7 +45,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     TableVacxinComponent,
     RegistrationVaccinationComponent,
     GuestLayoutComponent,
-    InjectionHistoryComponent
+    InjectionHistoryComponent,
+    DailyScheduleComponent,
+    RegisterInjectScheduleComponent,
+    ConfirmRegisterComponent
   ],
   imports: [
     CommonModule,
@@ -74,12 +80,14 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    MatDialogModule
   ],
   exports: [
     FooterComponent,
     HeaderComponent
-  ]
+  ],
+  entryComponents: [RegisterInjectScheduleComponent,ConfirmRegisterComponent]
 })
 export class AccountModule {
 }

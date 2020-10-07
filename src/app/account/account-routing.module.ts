@@ -6,6 +6,7 @@ import {ContactComponent} from './contact/contact.component';
 import {TableVacxinComponent} from './table-vacxin/table-vacxin.component';
 import {RegistrationVaccinationComponent} from './registration-vaccination/registration-vaccination.component';
 import {InjectionHistoryComponent} from './injection-history/injection-history.component';
+import {DailyScheduleComponent} from '../home/daily-schedule/daily-schedule.component';
 
 const routes: Routes = [
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   ]
   },
   { path:'guest', component : GuestLayoutComponent, children : [
+    { path:'daily', component : DailyScheduleComponent },
     { path:'contact', component : ContactComponent },
     { path:'vacxin', component: TableVacxinComponent },
     { path:'registration', component: RegistrationVaccinationComponent },

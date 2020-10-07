@@ -7,9 +7,6 @@ import {DailyScheduleComponent} from './home/daily-schedule/daily-schedule.compo
 
 const routes: Routes = [
   {
-    path: 'daily-schedule', component: DailyScheduleComponent
-  },
-  {
     path: '', component: BodyComponent
   },
   {

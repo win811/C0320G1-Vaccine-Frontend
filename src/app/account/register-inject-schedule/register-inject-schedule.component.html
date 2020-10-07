@@ -27,18 +27,10 @@
           <div class="row">
             <p class="col-sm b">Giới tính</p>
             <div class="col-sm"  >
-              <div class="form-check form-check-inline">
-                <label>
-                  <input class="form-check-input" type="radio"  name="gender" formControlName="gender" value="Nam"  >
-                </label>
-                <label class="form-check-label" >Nam</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <label>
-                  <input class="form-check-input" type="radio" name="gender" formControlName="gender" value="Nữ" >
-                </label>
-                <label class="form-check-label" >Nữ</label>
-              </div>
+              <mat-radio-group aria-label="Select an option" formControlName="gender">
+                <mat-radio-button value="Nam" class="mr-2">Nam</mat-radio-button>
+                <mat-radio-button value="Nữ">Nữ</mat-radio-button>
+              </mat-radio-group>
             </div>
           </div>
 
