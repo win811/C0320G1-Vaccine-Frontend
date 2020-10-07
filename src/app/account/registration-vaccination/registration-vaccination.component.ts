@@ -85,6 +85,7 @@ export class RegistrationVaccinationComponent implements OnInit {
       country: '',
       inventoryStatus: ''
     };
+    console.warn('getpage');
     this.getPage(1);
   }
 
@@ -94,6 +95,8 @@ export class RegistrationVaccinationComponent implements OnInit {
       this.pageSize = 100;
       this.currentPage = page;
       this.vaccineList = res.content;
+      console.log('list vacxin');
+      console.log(this.vaccineList);
     }, error => {
       console.log(error);
     });
@@ -104,8 +107,10 @@ export class RegistrationVaccinationComponent implements OnInit {
     this.injection.patient = this.firstFormGroup.value;
     this.dto = this.secondFormGroup.value;
     this.injection.injectionDate = this.dto.injectionDate;
+    console.log(this.injection);
     this.injectionHistoryService.RegistrationHistory(this.injection).subscribe(data => {
       this.noti.showNotification('success', 'Thông Báo', data.message);
+      this.router.navigate(['']);
     }, error1 => {
       this.noti.showNotification('danger', 'Thông Báo', error1.error.message);
     });

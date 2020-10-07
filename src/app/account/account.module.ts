@@ -48,7 +48,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     InjectionHistoryComponent,
     DailyScheduleComponent,
     RegisterInjectScheduleComponent,
-    ConfirmRegisterComponent
+    ConfirmRegisterComponent,
   ],
   imports: [
     CommonModule,
