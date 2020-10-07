@@ -112,7 +112,7 @@
               <div>
                 <mat-form-field class=" field-ad row ">
                   <mat-label>Ngày đăng kí tiêm</mat-label>
-                  <input matInput [matDatepicker]="dp4" placeholder="dd/mm/yyyy" formControlName="injectionDate"
+                  <input matInput [matDatepicker]="dp4" placeholder="dd/mm/yyyy" [max]="maxDate" formControlName="injectionDate"
                          required
                          readonly>
                   <mat-datepicker-toggle matSuffix [for]="dp4"></mat-datepicker-toggle>
@@ -160,7 +160,7 @@
             <p>{{injection.patient.phoneNumber}}</p>
             <p>{{injection.patient.parentName}}</p>
             <p>{{injection.vaccine.name}}</p>
-            <p>{{injection.injectionDate|date:'medium'}}</p>
+            <p>{{injection.injectionDate|date:'fullDate'}}</p>
           </div>
         <div class="col-md-2"></div>
       </div>
