@@ -1,3 +1,5 @@
+import { ReplyComponent } from './injection-history/reply/reply.component';
+
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {ContactComponent} from './contact/contact.component';
@@ -8,7 +10,11 @@ const routes: Routes = [{
 },
   {
     path: 'injection-history', component: InjectionHistoryComponent
-  }];
+  },
+  {
+    path: 'injection-history/reply/:id', component: ReplyComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

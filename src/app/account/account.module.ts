@@ -6,9 +6,10 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { InjectionHistoryComponent } from './injection-history/injection-history.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {ToastrModule} from 'ngx-toastr';
+import { ReplyComponent } from './injection-history/reply/reply.component';
 
 @NgModule({
-  declarations: [ContactComponent, InjectionHistoryComponent],
+  declarations: [ContactComponent, InjectionHistoryComponent, ReplyComponent],
   imports: [
     CommonModule,
     AccountRoutingModule,

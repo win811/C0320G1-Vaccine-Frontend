@@ -76,6 +76,10 @@ export class TransSupEditComponent implements OnInit {
         }
       );
     } 
+    
+  }
+  backTo() {
+    this.router.navigateByUrl("/admin/supplier-transaction");
   }
 
   //to valid
