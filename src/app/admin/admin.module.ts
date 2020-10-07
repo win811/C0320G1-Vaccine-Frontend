@@ -34,12 +34,18 @@ import { VaccineUpdatePriceComponent } from './vaccine-update-price/vaccine-upda
 import { PatientListComponent } from './patient/patient-list/patient-list.component';
 import { PatientCreateComponent } from './patient/patient-create/patient-create.component';
 import { PatientUpdateComponent } from './patient/patient-update/patient-update.component';
+import {TransSupCreateComponent} from './finance-management/trans-w-supplier/trans-sup-create/trans-sup-create.component';
+import {TransSupEditComponent} from './finance-management/trans-w-supplier/trans-sup-edit/trans-sup-edit.component';
+import {TransWSupplierComponent} from './finance-management/trans-w-supplier/trans-w-supplier.component';
 
 @NgModule({
   declarations: [
     VaccineStorageComponent,
     ImportVaccineComponent,
     ExportVaccineComponent,
+    TransSupCreateComponent,
+    TransSupEditComponent,
+    TransWSupplierComponent,
     // AdminCenterComponent,
     EmployeeListComponent,
     EmployeeCreateComponent,

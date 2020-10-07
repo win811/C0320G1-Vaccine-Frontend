@@ -32,7 +32,6 @@ const routes: Routes = [
       {path: 'listPatientInjectRequest', component: ListPatientInjectRequestComponent},
       {path: 'vaccine-list', component: VaccineListComponent},
       {path: 'patient-list', component: PatientListComponent},
-        ,
         {
           path: 'supplier-transaction',component : TransWSupplierComponent,
         },

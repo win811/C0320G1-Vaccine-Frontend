@@ -15,7 +15,6 @@ const routes: Routes = [
 
   ]
   },
-
   { path:'guest', component : GuestLayoutComponent, children : [
     { path:'contact', component : ContactComponent },
     { path:'vacxin', component: TableVacxinComponent },

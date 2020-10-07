@@ -74,7 +74,7 @@ export class AppComponent {
     this.brandService.TextToSpeech(voice).subscribe(data => {
       setTimeout(() => {
         this.url = data.async;
-      }, 1000);
+      }, 1500);
 
       console.log('success');
       if (this.actionNext != '') {
@@ -106,7 +106,7 @@ export class AppComponent {
       return 'Chào bạn, mình là A I , mình có thể giúp gì cho bạn ?';
       // tslint:disable-next-line:triple-equals
     } else if (bot_ear.search('vắc xin') != -1) {
-      this.actionNext = 'vacxin';
+      this.actionNext = 'guest/vacxin';
       return 'Bên mình có đủ các loại vắc xin tốt nhất trên thị trường, cả nội địa và ngoại địa, mình mở danh sách cho bạn xem nhé ?';
       // tslint:disable-next-line:triple-equals
     } else if (bot_ear.search('cảm ơn') != -1 || bot_ear.search('Cảm ơn') != -1) {
@@ -119,10 +119,10 @@ export class AppComponent {
       return 'Vâng ạ, mình sẽ trả lời các câu hỏi của bạn !';
       // tslint:disable-next-line:triple-equals
     } else if (bot_ear.search('Tư vấn') != -1 || bot_ear.search('tư vấn') != -1) {
-      this.actionNext = 'vacxin';
+      this.actionNext = 'guest/vacxin';
       return 'mời bạn xem các thông tin về các gói tiêm chủng mới nhất bên mình ';
     } else if (bot_ear.search('phản hồi') != -1) {
-      this.actionNext = 'contact';
+      this.actionNext = 'guest/contact';
       return 'Xin vui lòng nhập thông tin phản hồi theo mẫu dưới đây ';
     } else {
       return 'Xin lỗi, mình không hiểu câu hỏi của bạn ';
