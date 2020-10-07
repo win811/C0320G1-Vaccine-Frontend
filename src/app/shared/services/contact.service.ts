@@ -25,4 +25,9 @@ export class ContactService {
     const link = this.API_URL_CONTACT + '/' + id;
     return this.http.get(link);
   }
+
+  closeContact(id): Observable<any> {
+    const link = this.API_URL_CONTACT + '/reply/' + id;
+    return this.http.get(link);
+  }
 }

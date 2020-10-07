@@ -18,7 +18,7 @@
                       <span>{{contact.subject}}</span>
                     </div>
                     <div class="icons">
-                      <a href="#" class="icon">
+                      <a (click)="closeContact(contact.id)" class="icon" matTooltip="Hoàn Thành">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                              class="feather feather-share text-muted hover-primary-muted" data-toggle="tooltip" title=""
@@ -116,7 +116,7 @@
                 </ul>
 
               </div>
-              <div class="media mt-3">
+              <div class="media mt-3" *ngIf="contact.status !='Hoàn thành'">
                 <a  class="media-left">
                   <img alt="" src="https://bootdey.com/img/Content/avatar/avatar2.png" width="50" height="50">
                 </a>
@@ -124,7 +124,7 @@
                   <textarea class="wysihtml5 form-control"  rows="5" placeholder="Trả lời tại đây..." [(ngModel)]="textReply"></textarea>
                 </div>
               </div>
-              <div class="text-right">
+              <div class="text-right" *ngIf="contact.status !='Hoàn thành'">
                 <button type="button" (click)="SendReply()" class="btn btn-primary waves-effect waves-light mt-3"><i class="fa fa-send mr-1"></i> Gửi</button>
               </div>
 
@@ -136,9 +136,9 @@
     </div>
   </div>
 </div>
-<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script type="text/javascript">
+<!--<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>-->
+<!--<script src="http://netdna.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>-->
+<!--<script type="text/javascript">-->
 
-</script>
+<!--</script>-->
 

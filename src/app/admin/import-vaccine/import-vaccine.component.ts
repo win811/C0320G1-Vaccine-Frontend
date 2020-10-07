@@ -1,7 +1,9 @@
-import { differenceInYears } from 'date-fns';
+import { VaccineService } from './../../shared/services/vaccine.service';
+import { differenceInDays, differenceInHours, differenceInYears } from 'date-fns';
 import {ToastrService} from '../../../../node_modules/ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, AbstractControl, ValidationErrors, Validators } from '@angular/forms';
+import { Vaccine } from '../../shared/models/Vaccine';
 
 @Component({
   selector: 'app-import-vaccine',
@@ -11,14 +13,17 @@ import { FormBuilder, FormGroup, AbstractControl, ValidationErrors, Validators }
 export class ImportVaccineComponent implements OnInit {
 
   importForm : FormGroup;
+  today = new Date();
+  importErrors = IMPORT_ERRORS;
   
   constructor(
     private formBuilder: FormBuilder,
     private toastr : ToastrService,
+    private vaccineService : VaccineService
   ) { }
 
   ngOnInit() {
-    this.formBuilder.group({
+    this.importForm = this.formBuilder.group({
       name : ["",[Validators.required]],
       content : ["",[Validators.required,invalidNumber]],
       category : ["",[Validators.required]],
@@ -31,6 +36,20 @@ export class ImportVaccineComponent implements OnInit {
       limitAge : ["",[Validators.required,ageInValid]],
       price : ["",[Validators.required,invalidNumber]],
     })
+  }
+
+  import() {
+    if (this.importForm.valid) {
+      let vaccine = this.importForm.value as Vaccine; 
+      this.vaccineService.importVaccine(vaccine).subscribe(data => {
+        console.log(data);
+        this.toastr.success("Nhập kho thành công","Thông báo");
+      },error => {
+        this.toastr.error("Nhập kho thất bại","Thông báo");
+      })
+    } else {
+      this.toastr.warning("Không thể nhập kho","Thông báo")
+    }
   }
 
   get name(){
@@ -94,14 +113,14 @@ const containNumber = (control : AbstractControl) : ValidationErrors => {
 const higherThanToday = (control : AbstractControl) : ValidationErrors => {
   let inputDate = new Date(control.value);
   let today = new Date();
-  if ( differenceInYears(inputDate,today) > 0 ) return {higherThanToday : true};
+  if ( differenceInHours(inputDate,today) > 0 ) return {higherThanToday : true};
   return null;
 }
 
 const lowerThanToday = (control : AbstractControl) : ValidationErrors => {
   let inputDate = new Date(control.value);
   let today = new Date();
-  if ( differenceInYears(inputDate,today) < 0 ) return {lowerThanToday : true};
+  if ( differenceInHours(inputDate,today) <= 0 ) return {lowerThanToday : true};
   return null;
 }
 
@@ -149,7 +168,7 @@ const IMPORT_ERRORS = {
     { name: 'ageInValid', message: 'Dưới n tuổi : -n, trên n tuổi : n' }
   ],
   priceErrors : [
-    { name : 'required', message : 'Vui lòng nhập' },
+    { name : 'required', message : 'Vui lòng nhập!' },
     { name : 'isNaN', message : 'Đơn giá phải là số!'}
   ]
   

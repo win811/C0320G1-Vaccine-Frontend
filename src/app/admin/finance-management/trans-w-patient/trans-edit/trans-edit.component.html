@@ -1,1 +1,55 @@
-<p>trans-edit works!</p>
+<form [formGroup]="editForm">
+  <h3>Cập nhập thông tin giao dịch</h3>
+  <div class="input-group form-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Mã vắc-xin</span>
+    </div>
+    <input type="text" formControlName='vaccineId' class="form-control">
+  </div>
+  <div class="input-group form-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Loại vắc-xin<span class="text-danger">*</span></span>
+    </div>
+    <select formControlName='category' class="form-control" (change)="changePrice()">
+      <option *ngFor="let vaccine of vaccineList" [value]="vaccine.id">{{vaccine.category}}</option>
+    </select>
+  </div>
+  <div class="input-group form-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Ngày giao dịch<span class="text-danger">*</span></span>
+    </div>
+    <input type="date" formControlName='transactionDate' class="form-control"
+      value="{{transactionDate.value | date : 'yyyy-MM-dd'}}">
+  </div>
+  <ng-container *ngIf="transactionDate.touched">
+    <ng-container *ngFor="let error of errorList.dateErrors">
+      <span class="text-danger" *ngIf="transactionDate.hasError(error.code)">
+        {{error.message}}
+      </span>
+    </ng-container>
+  </ng-container>
+  <div class="input-group form-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Số lượng (ml)<span class="text-danger">*</span></span>
+    </div>
+    <input type="number" step="1" min="0" class="form-control" formControlName='amount' (change)="changePrice()">
+  </div>
+  <ng-container *ngIf="amount.touched">
+    <ng-container *ngFor="let error of errorList.amountErros">
+      <span class="text-danger" *ngIf="amount.hasError(error.code)">
+        {{error.message}}
+      </span>
+    </ng-container>
+  </ng-container>
+  <div class="input-group form-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Thành tiền (VNĐ)</span>
+    </div>
+    <input type="text" class="form-control" formControlName="price">
+  </div>
+  <div class="form-group text-center">
+    <input (click)="save()" [disabled]="!editForm.valid" type="submit" class="btn btn-primary mr-3 pr-3 pl-3"
+      value="Lưu" />
+    <input type="submit" class="btn btn-danger pr-3 pl-3" mat-dialog-close="cancel" value="Hủy" />
+  </div>
+</form>

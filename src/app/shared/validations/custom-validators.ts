@@ -3,6 +3,22 @@ import { differenceInYears } from "date-fns";
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
+//Duy
+export const validDate: ValidatorFn = (control: FormControl): ValidationErrors | null => {
+    const _date = new Date(control.value);
+    if (_date.toString() === 'Invalid Date') {
+        return { invalidDate: true };
+    }
+    return null;
+};
+
+//Duy
+export const validNumber: ValidatorFn = (control: FormControl): ValidationErrors | null => {
+    if (isNaN(control.value)) {
+        return { invalidNumber: true };
+    }
+    return null;
+};
 
 // Quân
 export const CheckPhoneNumber: ValidatorFn = (control: FormControl): ValidationErrors | null => {
@@ -19,14 +35,14 @@ export const CheckPhoneNumber: ValidatorFn = (control: FormControl): ValidationE
         return { format: true };
     }
     return null;
-}
+};
 
 
 // Quân
 export const checkAge: ValidatorFn = (date: AbstractControl): ValidationErrors | null => {
     const y = differenceInYears(new Date(), new Date(date.value));
     return y < 18 ? { age: true } : null;
-}
+};
 
 
 // Quân
@@ -41,8 +57,19 @@ export const validateCode = (Service: any): AsyncValidatorFn => {
             catchError(() => of(null))
         );
     };
-}
+};
 
+// Duy
+export const TRANSACTION_MESSAGE = {
+    amountErros: [
+        { code: 'required', message: 'Vui lòng nhập số lượng vaccine.' },
+        { code: 'min', message: 'Số lượng vaccine phải lớn hơn 0.' },
+        { code: 'invalidNumber', message: 'Số lượng vaccine không đúng định dạng. Vui lòng nhập số.' },
+    ],
+    dateErrors: [
+        { code: 'invalidDate', message: 'Ngày giao dịch không hợp lệ. Vui lòng chọn lại.' },
+    ]
+};
 // Quân
 export const EMPLOYEE_MESSAGES = {
     code: [

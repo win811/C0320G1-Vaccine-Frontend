@@ -15,4 +15,5 @@ export class ContactReplyService {
     const link = this.API_URL_CONTACT + '/reply/' + id;
     return this.http.post(link, contactReply);
   }
+
 }
