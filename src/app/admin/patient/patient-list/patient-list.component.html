@@ -1,0 +1,113 @@
+<div class="container mt-3 bg-white">
+  <div class="row">
+    <div class="col text-info d-flex justify-content-center">
+      <h2>Danh sách khách hàng (bệnh nhân)</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col mt-3">
+      <form [formGroup]="formSearchPatient">
+        <div class="row">
+          <div class="col-md">
+            <label>Mã bệnh nhân</label>
+            <input type="text" class="form-control" placeholder="vd: BN-001" formControlName="code">
+          </div>
+          <div class="col-md">
+            <label>Họ và tên</label>
+            <input type="text" class="form-control" placeholder="vd: Nguyễn Văn A" formControlName="fullName">
+            <p
+              *ngIf="formSearchPatient.controls.fullName.errors?.pattern && formSearchPatient.controls.fullName.touched"
+              class="text-danger font-weight-bold"><b><i>
+              Tên bệnh nhân không được chứa kí tự đặc biệt hoặc số !</i></b></p>
+          </div>
+          <div class="col-md">
+            <label>&nbsp;</label><br>
+            <button (click)="search()" type="button" class="btn btn-info"><i
+              class="fas fa-search"></i> Lọc kết quả
+            </button>
+            <p class="text-danger"><b><i>{{message}}</i></b></p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col">
+      <table class="table table-striped mt-2 text-center">
+        <thead class="bg-info text-white">
+        <tr>
+          <th scope="col">Mã bệnh nhân</th>
+          <th scope="col">Họ và tên</th>
+          <th scope="col">Ngày tháng năm sinh</th>
+          <th scope="col">Giới tính</th>
+          <th scope="col">Người giám hộ</th>
+          <th scope="col">Số điện thoại</th>
+          <th scope="col">Địa chỉ</th>
+          <th scope="col">Sửa</th>
+          <th scope="col">Xoá</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let patient of patients | async | paginate: { itemsPerPage: pageSize, currentPage: currentPage, totalItems: totalElements}">
+          <td>{{patient.code}}</td>
+          <td>{{patient.fullName}}</td>
+          <td>{{patient.birthday | date:'dd-MM-yyyy'}}</td>
+          <td>{{patient.gender}}</td>
+          <td>{{patient.parentName}}</td>
+          <td>{{patient.phoneNumber}}</td>
+          <td>{{patient.address}}</td>
+          <td>
+            <a class="btn btn-link fas fa-edit text-warning fa-lg" (click)="openEdit(patient)"></a>
+          </td>
+          <td>
+            <a class="btn btn-link text-danger fas fa-trash-alt fa-lg" data-toggle="modal"
+               [attr.data-target]="'#remove'+patient.id"></a>
+          </td>
+          <div class="modal fade" [id]="'remove'+patient.id" tabindex="-1" role="dialog"
+               aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalCenterTitle">Xóa bệnh nhân</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body text-center font-weight-bold">
+                  Bạn có muốn xóa bệnh nhân {{patient.fullName}} không ?
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                  <button type="button" class="btn btn-primary mr-3 pl-4 pr-4 pl-3 "
+                          data-dismiss="modal" (click)="delete(patient.id)">Xác nhận</button>
+                  <button type="button" class="btn btn-danger  ml-4"
+                          data-dismiss="modal">Huỷ</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="row mt-2">
+        <div class="col-md">
+          <button (click)="openCreate()" class="btn btn-success">Tạo mới bệnh nhân</button>
+        </div>
+      </div>
+    </div>
+    <div class="col mt-2">
+      <div class="d-flex justify-content-end">
+        <div class=" d-flex justify-content-end">
+          <pagination-controls (pageChange)="getPage($event)"></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

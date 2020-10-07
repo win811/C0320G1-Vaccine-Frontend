@@ -29,6 +29,12 @@ import { ListDailyScheduleComponent } from './daily-schedule/list-daily-schedule
 import { ListInjectComponent } from './daily-schedule/list-inject/list-inject.component';
 import { ListPatientInjectRequestComponent } from './patient-inject/list-patient-inject-request/list-patient-inject-request.component';
 import { EditPatientInjectRequestComponent } from './patient-inject/edit-patient-inject-request/edit-patient-inject-request.component';
+import { VaccineListComponent } from './vaccine-list/vaccine-list.component';
+import { VaccineUpdatePriceComponent } from './vaccine-update-price/vaccine-update-price.component';
+import { PatientListComponent } from './patient/patient-list/patient-list.component';
+import { PatientCreateComponent } from './patient/patient-create/patient-create.component';
+import { PatientUpdateComponent } from './patient/patient-update/patient-update.component';
+
 @NgModule({
   declarations: [
     VaccineStorageComponent,
@@ -39,11 +45,9 @@ import { EditPatientInjectRequestComponent } from './patient-inject/edit-patient
     EmployeeCreateComponent,
     EmployeeUpdateComponent,
     ContactBoxComponent,
-    EmployeeListComponent,
-    EmployeeCreateComponent,
+    VaccineListComponent,
     ContactReplyComponent,
     PeriodicInjectionComponent,
-    EmployeeUpdateComponent,
     TransCenterComponent,
     TransListComponent,
     TransEditComponent,
@@ -58,7 +62,11 @@ import { EditPatientInjectRequestComponent } from './patient-inject/edit-patient
     ListInjectComponent,
     ListPatientInjectRequestComponent,
     EditPatientInjectRequestComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    VaccineUpdatePriceComponent,
+    PatientListComponent,
+    PatientCreateComponent,
+    PatientUpdateComponent
   ],
   imports: [
     CommonModule,
@@ -77,7 +85,10 @@ import { EditPatientInjectRequestComponent } from './patient-inject/edit-patient
     ListInjectComponent,
     EditPatientInjectRequestComponent,
     TransEditComponent,
-    TransDelComponent
+    TransDelComponent,
+    VaccineUpdatePriceComponent,
+    PatientUpdateComponent,
+    PatientCreateComponent
   ],
   exports: [
     ExportVaccineComponent

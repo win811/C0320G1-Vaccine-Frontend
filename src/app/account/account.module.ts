@@ -4,6 +4,7 @@ import {CommonModule} from '@angular/common';
 import {ContactComponent} from './contact/contact.component';
 import {AccountRoutingModule} from './account-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { InjectionHistoryComponent } from './injection-history/injection-history.component';
 import {ToastrModule} from 'ngx-toastr';
 import {TableVacxinComponent} from './table-vacxin/table-vacxin.component';
 import {AccountLayoutComponent} from './account-layout/account-layout.component';
@@ -40,7 +41,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     HeaderComponent,
     TableVacxinComponent,
     RegistrationVaccinationComponent,
-    GuestLayoutComponent
+    GuestLayoutComponent,
+    InjectionHistoryComponent
   ],
   imports: [
     CommonModule,

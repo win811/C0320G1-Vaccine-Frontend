@@ -5,18 +5,22 @@ import {Routes, RouterModule} from '@angular/router';
 import {ContactComponent} from './contact/contact.component';
 import {TableVacxinComponent} from './table-vacxin/table-vacxin.component';
 import {RegistrationVaccinationComponent} from './registration-vaccination/registration-vaccination.component';
+import {InjectionHistoryComponent} from './injection-history/injection-history.component';
 
 const routes: Routes = [
 
-  {
-    path: '', component: AccountLayoutComponent, children: []
+  { path: '', component: AccountLayoutComponent, children : [
+
+    { path: 'injection-history', component: InjectionHistoryComponent }
+
+  ]
   },
-  {
-    path: 'guest', component: GuestLayoutComponent, children: [
-      {path: 'contact', component: ContactComponent},
-      {path: 'vacxin', component: TableVacxinComponent},
-      {path: 'registration', component: RegistrationVaccinationComponent},
-    ]
+
+  { path:'guest', component : GuestLayoutComponent, children : [
+    { path:'contact', component : ContactComponent },
+    { path:'vacxin', component: TableVacxinComponent },
+    { path:'registration', component: RegistrationVaccinationComponent },
+  ]
   },
 
 ];
