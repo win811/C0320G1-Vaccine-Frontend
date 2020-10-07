@@ -5,6 +5,9 @@ import { ContactBoxComponent } from './contact-box/contact-box.component';
 import { ContactReplyComponent } from './contact-reply/contact-reply.component';
 import { EmployeeListComponent } from './employee/employee-list/employee-list.component';
 import { PeriodicInjectionComponent } from './injection/periodic-injection/periodic-injection.component';
+import { TransWSupplierComponent } from './finance-management/trans-w-supplier/trans-w-supplier.component';
+import { TransSupCreateComponent } from './finance-management/trans-w-supplier/trans-sup-create/trans-sup-create.component';
+import { TransSupEditComponent } from './finance-management/trans-w-supplier/trans-sup-edit/trans-sup-edit.component';
 import { TransCenterComponent } from './finance-management/trans-center/trans-center.component';
 import { TransListComponent } from './finance-management/trans-w-patient/trans-list/trans-list.component';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
@@ -29,7 +32,17 @@ const routes: Routes = [
       {path: 'listPatientInjectRequest', component: ListPatientInjectRequestComponent},
       {path: 'vaccine-list', component: VaccineListComponent},
       {path: 'patient-list', component: PatientListComponent},
-      {path: "finance", component: TransCenterComponent,
+        ,
+        {
+          path: 'supplier-transaction',component : TransWSupplierComponent,
+        },
+        {
+          path: 'supplier-transaction/create', component: TransSupCreateComponent
+        },
+        {
+          path: 'supplier-transaction/edit/:id', component: TransSupEditComponent
+        },
+        {path: "finance", component: TransCenterComponent,
           children: [
             { path: "patient", component: TransListComponent }
           ]
