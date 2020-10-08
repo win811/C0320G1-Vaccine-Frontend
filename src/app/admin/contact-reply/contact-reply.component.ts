@@ -7,6 +7,7 @@ import {Router} from '@angular/router';
 import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs';
 import {Account} from '../../shared/models/Account';
+import {NotifiByDucService} from '../../shared/services/notifi-by-duc.service';
 
 @Component({
   selector: 'app-contact-reply',
@@ -25,8 +26,11 @@ export class ContactReplyComponent implements OnInit {
   constructor(
     private contactReplyService: ContactReplyService,
     private contactService: ContactService,
-    private router: ActivatedRoute
+    private router: ActivatedRoute,
+    private  router1:Router,
+    private noti: NotifiByDucService
   ) {
+
   }
 
   ngOnInit() {
@@ -45,19 +49,30 @@ export class ContactReplyComponent implements OnInit {
     if (this.textReply === undefined) {
       console.log('Phản hồi không được để rỗng');
     } else {
+      this.noti.showNotification('info', 'Trạng Thái', 'Đang gửi phản hồi');
       this.contactReply.replyText = this.textReply;
       this.contactReply.replyFile = this.fileDinhKem;
       this.contactReply.account.id = 1;
       console.log(this.contactReply);
       this.contactReplyService.addNewContactReply(this.contactReply, this.idContact).subscribe(data => {
-        console.log('Gửi ContactReply thành Công');
+        this.noti.showNotification('success', 'Phản hồi', data.message);
         this.textReply = '';
         this.getContactAndReply();
+      }, error1 => {
+        console.log('gửi reply thất bại');
       });
     }
   }
 
   endReply() {
     console.log('endreply');
+  }
+
+  closeContact(id) {
+    this.contactService.closeContact(id).subscribe(data => {
+      console.log(close());
+      this.noti.showNotification('success', 'Thông Báo', data.message);
+      this.router1.navigate(['contactBox']);
+    });
   }
 }

@@ -1,14 +1,15 @@
 export interface Account {
   id: number;
-  code?: string;
+  username: string;
+  password: string;
   fullName: string;
-  password?: string;
-  birthDate?: string;
-  email?: string;
-  phoneNumber?: string;
-  address?: string;
-  gender?: string;
-  avatarImageUrl?: string;
-  role?: string;
-  status?: string;
+  idCard: string;
+  address: string;
+  email: string;
+  gender: string;
+  birthDay: string;
+  avatar: string;
+  role: string;
+  phoneNumber: string;
+  confirmStatus: string;
 }

@@ -3,6 +3,7 @@ import {Contact} from '../../shared/models/Contact';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ContactService} from '../../shared/services/contact.service';
 import {NotificationService} from '../../shared/services/notification.service';
+import {NotifiByDucService} from '../../shared/services/notifi-by-duc.service';
 
 @Component({
   selector: 'app-contact',
@@ -26,6 +27,7 @@ export class ContactComponent implements OnInit {
   constructor(
     private contactService: ContactService,
     private notifyService: NotificationService,
+    private noti: NotifiByDucService,
     private fb: FormBuilder) {
   }
 
@@ -36,22 +38,14 @@ export class ContactComponent implements OnInit {
     this.contact = this.contactForm.value;
     this.contactService.addNewContact(this.contact).subscribe(data => {
       console.log(data);
-      this.message = data.message;
-      this.classMessage = 'alert alert-success';
-      this.showToasterSuccess(this.message);
+      // this.message = data.message;
+      // this.classMessage = 'alert alert-success';
+      this.noti.showNotification('success', 'Thông Báo', data.message);
     }, error => {
-      this.message = error.error.message;
-      this.classMessage = 'alert alert-danger';
+      this.noti.showNotification('danger', 'Thông Báo', error.message);
     });
   }
 
-  showToasterSuccess(message) {
-    this.notifyService.showSuccess(message, 'Phản Hồi');
-  }
-
-  showToasterError(message) {
-    this.notifyService.showError(message, 'ItSolutionStuff.com');
-  }
 
 
 }

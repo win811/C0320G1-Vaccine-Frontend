@@ -1,0 +1,15 @@
+.mat-dialog-container {
+  padding: 0;
+}
+
+.col-sm .row {
+  height: 54px;
+  line-height: 40px;
+}
+
+.text-danger {
+  margin: 0px;
+  font-size: 14px;
+  text-align: right;
+  margin-bottom: 10px;
+}

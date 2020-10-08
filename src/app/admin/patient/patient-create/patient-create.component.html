@@ -1,0 +1,106 @@
+<div class="container">
+  <div class="d-flex justify-content-center align-items-center">
+    <div class="col-md-8">
+      <form [formGroup]="patientCreateForm" (ngSubmit)="onSubmit()">
+        <div class="d-flex justify-content-center">
+          <h3>TẠO MỚI KHÁCH HÀNG (BỆNH NHÂN)</h3>
+        </div>
+        <hr>
+        <div class="form-group row">
+          <label for="name" class="col-sm-4 col-form-label">Mã bệnh nhân:</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" placeholder="BN-001" formControlName="code">
+            <p *ngIf="patientCreateForm.controls.code.errors?.required && patientCreateForm.controls.code.touched"
+              class="text-danger font-weight-bold"><b><i>
+              Mã bệnh nhân không được để trống !</i></b></p>
+            <p *ngIf="patientCreateForm.controls.code.errors?.pattern && patientCreateForm.controls.code.touched"
+              class="text-danger font-weight-bold"><b><i>
+              Mã bệnh nhân không không đúng định dạng ! Định dạng là BN-XXX (X là số từ 0-9)</i></b></p>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="name" class="col-sm-4 col-form-label">Họ và tên bệnh nhân:</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" id="name" placeholder="vd: Nguyễn Văn A" formControlName="fullName">
+            <p *ngIf="patientCreateForm.controls.fullName.errors?.required && patientCreateForm.controls.fullName.touched"
+              class="text-danger font-weight-bold"><b><i>
+              Tên bệnh nhân không được để trống !</i></b></p>
+            <p *ngIf="patientCreateForm.controls.fullName.errors?.pattern && patientCreateForm.controls.fullName.touched"
+              class="text-danger font-weight-bold"><b><i>
+              Tên bệnh nhân không được chứa kí tự đặc biệt và số !</i></b></p>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-form-label col-sm-4">Giới tính:</label>
+          <div class="col-sm-8">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" value="Nam" formControlName="gender">
+              <p class="form-check-label">Nam</p>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" value="Nữ" formControlName="gender">
+              <p class="form-check-label">Nữ</p>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="birthday" class="col-sm-4 col-form-label">Ngày sinh:</label>
+          <div class="col-sm-8">
+            <input type="date" class="form-control" id="birthday" formControlName="birthday">
+            <p
+              *ngIf="patientCreateForm.controls.birthday.errors?.required && patientCreateForm.controls.birthday.touched"
+              class="text-danger font-weight-bold"><b><i>
+              Ngày sinh không được để trống !</i></b></p>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="protector" class="col-sm-4 col-form-label">Người giám hộ:</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" id="protector" placeholder="vd: Nguyễn Văn B" formControlName="parentName">
+            <p
+              *ngIf="patientCreateForm.controls.parentName.errors?.required && patientCreateForm.controls.parentName.touched"
+              class="text-danger font-weight-bold"><b><i>
+              Ngày giám hộ không được để trống !</i></b></p>
+            <p
+              *ngIf="patientCreateForm.controls.fullName.errors?.pattern && patientCreateForm.controls.fullName.touched"
+              class="text-danger font-weight-bold"><b><i>
+              Người giám hộ không được chứa kí tự đặc biệt và số !</i></b></p>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="address" class="col-sm-4 col-form-label">Địa chỉ:</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" id="address" placeholder="vd: Đà Nẵng" formControlName="address">
+            <p
+              *ngIf="patientCreateForm.controls.address.errors?.required && patientCreateForm.controls.address.touched"
+              class="text-danger font-weight-bold"><b><i>
+              Địa chỉ không được để trống !</i></b></p>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="phonenumber" class="col-sm-4 col-form-label">Số điện thoại:</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" id="phonenumber" placeholder="vd: 0999999999" formControlName="phoneNumber">
+            <p
+              *ngIf="patientCreateForm.controls.phoneNumber.errors?.required && patientCreateForm.controls.phoneNumber.touched"
+              class="text-danger font-weight-bold"><b><i>
+              Số điện thoại không được để trống !</i></b></p>
+            <p
+              *ngIf="patientCreateForm.controls.phoneNumber.errors?.pattern && patientCreateForm.controls.phoneNumber.touched"
+              class="text-danger font-weight-bold"><b><i>
+              Số điện thoại gồm 10 kí tự số !</i></b></p>
+          </div>
+
+        </div>
+        <div class="form-group row">
+          <div class="d-flex justify-content-center col-sm-8 mt-3">
+            <button [disabled]="patientCreateForm.invalid" type="submit" class="btn btn-primary mr-3" style="width: 100px">Lưu</button>
+          </div>
+          <div class="col-sm-4 mt-3">
+            <button type="button" class="btn btn-danger mr-3" style="width: 100px" mat-dialog-close="cancel">Hủy</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

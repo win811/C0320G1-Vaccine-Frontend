@@ -1,0 +1,179 @@
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+
+      <ng-template matStepLabel>Nhập thông tin đăng ký</ng-template>
+      <div class="row justify-content-center mt-3 mb-3" style="font-size: 30px">
+        <mat-label>THÔNG TIN NGƯỜI ĐĂNG KÝ TIÊM</mat-label>
+      </div>
+      <div class="offset-sm-2">
+        <div class="row justify-content-between">
+          <div class="col-md-2"></div>
+          <div class="col-md-4">
+            <mat-form-field class=" field-ad row ">
+              <mat-label *ngIf="firstFormGroup.controls.fullName.touched&&firstFormGroup.controls.fullName.errors?.pattern"
+                         class="text-danger">Tên không được chứa kí tự đặc biệt</mat-label>
+              <input matInput placeholder="Họ và tên" formControlName="fullName" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field class=" field-ad row ">
+              <mat-label>Giới tính</mat-label>
+              <mat-select matInput placeholder="Giới Tính" formControlName="gender" required>
+                <mat-option value="Khác" disabled>Khác</mat-option>
+                <mat-option value="Nữ">Nữ</mat-option>
+                <mat-option value="Nam">Nam</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <br>
+            <mat-form-field class=" field-ad row ">
+              <mat-label>Ngày sinh</mat-label>
+              <input matInput [matDatepicker]="dp3"  [max]="maxDate" placeholder="dd/mm/yyyy" formControlName="birthday" required
+                     readonly>
+              <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+              <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class=" field-ad row " style="width:300px;">
+              <mat-label *ngIf="firstFormGroup.controls.email.touched&&firstFormGroup.controls.email.errors?.pattern"
+                         class="text-danger">Email định dạng name@domain.com</mat-label>
+              <input style="width: 200px"  matInput placeholder="Email" formControlName="email" required email>
+              <button class="float-right " mat-button (click)="sendVerifyToken()" >Gửi Mã</button>
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field class=" field-ad row ">
+              <mat-label *ngIf="firstFormGroup.controls.parentName.touched&&firstFormGroup.controls.parentName.errors?.pattern"
+                         class="text-danger">Tên không được chưa kí tự đặc biệt</mat-label>
+              <input matInput placeholder="Người giám hộ" formControlName="parentName" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field class=" field-ad row ">
+              <mat-label>Địa chỉ</mat-label>
+              <input class="mr-5" matInput placeholder="Địa chỉ" formControlName="address" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field class=" field-ad row ">
+              <mat-label *ngIf="firstFormGroup.controls.phoneNumber.touched&&firstFormGroup.controls.phoneNumber.errors?.pattern"
+                         class="text-danger">Số điện thoại không có thật</mat-label>
+              <input class="mr-5" matInput placeholder="Số điện thoại" formControlName="phoneNumber" required>
+            </mat-form-field>
+            <mat-form-field class=" field-ad row mt-4" style="width:300px">
+              <mat-label>Mã Xác Nhận</mat-label>
+              <input  matInput placeholder="Mã Xác Nhận" formControlName="code" required >
+            </mat-form-field>
+            <div class="field-ad row">
+              <button class="float-right mt-3 " mat-button matStepperNext [disabled]="firstFormGroup.invalid">Tiếp Tục
+              </button>
+            </div>
+          </div>
+          <div class="col-md-2"></div>
+        </div>
+      </div>
+    </form>
+
+
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" label="Xác nhận đăng ký">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Kiểm tra thông tin vắc-xin</ng-template>
+      <div class="row justify-content-center mt-3 mb-3" style="font-size: 30px">
+        <mat-label>THÔNG TIN VẮC-XIN</mat-label>
+      </div>
+      <div class="">
+        <div class="">
+          <div class="row ">
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+              <img style="width: 400px;height: 400px" src="../../../assets/anhvacxin.jpg">
+            </div>
+            <div class="col-md-4">
+              <div>
+                <mat-form-field class=" field-ad row ">
+                  <mat-label>Tên Vắc-Xin</mat-label>
+                  <mat-select matInput placeholder="Tên Vắc-Xin" formControlName="name" [(ngModel)]="vacxin">
+                    <mat-option *ngIf="vacxin2" [value]="vacxin2">{{vacxin2.name}}</mat-option>
+                    <mat-option  *ngFor=" let vacxin of vaccineList" [value]="vacxin">
+                      {{vacxin.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field class=" row  field-ad">
+                  <mat-label>Loại Vắc-xin</mat-label>
+                  <input [(ngModel)]="vacxin.category" matInput formControlName="category" readonly>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field class=" field-ad row ">
+                  <mat-label>Nước sản xuất</mat-label>
+                  <input [(ngModel)]="vacxin.country" matInput formControlName="country" readonly>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field class=" field-ad row ">
+                  <mat-label>Ngày đăng kí tiêm</mat-label>
+                  <input matInput [matDatepicker]="dp4" placeholder="dd/mm/yyyy" [max]="maxDate" formControlName="injectionDate"
+                         required
+                         readonly>
+                  <mat-datepicker-toggle matSuffix [for]="dp4"></mat-datepicker-toggle>
+                  <mat-datepicker #dp4 disabled="false"></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-md-2"></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Quay Lại</button>
+        <button mat-button matStepperNext (click)="setInjection()" [disabled]="secondFormGroup.invalid">Tiếp Theo</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Kết Thúc</ng-template>
+    <div class="row justify-content-center mt-3 mb-3" style="font-size: 30px">
+      <mat-label>PHIẾU ĐĂNG KÝ TIÊM THEO YÊU CẦU</mat-label>
+    </div>
+    <div *ngIf="injection.patient">
+      <div class="row">
+        <div class="col-md-4"></div>
+          <div class="col-md-2" id="info-par-label">
+            <div>
+              <label>Họ Tên Bệnh Nhân :</label>
+            </div>
+            <div>
+              <label>Số Điện Thoại :</label>
+            </div>
+            <div>
+              <label>Người Giám Hộ :</label>
+            </div>
+            <div>
+              <label>Tên Vắc-Xin :</label>
+            </div>
+            <div>
+              <label>Ngày Hẹn :</label>
+            </div>
+          </div>
+          <div class="col-md-4" id="info-par">
+            <p>{{injection.patient.fullName}}</p>
+            <p>{{injection.patient.phoneNumber}}</p>
+            <p>{{injection.patient.parentName}}</p>
+            <p>{{injection.vaccine.name}}</p>
+            <p>{{injection.injectionDate|date:'fullDate'}}</p>
+          </div>
+        <div class="col-md-2"></div>
+      </div>
+
+
+
+    </div>
+
+
+   <div>
+      <button mat-button matStepperPrevious>Quay Lại</button>
+      <button mat-button (click)="registration()" [disabled]="firstFormGroup.invalid&&secondFormGroup.invalid">Gửi Đăng Ký
+      </button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

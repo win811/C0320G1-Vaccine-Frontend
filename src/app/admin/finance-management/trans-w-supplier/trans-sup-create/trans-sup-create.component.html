@@ -1,0 +1,163 @@
+<div class="content">
+    <div class="main-content">
+        <div class="container-fluid">
+            <h2><strong>Thêm mới giao dịch</strong></h2>
+            <hr>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <form id="form-create" style="padding-left: 50px; padding-right: 50px" [formGroup]="createForm"
+                        (ngSubmit)="createNewTrans()">
+                        <fieldset>
+                            <div style="margin: 20px 40px 20px 40px;">
+
+                                <!--form-row-->
+                                <div class="form-row">
+                                    <div class="form-group col-md">
+                                        <label for="discount">Mã giao dịch *</label>
+                                        <input type="text" class="form-control form-control-sm"
+                                            formControlName="tradingCode" [class.mark-success]="tradingCode.valid"
+                                            id="tradingCode">
+                                        <div *ngIf="tradingCode.touched && tradingCode.invalid">
+                                            <ng-container *ngFor="let error of errors.tradingCodeErrors">
+                                                <small *ngIf="tradingCode.hasError(error.code)"
+                                                    class="d-block text-danger" role="alert">{{error.message}}</small>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md">
+                                        <label for="discount">Mã hóa đơn *</label>
+                                        <input type="text" class="form-control form-control-sm"
+                                            formControlName="billCode" [class.mark-success]="billCode.valid"
+                                            id="billCode">
+                                        <div *ngIf="billCode.touched && billCode.invalid">
+                                            <ng-container *ngFor="let error of errors.billCodeErrors">
+                                                <small *ngIf="billCode.hasError(error.code)" class="d-block text-danger"
+                                                    role="alert">{{error.message}}</small>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--form-row-->
+
+                                <div class="form-row">
+                                    <div class="form-group col-md">
+                                        <label>Vắc xin</label>
+                                        <div class="input-group input-group-sm">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="departurePlace">Mã vắc xin
+                                                    *</span>
+                                            </div>
+                                            <input type="text" class="form-control form-control-sm"
+                                                formControlName="vaccineCode" [class.mark-success]="vaccineCode.valid"
+                                                id="vaccineCode">
+                                            <div *ngIf="vaccineCode.touched && vaccineCode.invalid">
+                                                <ng-container *ngFor="let error of errors.vaccineCodeErrors">
+                                                    <small *ngIf="vaccineCode.hasError(error.code)"
+                                                        class="d-block text-danger"
+                                                        role="alert">{{error.message}}</small>
+                                                </ng-container>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md">
+                                        <label for="arrivalPlace">&nbsp;</label>
+                                        <div class="input-group input-group-sm">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="arrivalPlace">Loại vắc xin
+                                                    *</span>
+                                            </div>
+                                            <input type="text" class="form-control form-control-sm"
+                                                formControlName="vaccineType" [class.mark-success]="vaccineType.valid"
+                                                id="vaccineType">
+                                            <div *ngIf="vaccineType.touched && vaccineType.invalid">
+                                                <ng-container *ngFor="let error of errors.vaccineTypeErrors">
+                                                    <small *ngIf="vaccineType.hasError(error.code)"
+                                                        class="d-block text-danger"
+                                                        role="alert">{{error.message}}</small>
+                                                </ng-container>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group col-md">
+                                        <label for="arrivalPlace">&nbsp;</label>
+                                        <div class="input-group input-group-sm">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="arrivalPlace">Số lượng (Lô)
+                                                    *</span>
+                                            </div>
+                                            <input type="number" class="form-control form-control-sm"
+                                                formControlName="amount" [class.mark-success]="amount.valid"
+                                                id="amount">
+                                            <div *ngIf="amount.touched && amount.invalid">
+                                                <ng-container *ngFor="let error of errors.amountErrors">
+                                                    <small *ngIf="amount.hasError(error.code)"
+                                                        class="d-block text-danger"
+                                                        role="alert">{{error.message}}</small>
+                                                </ng-container>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!--form-row-->
+                                <div class="form-row">
+                                    <div class="form-group col-md">
+                                        <label for="namePromo">Tên nhà cung cấp *</label>
+                                        <input type="text" class="form-control form-control-sm"
+                                            formControlName="supplier" [class.mark-success]="supplier.valid"
+                                            id="supplier">
+                                        <div *ngIf="supplier.touched && supplier.invalid">
+                                            <ng-container *ngFor="let error of errors.supplierErrors">
+                                                <small *ngIf="supplier.hasError(error.code)" class="d-block text-danger"
+                                                    role="alert">{{error.message}}</small>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md">
+                                        <label for="namePromo">Ngày giao dịch *</label>
+                                        <input type="date" class="form-control form-control-sm"
+                                            formControlName="tradingDate" [class.mark-success]="tradingDate.valid"
+                                            id="tradingDate">
+                                        <div *ngIf="tradingDate.touched">
+                                            <ng-container *ngFor="let error of errors.tradingDateErrors">
+                                                <small *ngIf="tradingDate.hasError(error.code)"
+                                                    class="d-block text-danger" role="alert">{{error.message}}</small>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md">
+                                        <label for="namePromo">Giá (VNĐ)*</label>
+                                        <input type="text" class="form-control form-control-sm" formControlName="price"
+                                            [class.mark-success]="price.valid" id="price">
+                                        <div *ngIf="price.touched && price.invalid">
+                                            <ng-container *ngFor="let error of errors.priceErrors">
+                                                <small *ngIf="price.hasError(error.code)" class="d-block text-danger"
+                                                    role="alert">{{error.message}}</small>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--form-group-->
+                                <hr>
+                                <small class="d-block text-danger" role="alert">
+                                    {{message}}
+                                </small>
+                                <button type="submit" class="btn btn-outline-success"> Xác nhận</button>
+                                <button type="button" class="btn btn-outline-primary " (click)="backTo()">
+                                    >Hủy</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <!--row-->
+            <hr>
+        </div>
+    </div>
