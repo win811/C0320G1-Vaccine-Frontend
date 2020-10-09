@@ -10,7 +10,7 @@ import {InjectionHistory} from '../models/InjectionHistory';
   providedIn: 'root'
 })
 export class InjectionHistoryService {
-  private readonly API_URL_REG = 'http://localhost:8080/api/v1/injection/registration';
+  private readonly API_URL_DUC = 'http://localhost:8080/api/v1';
 
   private readonly URL = 'http://localhost:8080/api/v1';
   private readonly API_URL = "http://localhost:8080/api/v1/injection-list";
@@ -35,6 +35,7 @@ export class InjectionHistoryService {
     return this.http.get<Page<InjectionHistory>>(this.URL + "/account/injection-history/" + accountId, this.getInjectionHistoryHttpOptions(page));
   }
 
+
   getOptions(page?: number, fullName?: string, injected?: string): Object {
     let options = {
       header: this.httpOption,
@@ -57,9 +58,19 @@ export class InjectionHistoryService {
 
   // CREATE BY ANH DUC
   RegistrationHistory(injectionHistory): Observable<any> {
-    return this.httpClient.post(this.API_URL_REG, injectionHistory);
+    const link = this.API_URL_DUC + '/injection/registration';
+    return this.httpClient.post(link, injectionHistory);
   }
-
+  // CREATE BY ANH DUC
+  sendVerifyToken(email): Observable<any> {
+    const link = this.API_URL_DUC + '/injection/verify';
+    return  this.httpClient.post(link, email);
+  }
+  // CREATE BY ANH DUC
+  verifyCode(patient): Observable<any> {
+    const link = this.API_URL_DUC + '/injection/verifyCode';
+    return  this.httpClient.post(link,patient);
+  }
   // Quân
   getSearchInjection(page: number, searchForm: FormGroup): Observable<Page<InjectionHistoryDTO>> {
     return this.httpClient.get<Page<InjectionHistoryDTO>>(this.API_URL,

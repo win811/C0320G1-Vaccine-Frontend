@@ -11,16 +11,13 @@ export class NotifiByDucService {
   }
 
   showNotification(type, title, text) {
-    // const type = ['', 'info', 'success', 'warning', 'danger'];
-
     const color = Math.floor((Math.random() * 4) + 1);
 
     $.notify({
       icon: 'notifications',
       message: ' <b>' + title + '</b> ' + text
-
     }, {
-      type: type[color],
+      type: type,
       timer: 4000,
       placement: {
         from: 'top',

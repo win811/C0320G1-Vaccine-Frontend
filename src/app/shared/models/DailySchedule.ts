@@ -1,8 +1,8 @@
-// Thành Long
-export interface Vaccine {
+import {Vaccine} from './Vaccine';
+export interface DailySchedule {
   id: number;
-  startTime: Date;
-  endTime: Date;
+  startTime: string;
+  endTime: string;
   address: string;
   note: string;
   vaccinationDate: Date;

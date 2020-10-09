@@ -27,3 +27,9 @@
 .field-ad {
   width: 300px;
 }
+div #info-par p {
+ margin-bottom: 8px;
+}
+/*label {*/
+/*  font-size: 16px;*/
+/*}*/

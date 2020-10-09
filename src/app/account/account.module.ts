@@ -1,32 +1,36 @@
-import { AppModule } from './../app.module';
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ContactComponent } from './contact/contact.component';
+import {AppModule} from './../app.module';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {ContactComponent} from './contact/contact.component';
 import {AccountRoutingModule} from './account-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { InjectionHistoryComponent } from './injection-history/injection-history.component';
 import {ToastrModule} from 'ngx-toastr';
-import { TableVacxinComponent } from './table-vacxin/table-vacxin.component';
-import { AccountLayoutComponent } from './account-layout/account-layout.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import {HttpClient} from '@angular/common/http';
-import {TranslateHttpLoader} from '../../../node_modules/@ngx-translate/http-loader';
-import {TranslateLoader, TranslateModule} from '../../../node_modules/@ngx-translate/core';
+import {TableVacxinComponent} from './table-vacxin/table-vacxin.component';
+import {AccountLayoutComponent} from './account-layout/account-layout.component';
+import {HeaderComponent} from './header/header.component';
+import {FooterComponent} from './footer/footer.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {AdminModule} from '../admin/admin.module';
-import { RegistrationVaccinationComponent } from './registration-vaccination/registration-vaccination.component';
+import {RegistrationVaccinationComponent} from './registration-vaccination/registration-vaccination.component';
+import {HttpClient} from '@angular/common/http';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+
 import {
   MatButtonModule,
   MatCheckboxModule,
-  MatDatepickerModule,
+  MatDatepickerModule, MatDialogModule,
   MatFormFieldModule,
-  MatInputModule,
+  MatInputModule, MatProgressBarModule,
   MatRadioModule, MatSelectModule,
   MatStepperModule
 } from '@angular/material';
-import { GuestLayoutComponent } from './guest-layout/guest-layout.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {GuestLayoutComponent} from './guest-layout/guest-layout.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {DailyScheduleComponent} from '../home/daily-schedule/daily-schedule.component';
+import {RegisterInjectScheduleComponent} from './register-inject-schedule/register-inject-schedule.component';
+import {ConfirmRegisterComponent} from './register-inject-schedule/confirm-register/confirm-register.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -41,7 +45,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     TableVacxinComponent,
     RegistrationVaccinationComponent,
     GuestLayoutComponent,
-    InjectionHistoryComponent
+    InjectionHistoryComponent,
+    DailyScheduleComponent,
+    RegisterInjectScheduleComponent,
+    ConfirmRegisterComponent,
   ],
   imports: [
     CommonModule,
@@ -66,11 +73,22 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatRadioModule,
     MatDatepickerModule,
     MatSelectModule,
-    NgbModule
+    NgbModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
+    MatDialogModule,
+    MatProgressBarModule
   ],
-  exports : [
+  exports: [
     FooterComponent,
     HeaderComponent
-  ]
+  ],
+  entryComponents: [RegisterInjectScheduleComponent,ConfirmRegisterComponent]
 })
-export class AccountModule { }
+export class AccountModule {
+}

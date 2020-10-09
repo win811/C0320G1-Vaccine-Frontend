@@ -10,7 +10,7 @@ import { MaterialModule } from '../material.module';
 import { ContactBoxComponent } from './contact-box/contact-box.component';
 import { ContactReplyComponent } from './contact-reply/contact-reply.component';
 import { MatSliderModule } from '@angular/material/slider';
-import { ScrollingModule } from '@angular/cdk/scrolling';
+import { ScrollingModule} from '@angular/cdk/scrolling';
 import { EmployeeCreateComponent } from './employee/employee-create/employee-create.component';
 import { EmployeeListComponent } from './employee/employee-list/employee-list.component';
 import { EmployeeUpdateComponent } from './employee/employee-update/employee-update.component';
@@ -24,22 +24,28 @@ import { FooterComponent } from './admin-layout/footer/footer.component';
 import { NavbarComponent } from './admin-layout/navbar/navbar.component';
 import { SidebarComponent } from './admin-layout/sidebar/sidebar.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import {NotificationsComponent} from './notifications/notifications.component';
 import { ListDailyScheduleComponent } from './daily-schedule/list-daily-schedule/list-daily-schedule.component';
 import { ListInjectComponent } from './daily-schedule/list-inject/list-inject.component';
 import { ListPatientInjectRequestComponent } from './patient-inject/list-patient-inject-request/list-patient-inject-request.component';
 import { EditPatientInjectRequestComponent } from './patient-inject/edit-patient-inject-request/edit-patient-inject-request.component';
-import { NotificationsComponent } from './notifications/notifications.component';
 import { VaccineListComponent } from './vaccine-list/vaccine-list.component';
 import { VaccineUpdatePriceComponent } from './vaccine-update-price/vaccine-update-price.component';
 import { PatientListComponent } from './patient/patient-list/patient-list.component';
 import { PatientCreateComponent } from './patient/patient-create/patient-create.component';
 import { PatientUpdateComponent } from './patient/patient-update/patient-update.component';
+import {TransSupCreateComponent} from './finance-management/trans-w-supplier/trans-sup-create/trans-sup-create.component';
+import {TransSupEditComponent} from './finance-management/trans-w-supplier/trans-sup-edit/trans-sup-edit.component';
+import {TransWSupplierComponent} from './finance-management/trans-w-supplier/trans-w-supplier.component';
 
 @NgModule({
   declarations: [
     VaccineStorageComponent,
     ImportVaccineComponent,
     ExportVaccineComponent,
+    TransSupCreateComponent,
+    TransSupEditComponent,
+    TransWSupplierComponent,
     // AdminCenterComponent,
     EmployeeListComponent,
     EmployeeCreateComponent,
@@ -55,6 +61,8 @@ import { PatientUpdateComponent } from './patient/patient-update/patient-update.
     AdminLayoutComponent,
     FooterComponent,
     NavbarComponent,
+    SidebarComponent,
+    NotificationsComponent,
     SidebarComponent,
     ListDailyScheduleComponent,
     ListInjectComponent,

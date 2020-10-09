@@ -18,7 +18,8 @@ export const ROUTES: RouteInfo[] = [
   { path: 'finance/patient', title: 'Giao dịch với KH', icon: 'local_atm', class: '' },
   { path: 'vaccine-list', title: 'Quản lý giá vacxin', icon: "monetization_on", class: '' },
   { path: 'patient-list', title: 'Quản lý khách hàng', icon: 'supervisor_account', class: '' },
-  
+  { path: 'supplier-transaction', title: 'Nhà cung cấp', icon: 'local_shipping', class: '' },
+
   // { path: '/upgrade', title: 'Upgrade to PRO', icon: 'unarchive', class: 'active-pro' },
 ];
 

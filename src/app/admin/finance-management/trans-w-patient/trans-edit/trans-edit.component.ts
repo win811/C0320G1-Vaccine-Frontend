@@ -1,10 +1,12 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Vaccine } from './../../../../shared/models/Vaccine';
-import { TRANSACTION_MESSAGE, validDate, validNumber } from './../../../../shared/validations/custom-validators';
-import { Transaction } from './../../../../shared/models/transaction-patient';
-import { TransactionService } from './../../../../shared/services/transaction.service';
+import {Component, Inject, OnInit} from '@angular/core';
+import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Transaction} from '../../../../shared/models/transaction-patient';
+
+
+import {Vaccine} from '../../../../shared/models/Vaccine';
+import {TransactionService} from '../../../../shared/services/transaction.service';
+import {TRANSACTION_MESSAGE, validDate, validNumber} from '../../../../shared/validations/custom-validators';
 
 @Component({
   selector: 'app-trans-edit',
@@ -16,12 +18,14 @@ export class TransEditComponent implements OnInit {
   errorList = TRANSACTION_MESSAGE;
   vaccineList: Vaccine[];
   editForm: FormGroup;
+
   constructor(
     private transactionService: TransactionService,
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<TransEditComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
 
@@ -30,11 +34,11 @@ export class TransEditComponent implements OnInit {
     });
 
     this.editForm = this.fb.group({
-      vaccineId: [{ value: `MGD-${this.data.id}`, disabled: true }, [Validators.required]],
+      vaccineId: [{value: `MGD-${this.data.id}`, disabled: true}, [Validators.required]],
       category: [this.data.vaccine.id, [Validators.required]],
       amount: [this.data.amount, [Validators.required, Validators.min(1), validNumber]],
       transactionDate: [this.data.transactionDate, [Validators.required, validDate]],
-      price: [{ value: this.data.amount * this.data.vaccine.price, disabled: true }]
+      price: [{value: this.data.amount * this.data.vaccine.price, disabled: true}]
     });
   }
 
@@ -42,7 +46,7 @@ export class TransEditComponent implements OnInit {
     const vaccinePrice = this.vaccineList.find(val => val.id == this.category.value);
     this.editForm.patchValue({
       price: +this.amount.value * +vaccinePrice.price
-    })
+    });
   }
 
   save() {
@@ -57,7 +61,7 @@ export class TransEditComponent implements OnInit {
     }
     this.transactionService.updateTransactionWithPatient(this.data as Transaction).subscribe(() => {
       this.dialogRef.close(this.data);
-    })
+    });
   }
 
   get vaccineId() {
