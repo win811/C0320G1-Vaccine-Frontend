@@ -43,7 +43,7 @@ export class HeaderComponent implements OnInit {
   }
 
   switchLanguage(language: string){
-    if (language == 'en') {
+    if (language == "vi") {
       this.translate.use('vi');
       this.language = 'vi';
     } else {
