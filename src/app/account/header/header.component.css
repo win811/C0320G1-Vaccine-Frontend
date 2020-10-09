@@ -698,9 +698,10 @@ input:checked + .slider:before {
 .btn-outline-primary{
    border: 0px solid white;
    background: #4469B0;
-   color: #17A2B8 !important;
+   color: white !important;
    border-radius: 20px;
-
+   margin-top: 0 !important;
+   margin-bottom: 0 !important;
 }
 .btn-outline-primary:hover,
 .btn-outline-primary:active{

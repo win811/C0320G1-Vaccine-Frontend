@@ -76,6 +76,7 @@ export class HeaderComponent implements OnInit {
   logOut(): void {
     this.tokenStorage.signOut()
     this.isLogged = false;
+    this.router.navigateByUrl('/');
   }
 
 }
