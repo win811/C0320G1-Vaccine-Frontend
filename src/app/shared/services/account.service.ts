@@ -22,7 +22,7 @@ export class AccountService {
     return this.http.post(link1, account);
   }
 
-  login(login): Observable<JwtResponse> {
+  login(login): Observable<any> {
     const link2 = this.API_URL_ACCOUNT_LOGIN;
     return this.http.post<JwtResponse>(link2, login);
   }

@@ -8,6 +8,7 @@ import {InjectionHistoryService} from '../../shared/services/injection-history.s
 import {NotifiByDucService} from '../../shared/services/notifi-by-duc.service';
 import {VaccineService} from '../../shared/services/vaccine.service';
 import {TokenStorageService} from '../../shared/services/TokenStorageService';
+import {Account} from '../../shared/models/Account';
 
 export interface DTO {
   name: string;
@@ -41,6 +42,7 @@ export class RegistrationVaccinationComponent implements OnInit {
   injection: InjectionHistory = {} as InjectionHistory;
   dto: DTO;
   message: string;
+  account: Account = {id: 0};
   maxDate = Date.now();
   vaccineList: Vaccine[];
   currentPage: number;
@@ -54,7 +56,7 @@ export class RegistrationVaccinationComponent implements OnInit {
     private injectionHistoryService: InjectionHistoryService,
     private vaccineService: VaccineService,
     private noti: NotifiByDucService,
-    private tokenStorageService : TokenStorageService
+    private tokenStorageService: TokenStorageService
   ) {
     const navigation = this.router.getCurrentNavigation();
     this.vacxin2 = navigation.extras.state as Vaccine;
@@ -63,14 +65,14 @@ export class RegistrationVaccinationComponent implements OnInit {
 
   ngOnInit() {
     this.firstFormGroup = this.formBuilder.group({
-      fullName: ['', [Validators.required,Validators.pattern(/^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/)]],
+      fullName: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/)]],
       gender: ['', Validators.required],
       email: ['', [Validators.required, Validators.pattern(/^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$/)]],
       birthday: ['', Validators.required],
       code: ['', Validators.required],
-      parentName: ['', [Validators.required,Validators.pattern(/^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/)]],
+      parentName: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/)]],
       address: ['', Validators.required],
-      phoneNumber: ['', [Validators.required,Validators.pattern(/^0[0-9]{9}$/)]]
+      phoneNumber: ['', [Validators.required, Validators.pattern(/^0[0-9]{9}$/)]]
     });
     this.secondFormGroup = this.formBuilder.group({
       name: ['', Validators.required],
@@ -109,7 +111,8 @@ export class RegistrationVaccinationComponent implements OnInit {
     this.injection.patient = this.firstFormGroup.value;
     this.dto = this.secondFormGroup.value;
     this.injection.injectionDate = this.dto.injectionDate;
-    this.injection.account.id= Number(this.tokenStorageService.getJwtResponse().accountId);
+    this.account.id = Number(this.tokenStorageService.getJwtResponse().accountId);
+    this.injection.account = this.account;
     console.log(this.injection);
 
     this.injectionHistoryService.RegistrationHistory(this.injection).subscribe(data => {
