@@ -684,7 +684,7 @@ input:checked + .slider:before {
     font-weight: bold;
     padding: 10px 15px;
     vertical-align: top;
-    color: white;
+    color: #17A2B8;
     margin-left: 20px;
 
 }
@@ -698,7 +698,7 @@ input:checked + .slider:before {
 .btn-outline-primary{
    border: 0px solid white;
    background: #4469B0;
-   color: white !important;
+   color: #17A2B8 !important;
    border-radius: 20px;
 
 }
