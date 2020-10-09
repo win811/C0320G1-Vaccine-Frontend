@@ -5,6 +5,7 @@ import {AccountService} from '../../shared/services/account.service';
 import {Login} from '../../shared/models/Login';
 import {TokenStorageService} from '../../shared/services/TokenStorageService';
 import {MatDialogRef} from '@angular/material';
+import {JwtResponse} from '../../shared/models/dto/jwt-response';
 
 @Component({
   selector: 'app-sigin',
@@ -40,8 +41,14 @@ export class LoginComponent implements OnInit {
     this.login.username = this.formLogin.get('username').value;
     this.login.password = this.formLogin.get('password').value;
     this.accountService.login(this.login).subscribe(data => {
-      console.table(data);
-      this.tokenStorage.saveToken(data, this.isRemember);
+      // console.table(data);
+      let test = data as JwtResponse;
+      console.log(test);
+      console.log(data.accountId);
+      console.log("đây là chuỗi");
+      console.log("2");
+      console.log(2);
+      this.tokenStorage.saveToken(test, this.isRemember);
       this.dialogRef.close(true);
       if ( data.authorities[0].authority == "ROLE_ADMIN" ) this.router.navigateByUrl('/admin/vaccine-storage');
     });
