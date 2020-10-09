@@ -57,7 +57,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
     FormsModule,
     NgxPaginationModule,
-    AdminModule,
+    // AdminModule,
     MatStepperModule,
     MatFormFieldModule,
     MatInputModule,
