@@ -22,7 +22,7 @@ import {
   MatCheckboxModule,
   MatDatepickerModule, MatDialogModule,
   MatFormFieldModule,
-  MatInputModule,
+  MatInputModule, MatProgressBarModule,
   MatRadioModule, MatSelectModule,
   MatStepperModule
 } from '@angular/material';
@@ -81,7 +81,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    MatDialogModule
+    MatDialogModule,
+    MatProgressBarModule
   ],
   exports: [
     FooterComponent,

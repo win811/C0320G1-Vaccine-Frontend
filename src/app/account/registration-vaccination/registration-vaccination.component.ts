@@ -24,6 +24,8 @@ export interface DTO {
   styleUrls: ['./registration-vaccination.component.css']
 })
 export class RegistrationVaccinationComponent implements OnInit {
+  statusLoading = false;
+  verify = '';
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -100,6 +102,7 @@ export class RegistrationVaccinationComponent implements OnInit {
   }
 
   registration() {
+    this.statusLoading = true;
     this.injection.vaccine = this.vacxin;
     this.injection.patient = this.firstFormGroup.value;
     this.dto = this.secondFormGroup.value;
@@ -107,8 +110,10 @@ export class RegistrationVaccinationComponent implements OnInit {
     console.log(this.injection);
     this.injectionHistoryService.RegistrationHistory(this.injection).subscribe(data => {
       this.noti.showNotification('success', 'Thông Báo', data.message);
+      this.statusLoading = false;
       this.router.navigate(['']);
     }, error1 => {
+      this.statusLoading = false;
       this.noti.showNotification('danger', 'Thông Báo', error1.error.message);
     });
   }
@@ -128,6 +133,17 @@ export class RegistrationVaccinationComponent implements OnInit {
     this.injection.patient = this.firstFormGroup.value;
     this.dto = this.secondFormGroup.value;
     this.injection.injectionDate = this.dto.injectionDate;
+  }
+
+  VerifyCode() {
+    this.statusLoading = true;
+    this.injectionHistoryService.verifyCode(this.firstFormGroup.value).subscribe(data => {
+      this.noti.showNotification('success', 'Thông Báo', data.message);
+      this.verify = 'verify';
+    }, error => {
+      this.noti.showNotification('danger', 'Thông Báo', error.error.message);
+    });
+    this.statusLoading = false;
   }
 }
 

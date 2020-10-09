@@ -1,3 +1,4 @@
+<mat-progress-bar *ngIf="statusLoading" mode="indeterminate"></mat-progress-bar>
 <mat-horizontal-stepper [linear]="isLinear" #stepper>
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
@@ -56,9 +57,13 @@
                          class="text-danger">Số điện thoại không có thật</mat-label>
               <input class="mr-5" matInput placeholder="Số điện thoại" formControlName="phoneNumber" required>
             </mat-form-field>
-            <mat-form-field class=" field-ad row mt-4" style="width:300px">
-              <mat-label>Mã Xác Nhận</mat-label>
-              <input  matInput placeholder="Mã Xác Nhận" formControlName="code" required >
+            <mat-form-field  class=" field-ad row" style="width:300px">
+              <mat-label><span *ngIf="verify=='verify'" class="material-icons">
+verified_user
+</span> Mã Xác Nhận</mat-label>
+              <input style="width: 150px"  matInput placeholder="Nhập Mã" formControlName="code" required >
+              <button [disabled]="verify=='verify'" class="float-right " mat-button (click)="VerifyCode()" >Xác Nhận</button>
+
             </mat-form-field>
             <div class="field-ad row">
               <button class="float-right mt-3 " mat-button matStepperNext [disabled]="firstFormGroup.invalid">Tiếp Tục
