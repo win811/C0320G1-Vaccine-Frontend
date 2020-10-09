@@ -8,6 +8,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs';
 import {Account} from '../../shared/models/Account';
 import {NotifiByDucService} from '../../shared/services/notifi-by-duc.service';
+import {TokenStorageService} from '../../shared/services/TokenStorageService';
 
 @Component({
   selector: 'app-contact-reply',
@@ -21,21 +22,25 @@ export class ContactReplyComponent implements OnInit {
   textReply = '';
   fileDinhKem: string;
   idContact = '';
+  avatar;
   private sub: Subscription;
 
   constructor(
     private contactReplyService: ContactReplyService,
     private contactService: ContactService,
     private router: ActivatedRoute,
-    private  router1:Router,
-    private noti: NotifiByDucService
+    private  router1: Router,
+    private noti: NotifiByDucService,
+    private  tokenStorageService: TokenStorageService
   ) {
+
 
   }
 
   ngOnInit() {
     this.sub = this.router.params.subscribe(param => this.idContact = param.id);
     this.getContactAndReply();
+    this.avatar = this.tokenStorageService.getJwtResponse().avatar;
   }
 
   getContactAndReply() {
@@ -52,7 +57,7 @@ export class ContactReplyComponent implements OnInit {
       this.noti.showNotification('info', 'Trạng Thái', 'Đang gửi phản hồi');
       this.contactReply.replyText = this.textReply;
       this.contactReply.replyFile = this.fileDinhKem;
-      this.contactReply.account.id = 1;
+      this.contactReply.account.id = Number(this.tokenStorageService.getJwtResponse().accountId);
       console.log(this.contactReply);
       this.contactReplyService.addNewContactReply(this.contactReply, this.idContact).subscribe(data => {
         this.noti.showNotification('success', 'Phản hồi', data.message);

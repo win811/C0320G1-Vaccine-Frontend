@@ -15,7 +15,7 @@ const routes: Routes = [
     path: '', component: AccountLayoutComponent, children: [
 
       {path: 'injection-history', component: InjectionHistoryComponent},
-      {path: 'registration', component: RegistrationVaccinationComponent}
+          {path: 'registration', component: RegistrationVaccinationComponent, canActivate : [UserGuard]}
     ]
   },
   {

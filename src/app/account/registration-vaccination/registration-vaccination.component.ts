@@ -7,6 +7,7 @@ import {Router} from '@angular/router';
 import {InjectionHistoryService} from '../../shared/services/injection-history.service';
 import {NotifiByDucService} from '../../shared/services/notifi-by-duc.service';
 import {VaccineService} from '../../shared/services/vaccine.service';
+import {TokenStorageService} from '../../shared/services/TokenStorageService';
 
 export interface DTO {
   name: string;
@@ -52,7 +53,8 @@ export class RegistrationVaccinationComponent implements OnInit {
     private router: Router,
     private injectionHistoryService: InjectionHistoryService,
     private vaccineService: VaccineService,
-    private noti: NotifiByDucService
+    private noti: NotifiByDucService,
+    private tokenStorageService : TokenStorageService
   ) {
     const navigation = this.router.getCurrentNavigation();
     this.vacxin2 = navigation.extras.state as Vaccine;
@@ -107,7 +109,9 @@ export class RegistrationVaccinationComponent implements OnInit {
     this.injection.patient = this.firstFormGroup.value;
     this.dto = this.secondFormGroup.value;
     this.injection.injectionDate = this.dto.injectionDate;
+    this.injection.account.id= Number(this.tokenStorageService.getJwtResponse().accountId);
     console.log(this.injection);
+
     this.injectionHistoryService.RegistrationHistory(this.injection).subscribe(data => {
       this.noti.showNotification('success', 'Thông Báo', data.message);
       this.statusLoading = false;

@@ -4,7 +4,7 @@ import {MatDialog, MatDialogConfig} from '@angular/material';
 import {LoginComponent} from '../../security/Login/Login.component';
 import { JwtResponse } from '../../shared/models/dto/jwt-response';
 import { TokenStorageService } from '../../shared/services/TokenStorageService';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Route, Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -18,8 +18,9 @@ export class HeaderComponent implements OnInit {
   constructor(
     private translate: TranslateService,
     public matDialog: MatDialog,
-    private tokenStorage: TokenStorageService, 
-    private activatedRoute: ActivatedRoute) {
+    private tokenStorage: TokenStorageService,
+    private activatedRoute: ActivatedRoute,
+    private router : Router) {
     translate.setDefaultLang('vi');
     translate.use('vi');
   }
@@ -67,7 +68,7 @@ export class HeaderComponent implements OnInit {
         const returnUrl = value.get('returnUrl');
         if (!returnUrl) {
           this.ngOnInit();
-        }
+        } else this.router.navigateByUrl(returnUrl);
       })
     })
   }

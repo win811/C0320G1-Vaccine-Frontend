@@ -100,7 +100,7 @@
                   <li class=" mar-btm" *ngFor="let contactReply of contact.contactReply">
 
                     <div class="media-right">
-                      <img src="https://bootdey.com/img/Content/avatar/avatar2.png" class="img-circle img-sm" alt="Profile Picture">
+                      <img [src]="avatar" class="img-circle img-sm" alt="Profile Picture">
                     </div>
                     <div class="media-body pad-hor speech-right">
                       <div class="speech">
@@ -118,7 +118,7 @@
               </div>
               <div class="media mt-3" *ngIf="contact.status !='Hoàn thành'">
                 <a  class="media-left">
-                  <img alt="" src="https://bootdey.com/img/Content/avatar/avatar2.png" width="50" height="50">
+                  <img alt="" [src]="avatar" width="50" height="50">
                 </a>
                 <div class="media-body">
                   <textarea class="wysihtml5 form-control"  rows="5" placeholder="Trả lời tại đây..." [(ngModel)]="textReply"></textarea>

@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   isRemember: boolean;
 
   constructor(public formBuilder: FormBuilder,
-              public route: Router,
+              public router: Router,
               public accountService: AccountService,
               public tokenStorage: TokenStorageService,
               public dialogRef: MatDialogRef<LoginComponent>) { }
@@ -43,8 +43,9 @@ export class LoginComponent implements OnInit {
       console.table(data);
       this.tokenStorage.saveToken(data, this.isRemember);
       this.dialogRef.close(true);
+      if ( data.authorities[0].authority == "ROLE_ADMIN" ) this.router.navigateByUrl('/admin/vaccine-storage');
     });
-    
+
   }
   remember($event) {
     this.isRemember = $event.target.checked;

@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {TokenStorageService} from './TokenStorageService';
+import {JwtResponse} from '../models/dto/jwt-response';
 
 
 @Injectable({
@@ -21,8 +22,8 @@ export class AccountService {
     return this.http.post(link1, account);
   }
 
-  login(login): Observable<any> {
+  login(login): Observable<JwtResponse> {
     const link2 = this.API_URL_ACCOUNT_LOGIN;
-    return this.http.post(link2, login);
+    return this.http.post<JwtResponse>(link2, login);
   }
 }

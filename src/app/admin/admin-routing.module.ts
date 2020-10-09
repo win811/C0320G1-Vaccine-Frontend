@@ -16,11 +16,12 @@ import {ListDailyScheduleComponent} from './daily-schedule/list-daily-schedule/l
 import {ListPatientInjectRequestComponent} from './patient-inject/list-patient-inject-request/list-patient-inject-request.component';
 import { PatientListComponent } from './patient/patient-list/patient-list.component';
 import { VaccineListComponent } from './vaccine-list/vaccine-list.component';
+import {AdminGuard} from '../shared/services/admin.guard';
 
 const routes: Routes = [
 
     {
-      path: '', component: AdminLayoutComponent, children:
+      path: '', component: AdminLayoutComponent, canActivate : [AdminGuard],children:
       [
       {path: "employee-list", component: EmployeeListComponent },
       {path: "injected-list", component: PeriodicInjectionComponent },

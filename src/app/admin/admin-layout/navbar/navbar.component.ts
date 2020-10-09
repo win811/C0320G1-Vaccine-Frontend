@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Router } from '@angular/router';
+import {TokenStorageService} from '../../../shared/services/TokenStorageService';
 
 @Component({
   selector: 'app-navbar',
@@ -14,14 +15,16 @@ export class NavbarComponent implements OnInit {
   mobile_menu_visible: any = 0;
   private toggleButton: any;
   private sidebarVisible: boolean;
+  avt: any;
 
-  constructor(location: Location, private element: ElementRef, private router: Router) {
+  constructor(location: Location, private element: ElementRef, private router: Router,private  tokenStorageService:TokenStorageService) {
     this.location = location;
     this.sidebarVisible = false;
   }
 
   ngOnInit() {
     this.listTitles = ROUTES.filter(listTitle => listTitle);
+    this.avt = this.tokenStorageService.getJwtResponse().avatar;
     const navbar: HTMLElement = this.element.nativeElement;
     this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
     this.router.events.subscribe((event) => {
