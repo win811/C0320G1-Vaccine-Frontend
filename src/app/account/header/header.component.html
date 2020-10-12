@@ -7,19 +7,9 @@
         {{'row3.1' | translate}}
       </div> -->
     </div>
-    <div class="float-right mr-1 mt-1">
-      <a class="text-white" (click)="switchLanguage('vi')">
-        <img class="language-icon img-responsive mb-1" typeof="foaf:Image"
-          src="http://tiemchungmorong.vn/sites/all/modules/languageicons/flags/vi.png" width="18" height="14"
-          alt="Tiếng Việt" title="Tiếng Việt"> Tiếng Việt</a>
-      <span> | </span>
-      <a class="text-white" (click)="switchLanguage('en')">
-        <img class="language-icon img-responsive mb-1" typeof="foaf:Image"
-          src="http://tiemchungmorong.vn/sites/all/modules/languageicons/flags/en.png" width="18" height="14"
-          alt="English" title="English"> English</a>
-    </div>
     <div>
-      <div class="title d-flex">
+      <div
+        class="title d-flex">
         <div>
           <a href="#">{{'row1.1' | translate}}<span> | </span></a>
         </div>
@@ -42,8 +32,9 @@
           </a>
         </div> -->
         <div class="ml-3">
-          <a href="#">
-            <img src="https://imagizer.imageshack.com/img923/4641/P2jT1P.png">
+          <a routerLink="/account/guest/vacxin">
+            <img src="https://imagizer.imageshack.com/img923/4641/P2jT1P.png"
+            >
             {{'row2.2' | translate}}
           </a>
         </div>
@@ -64,7 +55,10 @@
     <div class="title3">
       {{'row3.2' | translate}}
     </div>
-
+    <label class="switch">
+      <input type="checkbox" id="checkbox" [value]="language" (click)="switchLanguage($event.target.value)">
+      <span class="slider round">en  &nbsp; vi</span>
+    </label>
   </div>
   <div id="content-wrapper">
     <div class="banner section section" id="banner">
@@ -73,7 +67,7 @@
           <marquee>
             {{'row4.1' | translate}}<a id="text1" href="#">C0320G1</a>
             {{'row4.2' | translate}}<a class="letter" id="text2" href="#" target="_blank">
-              {{'row4.3' | translate}}</a>
+            {{'row4.3' | translate}}</a>
           </marquee>
         </div>
         <div class="clear"></div>
@@ -82,13 +76,13 @@
     </div>
   </div>
 
-  <div class="header2 d-flex pl-2 pr-2 justify-content-between">
+  <div class="header2 d-flex align-items-center">
     <div class="d-flex" style="padding-left: 0px;">
-      <div class="dropdown">
-        <a class="dropbtn" routerLink="/">
-          {{'row5.1' | translate}}
-        </a>
-      </div>
+    <div class="dropdown">
+      <a class="dropbtn" routerLink="/">
+        {{'row5.1' | translate}}
+      </a>
+    </div>
     </div>
     <div class="d-flex ml-5">
       <div class="dropdown">
@@ -185,14 +179,15 @@
     </div>
     <div *ngIf="isLogged" class="nav-item dropdown d-flex ml-5">
 
-      <a type="button" class="dropdown-toggle btn btn-outline-primary" placement="bottom" [ngbPopover]="popContent">
+      <a type="button" class="dropdown-toggle btn btn-outline-primary" placement="bottom"
+          [ngbPopover]="popContent">
 
-        {{userLogged?.name}}
+          {{userLogged?.name}}
       </a>
       <ng-template #popContent>
-        <button type="button" class="list-item text-center ">Xem hồ sơ</button>
-        <hr class="line">
-        <button type="button" (click)="logOut()" class="list-item text-center">Đăng xuất</button>
+          <button type="button" class="list-item text-center " >Xem hồ sơ</button>
+          <hr class="line">
+          <button type="button" (click)="logOut()" class="list-item text-center">Đăng xuất</button>
 
       </ng-template>
     </div>
