@@ -24,7 +24,7 @@ export class InjectionHistoryService {
         'Content-Type': 'application/json',
       }),
       params: {
-        page: page
+        page: page - 1
       }
     };
     return injectionHistory;

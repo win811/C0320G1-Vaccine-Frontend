@@ -11,7 +11,7 @@ import {tap,map} from 'rxjs/operators';
 })
 export class InjectionHistoryComponent implements OnInit {
   myInjectionHistory: Observable<InjectionHistory[]>;
-  accountId = 1; //test id;
+  accountId = 2; //test id;
   currentPage: number;
   pageSize: number;
   totalElements: number;

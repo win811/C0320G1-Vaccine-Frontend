@@ -37,6 +37,7 @@ import { PatientUpdateComponent } from './patient/patient-update/patient-update.
 import {TransSupCreateComponent} from './finance-management/trans-w-supplier/trans-sup-create/trans-sup-create.component';
 import {TransSupEditComponent} from './finance-management/trans-w-supplier/trans-sup-edit/trans-sup-edit.component';
 import {TransWSupplierComponent} from './finance-management/trans-w-supplier/trans-w-supplier.component';
+import { MatRadioModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import {TransWSupplierComponent} from './finance-management/trans-w-supplier/tra
     FormsModule,
     MatSliderModule,
     ScrollingModule,
+    MatRadioModule
 
   ],
   entryComponents: [

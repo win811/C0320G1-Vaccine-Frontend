@@ -22,7 +22,7 @@ export class PatientCreateComponent implements OnInit {
   // Thành Long
   ngOnInit() {
     this.patientCreateForm = this.formBuilder.group({
-      code: ["", [Validators.required, Validators.pattern('^BN-[0-9]{3}$')]],
+      code: ["", [Validators.required, Validators.pattern('^BN-[0-9]{4}$')]],
       fullName: ["", [Validators.required, Validators.pattern('^[A-ZẮẰẲẴẶĂẤẦẨẪẬÂÁÀÃẢẠĐẾỀỂỄỆÊÉÈẺẼẸÍÌỈĨỊỐỒỔỖỘÔỚỜỞỠỢƠÓÒÕỎỌỨỪỬỮỰƯÚÙỦŨỤÝỲỶỸỴa-zắằẳẵặăấầẩẫậâáàãảạđếềểễệêéèẻẽẹíìỉĩịốồổỗộôớờởỡợơóòõỏọứừửữựưúùủũụýỳỷỹỵ\\ ]*$')]],
       gender: ["", [Validators.required]],
       birthday: ["", [Validators.required]],

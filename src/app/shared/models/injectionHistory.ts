@@ -6,7 +6,7 @@ export interface InjectionHistory {
   id: number;
   isInjected: boolean;
   injectionDate: Date;
-  responseContent: string;
+  reponseContent: string;
   registerType: string;
   account: Account;
   vaccine: Vaccine;
