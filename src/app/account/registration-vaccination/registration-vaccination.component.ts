@@ -58,6 +58,7 @@ export class RegistrationVaccinationComponent implements OnInit {
   pageSize: number;
   totalElements: number;
   searchVaccine: SearchVaccine;
+  showSpinners: any;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,

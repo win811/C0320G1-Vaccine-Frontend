@@ -12,11 +12,13 @@ import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {AdminModule} from '../admin/admin.module';
+
 import {RegistrationVaccinationComponent} from './registration-vaccination/registration-vaccination.component';
 import {HttpClient} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {MatNativeDateModule} from '@angular/material/core';
+import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 
 import {
@@ -54,9 +56,10 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   imports: [
     CommonModule,
+    MatNativeDateModule,MatMomentDateModule,
+    MatDatepickerModule,
     NgxMatTimepickerModule,
     NgxMatDatetimePickerModule,
-    MatNativeDateModule,
     AccountRoutingModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
@@ -88,6 +91,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
     MatDialogModule,
     MatProgressBarModule
+  ],providers: [
+    MatDatepickerModule,
   ],
   exports: [
     FooterComponent,
