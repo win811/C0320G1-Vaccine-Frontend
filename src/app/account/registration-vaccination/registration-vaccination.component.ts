@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, NgModule, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Vaccine} from '../../shared/models/Vaccine';
 import {Patient} from '../../shared/models/patient';
@@ -9,6 +9,7 @@ import {NotifiByDucService} from '../../shared/services/notifi-by-duc.service';
 import {VaccineService} from '../../shared/services/vaccine.service';
 import {TokenStorageService} from '../../shared/services/TokenStorageService';
 import {Account} from '../../shared/models/Account';
+import {MAT_DATE_LOCALE} from '@angular/material';
 
 export interface DTO {
   name: string;
@@ -24,6 +25,11 @@ export interface DTO {
   selector: 'app-registration-vaccination',
   templateUrl: './registration-vaccination.component.html',
   styleUrls: ['./registration-vaccination.component.css']
+})
+@NgModule({
+  providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'vi-VN'},
+  ],
 })
 export class RegistrationVaccinationComponent implements OnInit {
   statusLoading = false;
@@ -43,13 +49,16 @@ export class RegistrationVaccinationComponent implements OnInit {
   dto: DTO;
   message: string;
   account: Account = {id: 0};
-  maxDate = Date.now();
+  maxDate: Date;
+  minDate: Date;
+  maxDateRegistration: Date;
+  minDateRegistration: Date;
   vaccineList: Vaccine[];
   currentPage: number;
   pageSize: number;
   totalElements: number;
   searchVaccine: SearchVaccine;
-
+  showSpinners: any;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -64,6 +73,14 @@ export class RegistrationVaccinationComponent implements OnInit {
   }
 
   ngOnInit() {
+// Set the minimum to January 1st 20 years in the past and December 31st a year in the future.
+    const currentYear = new Date().getFullYear();
+    const currentDay = new Date().getDate();
+    const currentMonth = new Date().getMonth();
+    this.maxDate = new Date(currentYear,currentMonth-1, currentDay);
+    this.minDate = new Date(currentYear-100,currentMonth, currentDay);
+    this.maxDateRegistration = new Date(currentYear,currentMonth+2, currentDay);
+    this.minDateRegistration = new Date(currentYear,currentMonth+1, currentDay);
     this.firstFormGroup = this.formBuilder.group({
       fullName: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]*$/)]],
       gender: ['', Validators.required],

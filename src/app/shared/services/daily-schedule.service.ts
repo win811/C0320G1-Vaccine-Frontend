@@ -34,7 +34,7 @@ export class DailyScheduleService {
       'Access-Control-Allow-Origin': 'http://localhost:4200',
       'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
       params: {
-        page
+        page : page -1 
       }
     };
     return dailySchedule;

@@ -42,13 +42,13 @@
           </a>
         </div> -->
         <div class="ml-3">
-          <a routerLink='/account/guest/vacxin'>
+          <a routerLink="/account/guest/vacxin">
             <img src="https://imagizer.imageshack.com/img923/4641/P2jT1P.png">
             {{'row2.2' | translate}}
           </a>
         </div>
         <div class="ml-3">
-          <a routerLink='/account/guest/daily'>
+          <a routerLink="/account/guest/daily">
             <img src="https://imagizer.imageshack.com/img922/2260/SHTmWh.jpg">
             {{'row2.3' | translate}}
           </a>
@@ -82,7 +82,7 @@
     </div>
   </div>
 
-  <div class="header2 d-flex align-items-center pl-2 pr-2 justify-content-between">
+  <div class="header2 d-flex pl-2 pr-2 justify-content-between">
     <div class="d-flex" style="padding-left: 0px;">
       <div class="dropdown">
         <a class="dropbtn" routerLink="/">
@@ -173,7 +173,7 @@
       </div>
     </div>
     <div class="d-flex ml-5">
-      <a class="text-info" routerLink='/account/guest/contact'>
+      <a>
         {{'row5.34' | translate}}
       </a>
     </div>
@@ -190,7 +190,7 @@
         {{userLogged?.name}}
       </a>
       <ng-template #popContent>
-        <button type="button" class="list-item text-center" routerLink='/account/injection-history'>Xem hồ sơ</button>
+        <button type="button" class="list-item text-center" routerLink="/account/injection-history">Xem hồ sơ</button>
         <hr class="line">
         <button type="button" (click)="logOut()" class="list-item text-center">Đăng xuất</button>
 

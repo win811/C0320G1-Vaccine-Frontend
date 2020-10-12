@@ -123,7 +123,7 @@ export class AppComponent {
       return 'mời bạn xem các thông tin về các gói tiêm chủng mới nhất bên mình ';
     } else if (bot_ear.search('phản hồi') != -1) {
       this.actionNext = 'guest/contact';
-      return 'Xin vui lòng nhập thông tin phản hồi theo mẫu dưới đây ';
+      return 'Xin vui lòng nhập thông tin phản hồi theo mẫu dưới đây';
     } else {
       return 'Xin lỗi, mình không hiểu câu hỏi của bạn ';
     }
