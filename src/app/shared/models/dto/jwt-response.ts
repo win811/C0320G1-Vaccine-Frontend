@@ -1,6 +1,6 @@
 export class JwtResponse {
   jwttoken: string;
-  accountId: string;
+  accountId: number;
   name: string;
   accountName: string;
   avatar: string;

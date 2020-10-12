@@ -1,3 +1,5 @@
+import { TokenStorageService } from './../../shared/services/TokenStorageService';
+import { ActivatedRoute, Router, RouterStateSnapshot } from '@angular/router';
 import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {DailySchedule} from "../../shared/models/DailySchedule";
@@ -29,7 +31,10 @@ export class DailyScheduleComponent implements OnInit {
 
   constructor(
     public dailyScheduleService: DailyScheduleService,
-    public matDialog: MatDialog
+    public matDialog: MatDialog,
+    private activeRoute : ActivatedRoute,
+    private router : Router,
+    private tokenStorage : TokenStorageService
   ) {
   }
 
@@ -70,31 +75,6 @@ export class DailyScheduleComponent implements OnInit {
     );
   }
 
-  // getDailySchedule(pageNumber) {
-  //   this.dailySchedule = this.dailyScheduleService.getDailySchedule( pageNumber).pipe(
-  //     tap(res => {
-  //       console.log(res);
-  //       this.totalElements = res.totalElements;
-  //       this.pageSize = res.size;
-  //       this.currentPage = pageNumber;
-  //       this.stt = [];
-  //       const firstIndex = this.pageSize * (this.currentPage - 1) + 1;
-  //       const lastIndeex = this.pageSize * this.currentPage;
-  //       for (let i = firstIndex; i <= lastIndeex; i++) {
-  //         this.stt.push(i);
-  //       }
-  //       this.isEmpty = false;
-  //       if (res.content.length ==  0) {
-  //         this.isEmpty = true;
-  //       }
-  //     }, error => {
-  //       console.log(error);
-  //       console.log('vào được err của tap');
-  //     }),
-  //     map(res => res.content)
-  //   );
-  // }
-
   getAge(limitAge: number) {
     if (limitAge > 0) {
       return "Trên " + limitAge + " tuổi"
@@ -106,23 +86,14 @@ export class DailyScheduleComponent implements OnInit {
 
   }
 
-
-  // openDialog(id: number) {
-  //   console.log(id);
-  //   const dialogConfig = new MatDialogConfig();
-  //   // The user can't close the dialog by clicking outside its body
-  //   dialogConfig.disableClose = true;
-  //   dialogConfig.id = "modal-component";
-  //   const dialogRef = this.matDialog.open(RegisterInjectScheduleComponent, {
-  //     disableClose: true,
-  //     id: "modal-component",
-  //     minHeight: '500px',
-  //     minWidth: '1000px',
-  //     data: {
-  //       id: id
-  //     }
-  //   });
-  // }
+  checkLogin(dailySchedule : DailySchedule) {
+    let jwtResponse = this.tokenStorage.getJwtResponse();
+    console.log(this.router.url);
+    if (jwtResponse) this.openCreate(dailySchedule);
+    else {
+      this.router.navigate(['/'], {queryParams: {returnUrl : this.router.url}})
+    }
+  }
 
   openCreate(dl): void {
     const dialogRef = this.matDialog.open(RegisterInjectScheduleComponent, {

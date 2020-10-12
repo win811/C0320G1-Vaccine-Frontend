@@ -4,7 +4,6 @@
       <h2>Lịch sử tiêm chủng</h2>
     </div>
   </div>
-
   <div class="row mt-3">
     <div class="col">
       <table class="table table-striped mt-2 text-center">
@@ -30,19 +29,18 @@
           <td>{{injectionHistory.vaccine.name}}</td>
           <td>{{injectionHistory.vaccine.category}}</td>
           <td>{{injectionHistory.injectionDate | date: 'dd-MM-yyyy'}}</td>
-          <td>{{injectionHistory.responseContent}}</td>
-          <td><button class="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop"  [routerLink]="['reply/' + injectionHistory.id]">Phản hồi</button></td>
+          <td>{{injectionHistory.reponseContent}}</td>
+          <td><button class="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop">Phản hồi</button></td>
         </tr>
         </tbody>
       </table>
     </div>
   </div>
-
   <div class="row">
     <div class="col">
       <div class="row mt-2">
         <div class="col-md">
-          <button class="btn btn-success">Quay lại</button>
+          <button (click)="back()" class="btn btn-success">Quay lại</button>
         </div>
       </div>
     </div>

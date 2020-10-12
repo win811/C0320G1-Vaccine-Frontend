@@ -1,6 +1,6 @@
-import {Vaccine} from './Vaccine';
-import {Account} from './Account';
-import {Patient} from './patient';
+import { Vaccine } from './Vaccine';
+import { Account } from './Account';
+import { Patient } from './patient';
 
 export interface InjectionHistory {
   id: number;
@@ -12,3 +12,4 @@ export interface InjectionHistory {
   vaccine: Vaccine;
   patient: Patient
 }
+

@@ -10,6 +10,8 @@ export class NotifiByDucService {
   constructor() {
   }
 
+  // type : success, danger, info, warning ..v.v.
+
   showNotification(type, title, text) {
     const color = Math.floor((Math.random() * 4) + 1);
 

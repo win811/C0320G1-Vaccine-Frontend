@@ -1,3 +1,4 @@
+import { NotifiByDucService } from './../../../shared/services/notifi-by-duc.service';
 import { Patient } from './../../../shared/models/patient';
 import { Vaccine } from './../../../shared/models/Vaccine';
 import { InjectionHistoryService } from './../../../shared/services/injection-history.service';
@@ -5,6 +6,7 @@ import { InjectionHistory } from './../../../shared/models/InjectionHistory';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { el } from 'date-fns/locale';
 
 @Component({
   selector: 'app-reply',
@@ -19,7 +21,7 @@ export class ReplyComponent implements OnInit {
   public object : InjectionHistory;
   private newInjection: any;
   private createForm: FormGroup;
-  private message: any;
+  private message: any = "";
   errorMessage = "";
   id: number;
 
@@ -27,7 +29,8 @@ export class ReplyComponent implements OnInit {
     private fb: FormBuilder,
     public injectionService: InjectionHistoryService,
     public router: Router,
-    public activeRoute: ActivatedRoute 
+    public activeRoute: ActivatedRoute ,
+    private notiService : NotifiByDucService
   ) { }
 
   ngOnInit() {
@@ -84,7 +87,7 @@ export class ReplyComponent implements OnInit {
       this.newInjection = {
         isInjected: this.createForm.value.isInjected,
         injectionDate: this.createForm.value.injectionDate,
-        responseContent: this.createForm.value.responseContent,
+        reponseContent: this.createForm.value.responseContent,
         registerType: this.createForm.value.registerType,
         account: this.createForm.value.account,
         vaccine: this.createForm.value.vaccine,
@@ -96,14 +99,20 @@ export class ReplyComponent implements OnInit {
           console.table(this.newInjection);
           console.log(data);
           console.log('update thành công');
-        }, error => { this.errorMessage = "Vui lòng điền đầy đủ thông tin hợp lệ" }, () => {
-          if (this.errorMessage.length == 0) {
-            this.message = "Phản hồi thành công";
-          }
+          this.notiService.showNotification("success","Thông báo","Đã gửi phản hồi thành công");
+          this.router.navigateByUrl("/account/injection-history")
+        }, error => {  
+          this.notiService.showNotification("danger","Thông báo","Gửi phản hồi thất bại");
         }
       );
     } 
   }
+
+  getColor() {
+    if (this.message == "Phản hồi thành công") return "text-success";
+    else return "text-danger";
+  }
+
   backTo() {
     this.router.navigateByUrl("/account/injection-history");
   }
