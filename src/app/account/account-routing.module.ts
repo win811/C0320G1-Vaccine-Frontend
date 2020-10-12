@@ -1,3 +1,5 @@
+import { ReplyComponent } from './injection-history/reply/reply.component';
+
 import {GuestLayoutComponent} from './guest-layout/guest-layout.component';
 import {AccountLayoutComponent} from './account-layout/account-layout.component';
 import {NgModule} from '@angular/core';
@@ -12,21 +14,23 @@ import {UserGuard} from '../shared/services/user.guard';
 const routes: Routes = [
 
   {
-    path: '', component: AccountLayoutComponent, children: [
+    path: '', component: AccountLayoutComponent, canActivate : [UserGuard] , children: [
 
       {path: 'injection-history', component: InjectionHistoryComponent},
-          {path: 'registration', component: RegistrationVaccinationComponent, canActivate : [UserGuard]}
+      {path: 'registration', component: RegistrationVaccinationComponent},
+      {
+        path: 'injection-history/reply/:id', component: ReplyComponent
+      },
     ]
   },
+
   {
     path: 'guest', component: GuestLayoutComponent, children: [
       {path: 'daily', component: DailyScheduleComponent},
       {path: 'contact', component: ContactComponent},
       {path: 'vacxin', component: TableVacxinComponent},
-
     ]
-  },
-
+  }
 ];
 
 @NgModule({

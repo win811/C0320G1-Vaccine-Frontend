@@ -76,4 +76,32 @@ export class InjectionHistoryService {
     return this.httpClient.get<Page<InjectionHistoryDTO>>(this.API_URL,
       this.getOptions(page, searchForm.value.fullName, searchForm.value.injected));
   }
+
+  //Tùng
+  private options = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
+    responseType: 'text' as 'json'
+  };
+
+  //Tùng
+  getInjection(id: number): Observable<any> {
+    return this.http.get<any>(`${this.URL}/account/injection-history/get/${id}`, this.options);
+  }
+
+  //Tùng
+  replyInjection(id: number, value: any): Observable<any> {
+    return this.http.put(`${this.URL}/account/injection-history/reply/${id}`, JSON.stringify(value), this.options);
+  }
+  getVaccine(): Observable<any> {
+    return this.http.get(this.URL + `/account/injection-history/vaccine`, this.options);
+  }
+
+  getPatient(): Observable<any> {
+    return this.http.get(this.URL + `/account/injection-history/patient`, this.options);
+  }
+  getAccount(): Observable<any> {
+    return this.http.get(this.URL + `/account/injection-history/account`, this.options);
+  }
 }

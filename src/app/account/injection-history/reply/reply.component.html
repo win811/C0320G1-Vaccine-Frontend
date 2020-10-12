@@ -1,0 +1,76 @@
+<div class="content">
+    <div class="main-content">
+        <div class="container-fluid">
+            <h2 style="text-align: center;"><strong>PHẢN HỒI THÔNG TIN SAU KHI TIÊM CHỦNG</strong></h2>
+            <hr>
+            <div class="container">
+                <form id="form-create" style="padding-left: 50px; padding-right: 50px" [formGroup]="createForm"
+                    (ngSubmit)="replyInjection();">
+                    <div class="row">
+                        <div class="row1">
+                            <div class="row">
+                                <div style="width: 100%;">
+                                    <h3 style="text-align: center;">Thông tin bệnh nhân</h3>
+                                </div>
+                                <div class="pay1">
+                                    <div class="col">-ID: </div>
+                                    <div class="col">-Tên bệnh nhân: </div>
+                                    <div class="col">-Giới tính:</div>
+                                    <div class="col">-Ngày sinh:</div>
+                                    <div class="col">-Người giám hộ:</div>
+                                    <div class="col">-Địa chỉ:</div>
+                                    <div class="col">-Số điện thoại:</div>
+                                </div>
+                                <div class="pay2">
+                                    <div formGroupName="patient"><input type="text" formControlName="code" disabled>
+                                    </div>
+                                    <div formGroupName="patient"><input type="text" formControlName="fullName" disabled>
+                                    </div>
+                                    <div formGroupName="patient"><input type="text" formControlName="gender" disabled>
+                                    </div>
+                                    <div formGroupName="patient"><input type="text" formControlName="birthday" disabled>
+                                    </div>
+                                    <div formGroupName="patient"><input type="text" formControlName="parentName"
+                                            disabled></div>
+                                    <div formGroupName="patient"><input type="text" formControlName="address" disabled>
+                                    </div>
+                                    <div formGroupName="patient"><input type="text" formControlName="phoneNumber"
+                                            disabled></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row2">
+                            <div class="row">
+                                <div style="width: 100%;">
+                                    <h3 style="text-align: center;"></h3>
+                                </div>
+                                <div class="pay1">
+                                    <div>-Loại vắc xin: </div>
+                                    <div>-Ngày tiêm: </div>
+                                </div>
+                                <div class="pay2">
+                                    <div formGroupName="vaccine"><input type="text" formControlName="name" disabled>
+                                    </div>
+                                    <div><input type="datetime-local" formControlName="injectionDate" disabled></div>
+                                </div>
+                                <div class="pay3">
+                                    <div>Tình trạng bệnh sau khi tiêm (Sốt cao, sốt nhẹ, dị ứng,...)</div>
+                                    <input type="text" class="form-control form-control-sm" style="height: 100px;"
+                                        formControlName="responseContent">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="d-block text-danger" role="alert">
+                        {{message}}
+                    </small>
+                    <div style="align-items: center;">
+                        <button type="submit" class="btn btn-outline-success"> Xác nhận</button>
+                        <button type="button" class="btn btn-outline-primary " (click)="backTo()">
+                            <a style="text-decoration: none">Hủy</a></button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>

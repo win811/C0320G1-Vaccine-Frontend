@@ -10,31 +10,33 @@ import { TransSupCreateComponent } from './finance-management/trans-w-supplier/t
 import { TransSupEditComponent } from './finance-management/trans-w-supplier/trans-sup-edit/trans-sup-edit.component';
 import { TransCenterComponent } from './finance-management/trans-center/trans-center.component';
 import { TransListComponent } from './finance-management/trans-w-patient/trans-list/trans-list.component';
-import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
-import {NotificationsComponent} from './notifications/notifications.component';
-import {ListDailyScheduleComponent} from './daily-schedule/list-daily-schedule/list-daily-schedule.component';
-import {ListPatientInjectRequestComponent} from './patient-inject/list-patient-inject-request/list-patient-inject-request.component';
+import { PatientUpdateComponent } from './patient/patient-update/patient-update.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { ListDailyScheduleComponent } from './daily-schedule/list-daily-schedule/list-daily-schedule.component';
+import { ListPatientInjectRequestComponent } from './patient-inject/list-patient-inject-request/list-patient-inject-request.component';
 import { PatientListComponent } from './patient/patient-list/patient-list.component';
 import { VaccineListComponent } from './vaccine-list/vaccine-list.component';
 import {AdminGuard} from '../shared/services/admin.guard';
+import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 
 const routes: Routes = [
 
     {
       path: '', component: AdminLayoutComponent, canActivate : [AdminGuard],children:
       [
-      {path: "employee-list", component: EmployeeListComponent },
-      {path: "injected-list", component: PeriodicInjectionComponent },
-      {path: 'vaccine-storage',component: VaccineStorageComponent},
-      {path: 'contactBox', component: ContactBoxComponent},
-      {path: 'contact/noti', component: NotificationsComponent},
-      {path: 'contact/:id', component: ContactReplyComponent},
-      {path: 'dailySchedule', component: ListDailyScheduleComponent},
-      {path: 'listPatientInjectRequest', component: ListPatientInjectRequestComponent},
-      {path: 'vaccine-list', component: VaccineListComponent},
-      {path: 'patient-list', component: PatientListComponent},
+        { path: "employee-list", component: EmployeeListComponent },
+        { path: "injected-list", component: PeriodicInjectionComponent },
+        { path: 'vaccine-storage', component: VaccineStorageComponent },
+        { path: 'contactBox', component: ContactBoxComponent },
+        { path: 'contact/noti', component: NotificationsComponent },
+        { path: 'contact/:id', component: ContactReplyComponent },
+        { path: 'dailySchedule', component: ListDailyScheduleComponent },
+        { path: 'listPatientInjectRequest', component: ListPatientInjectRequestComponent },
+        { path: 'vaccine-list', component: VaccineListComponent },
+        { path: 'patient-list', component: PatientListComponent },
+        { path: 'patient-list/update/:id', component: PatientUpdateComponent },
         {
-          path: 'supplier-transaction',component : TransWSupplierComponent,
+          path: 'supplier-transaction', component: TransWSupplierComponent,
         },
         {
           path: 'supplier-transaction/create', component: TransSupCreateComponent
@@ -42,15 +44,15 @@ const routes: Routes = [
         {
           path: 'supplier-transaction/edit/:id', component: TransSupEditComponent
         },
-        {path: "finance", component: TransCenterComponent,
+        {
+          path: "finance", component: TransCenterComponent,
           children: [
             { path: "patient", component: TransListComponent }
           ]
-      }
+        }
       ]
-    }
-];
-
+  }
+]
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

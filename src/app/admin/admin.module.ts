@@ -1,3 +1,4 @@
+import { ReplyComponent } from './../account/injection-history/reply/reply.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -73,7 +74,8 @@ import { MatRadioModule } from '@angular/material';
     VaccineUpdatePriceComponent,
     PatientListComponent,
     PatientCreateComponent,
-    PatientUpdateComponent
+    PatientUpdateComponent,
+    ReplyComponent
   ],
   imports: [
     CommonModule,

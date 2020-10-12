@@ -62,6 +62,10 @@ export class TransSupCreateComponent implements OnInit {
       );
     } 
   }
+  backTo() {
+    this.router.navigateByUrl("/admin/supplier-transaction");
+  }
+
 
   //to valid
   get tradingCode() {
