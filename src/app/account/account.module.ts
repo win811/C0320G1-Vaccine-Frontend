@@ -4,7 +4,7 @@ import {CommonModule} from '@angular/common';
 import {ContactComponent} from './contact/contact.component';
 import {AccountRoutingModule} from './account-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { InjectionHistoryComponent } from './injection-history/injection-history.component';
+import {InjectionHistoryComponent} from './injection-history/injection-history.component';
 import {ToastrModule} from 'ngx-toastr';
 import {TableVacxinComponent} from './table-vacxin/table-vacxin.component';
 import {AccountLayoutComponent} from './account-layout/account-layout.component';
@@ -16,6 +16,8 @@ import {RegistrationVaccinationComponent} from './registration-vaccination/regis
 import {HttpClient} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {MatNativeDateModule} from '@angular/material/core';
+import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 
 import {
   MatButtonModule,
@@ -24,7 +26,7 @@ import {
   MatFormFieldModule,
   MatInputModule, MatProgressBarModule,
   MatRadioModule, MatSelectModule,
-  MatStepperModule
+  MatStepperModule,
 } from '@angular/material';
 import {GuestLayoutComponent} from './guest-layout/guest-layout.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -52,6 +54,9 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   imports: [
     CommonModule,
+    NgxMatTimepickerModule,
+    NgxMatDatetimePickerModule,
+    MatNativeDateModule,
     AccountRoutingModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
@@ -88,7 +93,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FooterComponent,
     HeaderComponent
   ],
-  entryComponents: [RegisterInjectScheduleComponent,ConfirmRegisterComponent]
+  entryComponents: [RegisterInjectScheduleComponent, ConfirmRegisterComponent]
 })
 export class AccountModule {
 }

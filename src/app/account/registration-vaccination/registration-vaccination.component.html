@@ -12,8 +12,10 @@
           <div class="col-md-2"></div>
           <div class="col-md-4">
             <mat-form-field class=" field-ad row ">
-              <mat-label *ngIf="firstFormGroup.controls.fullName.touched&&firstFormGroup.controls.fullName.errors?.pattern"
-                         class="text-danger">Tên không được chứa kí tự đặc biệt</mat-label>
+              <mat-label
+                *ngIf="firstFormGroup.controls.fullName.touched&&firstFormGroup.controls.fullName.errors?.pattern"
+                class="text-danger">Tên không được chứa kí tự đặc biệt
+              </mat-label>
               <input matInput placeholder="Họ và tên" formControlName="fullName" required>
             </mat-form-field>
             <br>
@@ -28,22 +30,27 @@
             <br>
             <mat-form-field class=" field-ad row ">
               <mat-label>Ngày sinh</mat-label>
-              <input matInput [matDatepicker]="dp3"  [max]="maxDate" placeholder="dd/mm/yyyy" formControlName="birthday" required
+              <input matInput [matDatepicker]="dp3" [max]="maxDate" [min]="minDate" placeholder="dd/mm/yyyy"
+                     formControlName="birthday"
+                     required
                      readonly>
-              <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
-              <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+              <mat-datepicker-toggle  matSuffix [for]="dp3"></mat-datepicker-toggle>
+              <mat-datepicker #dp3  disabled="false"></mat-datepicker>
             </mat-form-field>
             <mat-form-field class=" field-ad row " style="width:300px;">
               <mat-label *ngIf="firstFormGroup.controls.email.touched&&firstFormGroup.controls.email.errors?.pattern"
-                         class="text-danger">Email định dạng name@domain.com</mat-label>
-              <input style="width: 200px"  matInput placeholder="Email" formControlName="email" required email>
-              <button class="float-right " mat-button (click)="sendVerifyToken()" >Gửi Mã</button>
+                         class="text-danger">Email định dạng name@domain.com
+              </mat-label>
+              <input style="width: 200px" matInput placeholder="Email" formControlName="email" required email>
+              <button class="float-right " mat-button (click)="sendVerifyToken()">Gửi Mã</button>
             </mat-form-field>
           </div>
           <div class="col-md-4">
             <mat-form-field class=" field-ad row ">
-              <mat-label *ngIf="firstFormGroup.controls.parentName.touched&&firstFormGroup.controls.parentName.errors?.pattern"
-                         class="text-danger">Tên không được chưa kí tự đặc biệt</mat-label>
+              <mat-label
+                *ngIf="firstFormGroup.controls.parentName.touched&&firstFormGroup.controls.parentName.errors?.pattern"
+                class="text-danger">Tên không được chưa kí tự đặc biệt
+              </mat-label>
               <input matInput placeholder="Người giám hộ" formControlName="parentName" required>
             </mat-form-field>
             <br>
@@ -53,20 +60,25 @@
             </mat-form-field>
             <br>
             <mat-form-field class=" field-ad row ">
-              <mat-label *ngIf="firstFormGroup.controls.phoneNumber.touched&&firstFormGroup.controls.phoneNumber.errors?.pattern"
-                         class="text-danger">Số điện thoại không có thật</mat-label>
+              <mat-label
+                *ngIf="firstFormGroup.controls.phoneNumber.touched&&firstFormGroup.controls.phoneNumber.errors?.pattern"
+                class="text-danger">Số điện thoại không có thật
+              </mat-label>
               <input class="mr-5" matInput placeholder="Số điện thoại" formControlName="phoneNumber" required>
             </mat-form-field>
-            <mat-form-field  class=" field-ad row" style="width:300px">
+            <mat-form-field class=" field-ad row" style="width:300px">
               <mat-label><span *ngIf="verify=='verify'" class="material-icons">
 verified_user
-</span> Mã Xác Nhận</mat-label>
-              <input style="width: 150px"  matInput placeholder="Nhập Mã" formControlName="code" required >
-              <button [disabled]="verify=='verify'" class="float-right " mat-button (click)="VerifyCode()" >Xác Nhận</button>
+</span> Mã Xác Nhận
+              </mat-label>
+              <input style="width: 180px" matInput placeholder="Nhập Mã" formControlName="code" required>
+              <button [disabled]="verify=='verify'" class="float-right " mat-button (click)="VerifyCode()">Xác Nhận
+              </button>
 
             </mat-form-field>
             <div class="field-ad row">
-              <button class="float-right mt-3 " mat-button matStepperNext [disabled]="firstFormGroup.invalid">Tiếp Tục
+              <button class="float-right mt-3 " mat-button matStepperNext
+                      [disabled]="firstFormGroup.invalid||verify!='verify'">Tiếp Tục
               </button>
             </div>
           </div>
@@ -96,7 +108,7 @@ verified_user
                   <mat-label>Tên Vắc-Xin</mat-label>
                   <mat-select matInput placeholder="Tên Vắc-Xin" formControlName="name" [(ngModel)]="vacxin">
                     <mat-option *ngIf="vacxin2" [value]="vacxin2">{{vacxin2.name}}</mat-option>
-                    <mat-option  *ngFor=" let vacxin of vaccineList" [value]="vacxin">
+                    <mat-option *ngFor=" let vacxin of vaccineList" [value]="vacxin">
                       {{vacxin.name}}
                     </mat-option>
                   </mat-select>
@@ -117,7 +129,9 @@ verified_user
               <div>
                 <mat-form-field class=" field-ad row ">
                   <mat-label>Ngày đăng kí tiêm</mat-label>
-                  <input matInput [matDatepicker]="dp4" placeholder="dd/mm/yyyy" [max]="maxDate" formControlName="injectionDate"
+                  <input matInput [matDatepicker]="dp4" placeholder="dd/mm/yyyy" [max]="maxDateRegistration"
+                         [min]="minDateRegistration"
+                         formControlName="injectionDate"
                          required
                          readonly>
                   <mat-datepicker-toggle matSuffix [for]="dp4"></mat-datepicker-toggle>
@@ -131,7 +145,8 @@ verified_user
       </div>
       <div>
         <button mat-button matStepperPrevious>Quay Lại</button>
-        <button mat-button matStepperNext (click)="setInjection()" [disabled]="secondFormGroup.invalid">Tiếp Theo</button>
+        <button mat-button matStepperNext (click)="setInjection()" [disabled]="secondFormGroup.invalid">Tiếp Theo
+        </button>
       </div>
     </form>
   </mat-step>
@@ -140,44 +155,44 @@ verified_user
     <div class="row justify-content-center mt-3 mb-3" style="font-size: 30px">
       <mat-label>PHIẾU ĐĂNG KÝ TIÊM THEO YÊU CẦU</mat-label>
     </div>
-    <div *ngIf="injection.patient">
+    <div *ngIf="injection.patient&&injection.vaccine">
       <div class="row">
         <div class="col-md-4"></div>
-          <div class="col-md-2" id="info-par-label">
-            <div>
-              <label>Họ Tên Bệnh Nhân :</label>
-            </div>
-            <div>
-              <label>Số Điện Thoại :</label>
-            </div>
-            <div>
-              <label>Người Giám Hộ :</label>
-            </div>
-            <div>
-              <label>Tên Vắc-Xin :</label>
-            </div>
-            <div>
-              <label>Ngày Hẹn :</label>
-            </div>
+        <div class="col-md-2" id="info-par-label">
+          <div>
+            <label>Họ Tên Bệnh Nhân :</label>
           </div>
-          <div class="col-md-4" id="info-par">
-            <p>{{injection.patient.fullName}}</p>
-            <p>{{injection.patient.phoneNumber}}</p>
-            <p>{{injection.patient.parentName}}</p>
-            <p>{{injection.vaccine.name}}</p>
-            <p>{{injection.injectionDate|date:'fullDate'}}</p>
+          <div>
+            <label>Số Điện Thoại :</label>
           </div>
+          <div>
+            <label>Người Giám Hộ :</label>
+          </div>
+          <div>
+            <label>Tên Vắc-Xin :</label>
+          </div>
+          <div>
+            <label>Ngày Hẹn :</label>
+          </div>
+        </div>
+        <div class="col-md-4" id="info-par">
+          <p>{{injection.patient.fullName}}</p>
+          <p>{{injection.patient.phoneNumber}}</p>
+          <p>{{injection.patient.parentName}}</p>
+          <p>{{injection.vaccine.name}}</p>
+          <p>{{injection.injectionDate|date:'sortDate'}}</p>
+        </div>
         <div class="col-md-2"></div>
       </div>
-
 
 
     </div>
 
 
-   <div>
+    <div>
       <button mat-button matStepperPrevious>Quay Lại</button>
-      <button mat-button (click)="registration()" [disabled]="firstFormGroup.invalid&&secondFormGroup.invalid">Gửi Đăng Ký
+      <button mat-button (click)="registration()" [disabled]="firstFormGroup.invalid&&secondFormGroup.invalid">Gửi Đăng
+        Ký
       </button>
     </div>
   </mat-step>
