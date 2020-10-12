@@ -1,2 +1,13 @@
-
-<router-outlet></router-outlet>
+<router-outlet>
+  <div style="float: bottom;z-index: 100;position: fixed;bottom: 10%;right: 1%"
+    matTooltip="Nhấn giữ trò chuyện cùng trợ lý ảo" matTooltipPosition="after">
+    <a (mousedown)="initiateRecording()" class="btn btn-info btn-circle btn-circle-xl m-1" *ngIf="!recording"><i
+        class="fa fa-microphone"></i></a>
+    <a (mouseup)="stopRecording()" class="btn btn-danger btn-circle btn-circle-lg m-1" *ngIf="recording"><i
+        class="fa fa-times"></i></a>
+    <div class="clearfix"></div>
+    <audio autoplay controls="" *ngIf="url" hidden>
+      <source allow="autoplay" [src]="sanitize(url)" type="audio/wav">
+    </audio>
+  </div>
+</router-outlet>

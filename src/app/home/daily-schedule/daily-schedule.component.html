@@ -1,0 +1,44 @@
+<div class="container-fluid">
+  <div class="banner">
+    <h1>THÔNG TIN LỊCH TIÊM CHỦNG ĐỊNH KỲ CỦA TRUNG TÂM</h1>
+  </div>
+
+  <table class="table table-striped  text-left">
+    <thead class="bg-primary" style="background: #17A2B8!important">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Thời gian</th>
+      <th scope="col">Ngày tiêm</th>
+      <th scope="col">Địa điểm</th>
+      <th scope="col">Tên Vắc-Xin</th>
+      <th scope="col">Loại Vắc-Xin</th>
+      <th scope="col">Đối tượng được tiêm</th>
+      <th scope="col">Ghi chú</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr
+      *ngFor="let dl of dailySchedule | async | paginate: { itemsPerPage: pageSize, currentPage: currentPage, totalItems: totalElements}; index as j">
+      <th scope="row">{{stt[j]}}</th>
+      <td>{{dl.startTime}}-{{dl.endTime}}</td>
+      <td>{{dl.vaccinationDate | date: 'dd/MM/yyyy'}}</td>
+      <td>{{dl.address}}</td>
+      <td>{{dl.vaccine.name}}</td>
+      <td>{{dl.vaccine.category}}</td>
+      <td>{{getAge(dl.vaccine.limitAge)}}</td>
+      <td>{{dl.note}}</td>
+
+      <td>
+        <button class="btn btn-warning" mat-button (click)="openCreate(dl)">Đăng ký  </button>
+
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="col mt-2">
+    <div class="row d-flex justify-content-end">
+      <pagination-controls (pageChange)="getDailySchedule($event)"></pagination-controls>
+    </div>
+  </div>
+</div>

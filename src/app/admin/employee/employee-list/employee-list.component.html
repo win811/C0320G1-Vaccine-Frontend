@@ -2,17 +2,17 @@
   <div class="text-center text-info mt-4 mb-5">
       <h2 >Danh sách nhân viên </h2>
   </div>
-  
+
   <div class="mt-5 ">
       <form (ngSubmit)="search()" [formGroup]="searchForm">
           <div class="float-left col-sm-2 pl-0">
-              <button (click)="openDialog()" class="btn btn-outline-success " data-toggle="modal">
+              <button (click)="openDialog()" class="btn btn-success " data-toggle="modal">
                   <i class="fas fa-plus-circle"></i> Tạo mới nhân viên</button>
           </div>
           <div class=" d-flex justify-content-end col-sm-7 mb-4 pr-0 float-right">
               <input class="form-control mr-3" type="text" placeholder="Mã nhân viên" formControlName="code">
               <input class="form-control mr-3" type="text" placeholder="Họ và tên" formControlName="fullName">
-              <select class="form-control" formControlName="position">
+              <select class="form-control" style="height: 36px;" formControlName="position">
                   <option [selected]=true disabled>Chức vụ</option>
                   <option>Trưởng phòng</option>
                   <option>Thủ kho</option>
@@ -21,7 +21,7 @@
                   <option>Thu ngân</option>
                   <option>Nhân viên</option>
               </select>
-              <button class="btn btn-outline-info ml-3">Tìm kiếm</button>
+              <button class="btn btn-info ml-3">Tìm kiếm</button>
           </div>
       </form>
       <table class="table table-striped table-lg">

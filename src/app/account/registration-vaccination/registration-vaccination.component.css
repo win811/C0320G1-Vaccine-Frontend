@@ -1,0 +1,35 @@
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+}
+.example-container .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+.example-container .mat-form-field {
+  width: 220px;
+}
+
+.example-container form {
+  margin-bottom: 20px;
+}
+
+.example-container form > * {
+  margin: 5px 0;
+}
+
+.mat-radio-button {
+  margin: 0 0 0 12px;
+}
+.field-ad {
+  width: 300px;
+}
+div #info-par p {
+ margin-bottom: 8px;
+}
+/*label {*/
+/*  font-size: 16px;*/
+/*}*/
